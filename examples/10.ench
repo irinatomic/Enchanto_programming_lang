@@ -3,10 +3,10 @@ enchanto {
     declaro incantum n i j temp;
     declaro arraygo [100] incantum niz;
 
-    revelio "Unesite pozitivan ceo broj do 100: ";
+    revelio "Unesite_pozitivan_ceo_broj_do_100:";
     scriptum n;
 
-    revelio "Unesite element po element niza: ";
+    revelio "Unesite_element_po_element_niza: ";
     forculus i = 0 tu n du {
         scriptum niz[i];
     }
@@ -21,7 +21,7 @@ enchanto {
         }
     }
 
-    revelio "Sortirani niz: \n";
+    revelio "Sortirani_niz:";
     
     forculus i = 0 tu n du {
         revelio niz[i];

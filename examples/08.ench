@@ -4,10 +4,10 @@ enchanto {
 
     a = "prvo";
 
-    revelio "Unesite string: ";
+    revelio "Unesite_string:";
     scriptum b;
 
     c = a + b;
-    ispis = "Konkatenacija je " + c;
+    ispis = "Konkatenacija_je" + c;
     scriptum ispis;
 }

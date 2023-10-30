@@ -3,7 +3,7 @@ enchanto {
     declaro incantum n fact i;
     declaro stringo ispis;
 
-    revelio "Unesite pozitivan ceo broj: ";
+    revelio "Unesite_pozitivan_ceo_broj:";
     scriptum n;
 
     fact = 1;
@@ -12,7 +12,7 @@ enchanto {
         fact = fact * i;
     }
 
-    ispis = "Faktorijel broja " + n + " je " + fact;
+    ispis = "Faktorijel_broja_" + n + "_je_" + fact;
     revelio ispis;
 }
 

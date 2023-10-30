@@ -2,7 +2,7 @@ enchanto {
 
     declaro incantum poeni, ocena;
 
-    revelio "Unesite broj poena (0-100): ";
+    revelio "Unesite_broj-poena_(0-100):";
     scriptum poeni;
 
     mystime poeni >= 0 andus poeni <= 100 du {
@@ -19,15 +19,15 @@ enchanto {
         } turntime poeni >= 91 andus poeni <= 100 du {
             ocena = 10;
         } returntime du {
-            revelio "Nevažeći broj poena.";
+            revelio "Nevazeci_broj_poena";
         }
     } returntime du {
-        revelio "Nevažeći broj poena.";
+        revelio "Nevazeci_broj_poena";
     }
 
     mystime ocena >= 5 andus ocena <= 10 du {
         revelio ocena;
     } unturntime {
-        revelio "Nevažeća ocena.";
+        revelio "Nevazeca_ocena.";
     }
 }

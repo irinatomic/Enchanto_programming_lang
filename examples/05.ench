@@ -2,7 +2,7 @@ enchanto {
 
     declaro incantum broj a b c;
 
-    revelio "Unesite pozitivne cele brojeve: ";
+    revelio "Unesite_pozitivne_cele_brojeve:";
     scriptum broj;
 
     a = broj - 10;

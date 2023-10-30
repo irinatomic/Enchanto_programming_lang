@@ -3,7 +3,7 @@ enchanto {
     declaro incantum n;
     declaro stringo mesec, ispis;
 
-    revelio "Unesite broj od 1 do 12: ";
+    revelio "Unesite_broj_od_1_do_12:";
     scriptum n;
 
     mystime n == 1 du {
@@ -31,9 +31,9 @@ enchanto {
     } turntime n == 12 du {
         mesec = "Decembar";
     } returntime du {
-        mesec = "Nepostojeći mesec";
+        mesec = "Nepostojeći_mesec";
     }
 
-    ispis = "Odabrani mesec je: " + mesec;
+    ispis = mesec;
     revelio ispis;
 }

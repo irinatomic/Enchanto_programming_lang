@@ -3,14 +3,14 @@ enchanto {
     declaro incantum a b rezultat;
     declaro stringo ispis;
 
-    revelio "Unesite vrednost za a: ";
+    revelio "Unesite_a: ";
     scriptum a;
 
-    revelio "Unesite vrednost za b: ";
+    revelio "Unesite_b: ";
     scriptum b;
 
     rezultat = tribus a > b ? a : b;
 
-    ispis = "Najveća vrednost između a i b je: " + rezultat;
+    ispis = "Veci_je" + rezultat;
     revelio ispis;
 }

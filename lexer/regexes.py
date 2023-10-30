@@ -64,9 +64,9 @@ class RegexCollection:
             Regex(re.compile(r'\bforculus\b'), WordType.FORCULUS),
             Regex(re.compile(r'\bwhilegardium\b'), WordType.WHILEGARDIUM),
             # fourth, check for variables, characters, numbers and strings
-            Regex(re.compile(r'[a-zA-Z_]\w*'), WordType.VARIABLE),
-            Regex(re.compile(r'[a-zA-Z]'), WordType.CHARACTER),
-            Regex(re.compile(r'\d+'), WordType.NUMBER),
+            Regex(re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*'), WordType.VARIABLE),
+            Regex(re.compile(r'\'.\''), WordType.CHARACTER),
+            Regex(re.compile(r'0|[1-9]\d*'), WordType.NUMBER),
             Regex(re.compile(r'\".*?\"'), WordType.STRING),
         ]
         return regexes

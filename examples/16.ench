@@ -6,7 +6,7 @@ enchanto {
     niz = [12, 5, 8, 10, 1, 7, 6, 3, 15, 9];
     velicina = scriptum(niz);
 
-    revelio "Niz pre: ";
+    revelio "Niz_pre:";
     forculus i = 0 tu velicina du {
         revelio niz[i];
     }
@@ -22,7 +22,7 @@ enchanto {
     niz[0] = niz[najveci];
     niz[najveci] = privremeno;
 
-    revelio "Niz nakon postavljanja najvećeg elementa na početak: ";
+    revelio "Niz_nakon_postavljanja_najveceg_elementa_na_pocetak: ";
     forculus i = 0 tu velicina du {
         revelio niz[i];
     }

@@ -2,7 +2,7 @@ enchanto {
 
     declaro incantum originalni_broj, izvrnuti_broj, cifra;
 
-    revelio "Unesite originalni broj: ";
+    revelio "Unesite_originalni_broj";
     scriptum originalni_broj;
 
     izvrnuti_broj = 0;

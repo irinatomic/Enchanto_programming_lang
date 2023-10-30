@@ -3,7 +3,7 @@ enchanto {
     declaro incantum broj eksponent rezultat;
     declaro stringo ispis;
 
-    revelio "Unesite broj za izračunavanje logaritma: ";
+    revelio "Unesite_broj_za_izračunavanje_logaritma: ";
     scriptum broj;
 
     eksponent = 0;
@@ -14,6 +14,6 @@ enchanto {
         eksponent = eksponent + 1;
     }
 
-    ispis = "Logaritam osnove 2 od unetog broja je: " + eksponent;
+    ispis = "Logaritam_osnove_2_od_unetog_broja_je: " + eksponent;
     revelio ispis;
 }

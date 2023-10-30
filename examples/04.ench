@@ -3,7 +3,7 @@ enchanto {
     declaro incantum pocetak kraj tmp i;
     declaro stringo ispis;
 
-    revelio "Unesite dva cela broja";
+    revelio "Unesite_dva_cela_broja";
 
     scriptum pocetak;
     scriptum kraj;

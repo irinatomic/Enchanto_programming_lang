@@ -21,8 +21,10 @@ Enchanto uses a set of naming conventions inspired by the enchanting world of Ha
 | Assignment (=) | = |
 | + - * / % | + - * / % | 
 | == < > ≤ ≥ ≠ | == < > ≤ ≥ ≠ | 
-| && || ! | andus orus notus |
-| Ternary | tribus |
+| && | andus |
+| \|\| | orus | 
+| ! | notus |
+| ternary | tribus |
 | if | mystime |
 | else if | turntime |
 | else | returntime | 

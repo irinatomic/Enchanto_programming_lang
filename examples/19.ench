@@ -2,10 +2,10 @@ enchanto {
 
     declaro incantum originalni_broj, izbacena_cifra, izmenjen_broj, cifra;
 
-    revelio "Unesite originalni broj: ";
+    revelio "Unesite_originalni_broj";
     scriptum originalni_broj;
 
-    revelio "Unesite cifru koju želite izbaciti: ";
+    revelio "Unesite_cifru_koju_zelite_izbaciti";
     scriptum izbacena_cifra;
 
     izmenjen_broj = 0;

@@ -3,23 +3,23 @@ enchanto {
     declaro stringo ime moc ispis;
     declaro incantum godine;
 
-    revelio "Unesite ime osobe: ";
+    revelio "Unesite_ime_osobe: ";
     scriptum ime;
 
-    revelio "Unesite broj godina osobe: ";
+    revelio "Unesite_broj_godina_osobe: ";
     scriptum godine;
 
-    revelio "Unesite moć (magija ili veštičarstvo): ";
+    revelio "Unesite_moc_magija_ili_vesticarstvo:";
     scriptum moc;
 
     mystime (godine >= 18) andus (moc == "magija") du {
-        ispis = ime + " je punoletni magičar";
+        ispis = ime + " je_punoletni_magicar";
     } unturntime (godine >= 18) andus (moc == "veštičarstvo") du {
-        ispis = ime + " je punoletni veštičar";
+        ispis = ime + " je_punoletni_vesticar";
     } unturntime (godine < 18) du {
-        ispis = ime + " nije punoletna osoba";
+        ispis = ime + " nije_punoletna_osoba";
     } else {
-        ispis = "Nepostojeći slučaj";
+        ispis = "Nepostojeci_slucaj";
     }
 
     revelio ispis;
