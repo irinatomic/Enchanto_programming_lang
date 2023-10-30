@@ -1,0 +1,16 @@
+enchanto {
+
+    declaro dublatum precnik obim pi;
+    declaro stringo ispis;
+
+    revelio "Unesite prečnik kruga: ";
+    scriptum precnik;
+
+    revelio "Unesite obim kruga: ";
+    scriptum obim;
+
+    pi = obim / precnik;
+
+    ispis = "Izračunat broj (pi) je: " + pi;
+    revelio ispis;
+}

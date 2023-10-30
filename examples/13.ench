@@ -1,0 +1,26 @@
+enchanto {
+
+    declaro stringo ime moc ispis;
+    declaro incantum godine;
+
+    revelio "Unesite ime osobe: ";
+    scriptum ime;
+
+    revelio "Unesite broj godina osobe: ";
+    scriptum godine;
+
+    revelio "Unesite moć (magija ili veštičarstvo): ";
+    scriptum moc;
+
+    mystime (godine >= 18) andus (moc == "magija") du {
+        ispis = ime + " je punoletni magičar";
+    } unturntime (godine >= 18) andus (moc == "veštičarstvo") du {
+        ispis = ime + " je punoletni veštičar";
+    } unturntime (godine < 18) du {
+        ispis = ime + " nije punoletna osoba";
+    } else {
+        ispis = "Nepostojeći slučaj";
+    }
+
+    revelio ispis;
+}

@@ -1,0 +1,17 @@
+enchanto {
+
+    declaro incantum originalni_broj, izvrnuti_broj, cifra;
+
+    revelio "Unesite originalni broj: ";
+    scriptum originalni_broj;
+
+    izvrnuti_broj = 0;
+
+    whilegardium originalni_broj > 0 du {
+        cifra = originalni_broj % 10;
+        izvrnuti_broj = (izvrnuti_broj * 10) + cifra;
+        originalni_broj = originalni_broj / 10;
+    }
+
+    revelio izvrnuti_broj;
+}

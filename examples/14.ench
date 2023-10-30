@@ -1,0 +1,16 @@
+enchanto {
+
+    declaro incantum a b rezultat;
+    declaro stringo ispis;
+
+    revelio "Unesite vrednost za a: ";
+    scriptum a;
+
+    revelio "Unesite vrednost za b: ";
+    scriptum b;
+
+    rezultat = tribus a > b ? a : b;
+
+    ispis = "Najveća vrednost između a i b je: " + rezultat;
+    revelio ispis;
+}

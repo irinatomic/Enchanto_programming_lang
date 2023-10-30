@@ -1,0 +1,16 @@
+enchanto {
+
+    declaro incantum pocetak kraj tmp i;
+    declaro stringo ispis;
+
+    revelio "Unesite dva cela broja";
+
+    scriptum pocetak;
+    scriptum kraj;
+
+    forculus i = pocetak tu kraj du {
+        tmp = i - pocetak + 1;
+        ispis = "Element " + tmp + " je " + i;
+        revelio ispis;
+    }
+}

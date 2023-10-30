@@ -1,0 +1,13 @@
+enchanto {
+
+    declaro stringo a b c ispis;
+
+    a = "prvo";
+
+    revelio "Unesite string: ";
+    scriptum b;
+
+    c = a + b;
+    ispis = "Konkatenacija je " + c;
+    scriptum ispis;
+}

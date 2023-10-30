@@ -1,0 +1,22 @@
+enchanto {
+
+    declaro incantum n i j;
+    declaro charmax razmak zvezda;
+
+    revelio "Unesite pozitivan ceo broj: ";
+    scriptum n;
+
+    razmak = ' ';
+    zvezda = '*';
+
+    forculus i = 1 tu n du {
+
+        forculus j = 1 tu n-i du {
+            revelio space;
+        }
+
+        forculus j = 1 tu 2*i-1 du {
+            revelio zvezda;
+        }
+    }
+}

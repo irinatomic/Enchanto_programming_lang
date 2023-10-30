@@ -1,0 +1,30 @@
+enchanto {
+
+    declaro incantum n i j temp;
+    declaro arraygo [100] incantum niz;
+
+    revelio "Unesite pozitivan ceo broj do 100: ";
+    scriptum n;
+
+    revelio "Unesite element po element niza: ";
+    forculus i = 0 tu n du {
+        scriptum niz[i];
+    }
+
+    forculus i = 0 tu n du {
+        forculus j = i+1 tu n du {
+            mystime niz[i] > niz[j] du {
+                temp = niz[i];
+                niz[i] = niz[j];
+                niz[j] = niz[i];
+            }
+        }
+    }
+
+    revelio "Sortirani niz: \n";
+    
+    forculus i = 0 tu n du {
+        revelio niz[i];
+        revelio " ";
+    }
+}

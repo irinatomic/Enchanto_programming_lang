@@ -1,0 +1,13 @@
+enchanto {
+
+    declaro charmax a;
+    declaro incantum b c d;
+
+    a = 'a';
+    b = 345;
+    c = 123;
+    d = b + c;
+
+    revelio a;
+    revelio d;
+}

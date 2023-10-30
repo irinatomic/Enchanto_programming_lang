@@ -1,0 +1,29 @@
+enchanto {
+
+    declaro arraygo [incantum] niz;
+    declaro incantum velicina, i, j, najveci, privremeno;
+
+    niz = [12, 5, 8, 10, 1, 7, 6, 3, 15, 9];
+    velicina = scriptum(niz);
+
+    revelio "Niz pre: ";
+    forculus i = 0 tu velicina du {
+        revelio niz[i];
+    }
+
+    najveci = 0;
+    forculus i = 1 tu velicina du {
+        mystime niz[i] > niz[najveci] du {
+            najveci = i;
+        }
+    }
+
+    privremeno = niz[0];
+    niz[0] = niz[najveci];
+    niz[najveci] = privremeno;
+
+    revelio "Niz nakon postavljanja najvećeg elementa na početak: ";
+    forculus i = 0 tu velicina du {
+        revelio niz[i];
+    }
+}

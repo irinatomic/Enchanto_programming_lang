@@ -1,0 +1,6 @@
+Glavni blok je enchanto.
+
+Na kraju svakog reda ima semicolon ;
+
+Ne moze istovremeno da se deklarise promenljiva i da joj se doda vrednost.
+Deklaracija vise promenljivih se radi sa razmakom izmedju.

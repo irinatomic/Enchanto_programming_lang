@@ -1,0 +1,19 @@
+enchanto {
+
+    declaro incantum broj eksponent rezultat;
+    declaro stringo ispis;
+
+    revelio "Unesite broj za izračunavanje logaritma: ";
+    scriptum broj;
+
+    eksponent = 0;
+    rezultat = 1;
+
+    whilegardium broj > 1 du {
+        broj = broj / 2;
+        eksponent = eksponent + 1;
+    }
+
+    ispis = "Logaritam osnove 2 od unetog broja je: " + eksponent;
+    revelio ispis;
+}

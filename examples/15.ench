@@ -1,0 +1,25 @@
+enchanto {
+
+    declaro incantum i j ostatak kolicnik delilac;
+    declaro stringo ispis;
+
+    forculus i = 2 tu 100 du {
+        delilac = 2;
+        ispis = "";
+
+        whilegardium delilac <= i/2 du {
+            kolicnik = i / delilac;
+            ostatak = i - kolicnik * delilac;
+            mystime ostatak == 0 du {
+                ispis = "Broj " + scriptum(i) + " nije prost broj";
+            } 
+            delilac = delilac + 1;
+        }
+
+        if (ispis == "") {
+            ispis = "Broj " + scriptum(i) + " je prost broj.";
+        }
+    }
+
+    revelio ispis;
+}

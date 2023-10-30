@@ -1,0 +1,33 @@
+enchanto {
+
+    declaro incantum poeni, ocena;
+
+    revelio "Unesite broj poena (0-100): ";
+    scriptum poeni;
+
+    mystime poeni >= 0 andus poeni <= 100 du {
+        mystime poeni >= 0 andus poeni <= 50 du {
+            ocena = 5;
+        } turntime poeni >= 51 andus poeni <= 60 du {
+            ocena = 6;
+        } turntime poeni >= 61 andus poeni <= 70 du {
+            ocena = 7;
+        } turntime poeni >= 71 andus poeni <= 80 du {
+            ocena = 8;
+        } turntime poeni >= 81 andus poeni <= 90 du {
+            ocena = 9;
+        } turntime poeni >= 91 andus poeni <= 100 du {
+            ocena = 10;
+        } returntime du {
+            revelio "Nevažeći broj poena.";
+        }
+    } returntime du {
+        revelio "Nevažeći broj poena.";
+    }
+
+    mystime ocena >= 5 andus ocena <= 10 du {
+        revelio ocena;
+    } unturntime {
+        revelio "Nevažeća ocena.";
+    }
+}

@@ -1,0 +1,39 @@
+enchanto {
+
+    declaro incantum n;
+    declaro stringo mesec, ispis;
+
+    revelio "Unesite broj od 1 do 12: ";
+    scriptum n;
+
+    mystime n == 1 du {
+        mesec = "Januar";
+    } turntime n == 2 du {
+        mesec = "Februar";
+    } turntime n == 3 du {
+        mesec = "Mart";
+    } turntime n == 4 du {
+        mesec = "April";
+    } turntime n == 5 du {
+        mesec = "Maj";
+    } turntime n == 6 du {
+        mesec = "Jun";
+    } turntime n == 7 du {
+        mesec = "Jul";
+    } turntime n == 8 du {
+        mesec = "Avgust";
+    } turntime n == 9 du {
+        mesec = "Septembar";
+    } turntime n == 10 du {
+        mesec = "Oktobar";
+    } turntime n == 11 du {
+        mesec = "Novembar";
+    } turntime n == 12 du {
+        mesec = "Decembar";
+    } returntime du {
+        mesec = "Nepostojeći mesec";
+    }
+
+    ispis = "Odabrani mesec je: " + mesec;
+    revelio ispis;
+}

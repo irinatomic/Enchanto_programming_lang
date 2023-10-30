@@ -1,0 +1,14 @@
+enchanto {
+
+    declaro arraygo [10] incantum niz;
+
+    declaro incantum i;
+    forculus i = 0 tu 10 du {
+        niz[i] = i + 2;
+    }
+
+    forculus i = 0 tu 10 du {
+        revelio niz[i];
+    }
+}
+
