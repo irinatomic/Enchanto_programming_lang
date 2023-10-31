@@ -11,13 +11,13 @@ enchanto {
             kolicnik = i / delilac;
             ostatak = i - kolicnik * delilac;
             mystime ostatak == 0 du {
-                ispis = "Broj_" + i + "_nije prost broj";
+                ispis = "Broj_" + i + "_nije_prost_broj";
             } 
             delilac = delilac + 1;
         }
 
-        if (ispis == "") {
-            ispis = "Broj_" + i + "_je prost broj.";
+        mystime (ispis == "") {
+            ispis = "Broj_" + i + "_je_prost_broj";
         }
     }
 

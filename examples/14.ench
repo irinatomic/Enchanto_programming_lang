@@ -3,10 +3,10 @@ enchanto {
     declaro incantum a b rezultat;
     declaro stringo ispis;
 
-    revelio "Unesite_a: ";
+    revelio "Unesite_a";
     scriptum a;
 
-    revelio "Unesite_b: ";
+    revelio "Unesite_b";
     scriptum b;
 
     rezultat = tribus a > b ? a : b;

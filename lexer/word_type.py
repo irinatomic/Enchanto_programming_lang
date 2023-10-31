@@ -53,6 +53,8 @@ class WordType:
     CLOSE_BRACE = 'close_curly_brace'
     OPEN_BRACKET = 'open_bracket'
     CLOSE_BRACKET = 'close_bracket'
+    TERNARY_THEN = 'ternary_then'
+    TERNARY_ELSE = 'ternary_else'
     SEMICOLON = ';'
     NEWLINE = 'newline'
     DU = 'code_block'   

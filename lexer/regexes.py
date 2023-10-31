@@ -20,31 +20,7 @@ class RegexCollection:
 
     def init_regex(self):
         regexes = [
-            # first, check for 1 letter words
-            Regex(re.compile(r'\('), WordType.OPEN_PARENTHESIS),
-            Regex(re.compile(r'\)'), WordType.CLOSE_PARENTHESIS),
-            Regex(re.compile(r'\['), WordType.OPEN_BRACKET),
-            Regex(re.compile(r'\]'), WordType.CLOSE_BRACKET),
-            Regex(re.compile(r'\{'), WordType.OPEN_BRACE),
-            Regex(re.compile(r'\}'), WordType.CLOSE_BRACE),
-            Regex(re.compile(r';'), WordType.SEMICOLON),
-            Regex(re.compile(r'\n'), WordType.NEWLINE),
-            Regex(re.compile(r'='), WordType.ASSIGN),
-            Regex(re.compile(r'\+'), WordType.PLUS),
-            Regex(re.compile(r'-'), WordType.MINUS),
-            Regex(re.compile(r'\*'), WordType.MUL),
-            Regex(re.compile(r'/'), WordType.DIV),
-            Regex(re.compile(r'%'), WordType.MOD),
-            Regex(re.compile(r'>'), WordType.GREATER_THAN),
-            Regex(re.compile(r'<'), WordType.LESS_THAN),
-            # second, check for 2 letter words
-            Regex(re.compile(r'=='), WordType.EQUAL),
-            Regex(re.compile(r'!='), WordType.NOT_EQUAL),
-            Regex(re.compile(r'>='), WordType.GREATER_THAN_EQUAL),
-            Regex(re.compile(r'<='), WordType.LESS_THAN_EQUAL),
-            Regex(re.compile(r'\bdu\b'), WordType.DU),
-            Regex(re.compile(r'\btu\b'), WordType.TU),
-            # third, check for constants
+            # first, check for constants
             Regex(re.compile(r'\bincantum\b'), WordType.INCANTUM),
             Regex(re.compile(r'\bdublatum\b'), WordType.DUBLATUM),
             Regex(re.compile(r'\bcharmax\b'), WordType.CHARMAX),
@@ -65,10 +41,36 @@ class RegexCollection:
             Regex(re.compile(r'\breturntime\b'), WordType.RETURNTIME),
             Regex(re.compile(r'\bforculus\b'), WordType.FORCULUS),
             Regex(re.compile(r'\bwhilegardium\b'), WordType.WHILEGARDIUM),
-            # fourth, check for variables, characters, numbers and strings
+            Regex(re.compile(r'\bdu\b'), WordType.DU),
+            Regex(re.compile(r'\btu\b'), WordType.TU),
+            # second, check for variables, characters, numbers and strings
             Regex(re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*'), WordType.VARIABLE),
             Regex(re.compile(r'\'.\'|\'\''), WordType.CHARACTER),
             Regex(re.compile(r'0|[1-9]\d*'), WordType.NUMBER),
             Regex(re.compile(r'\".*?\"'), WordType.STRING),
+            # third, check for 2 letter words
+            Regex(re.compile(r'=='), WordType.EQUAL),
+            Regex(re.compile(r'!='), WordType.NOT_EQUAL),
+            Regex(re.compile(r'>='), WordType.GREATER_THAN_EQUAL),
+            Regex(re.compile(r'<='), WordType.LESS_THAN_EQUAL),
+            # fourth, check for 1 letter words
+            Regex(re.compile(r'\('), WordType.OPEN_PARENTHESIS),
+            Regex(re.compile(r'\)'), WordType.CLOSE_PARENTHESIS),
+            Regex(re.compile(r'\['), WordType.OPEN_BRACKET),
+            Regex(re.compile(r'\]'), WordType.CLOSE_BRACKET),
+            Regex(re.compile(r'\{'), WordType.OPEN_BRACE),
+            Regex(re.compile(r'\}'), WordType.CLOSE_BRACE),
+            Regex(re.compile(r';'), WordType.SEMICOLON),
+            Regex(re.compile(r'\n'), WordType.NEWLINE),
+            Regex(re.compile(r'='), WordType.ASSIGN),
+            Regex(re.compile(r'\+'), WordType.PLUS),
+            Regex(re.compile(r'-'), WordType.MINUS),
+            Regex(re.compile(r'\*'), WordType.MUL),
+            Regex(re.compile(r'/'), WordType.DIV),
+            Regex(re.compile(r'%'), WordType.MOD),
+            Regex(re.compile(r'>'), WordType.GREATER_THAN),
+            Regex(re.compile(r'<'), WordType.LESS_THAN),
+            Regex(re.compile(r'\?'), WordType.TERNARY_THEN),
+            Regex(re.compile(r':'), WordType.TERNARY_ELSE),
         ]
         return regexes

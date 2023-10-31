@@ -3,14 +3,14 @@ enchanto {
     declaro dublatum precnik obim pi;
     declaro stringo ispis;
 
-    revelio "Unesite_precnik_kruga: ";
+    revelio "Unesite_precnik_kruga";
     scriptum precnik;
 
-    revelio "Unesite_obim_kruga: ";
+    revelio "Unesite_obim_kruga";
     scriptum obim;
 
     pi = obim / precnik;
 
-    ispis = "Izračunat_broj_je: " + pi;
+    ispis = "Izračunat_broj_je" + pi;
     revelio ispis;
 }
