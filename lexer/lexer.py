@@ -8,7 +8,7 @@ regexes = regex_collection.init_regex()
 def preprocess_code(input_string):
     
     # need spaces to the left and right
-    target_chars = ['!=', '==', '<=', '>=', '<', '>', '=', '(', ')', '{', '}', '[', ']', ';', '?', ':']
+    target_chars = ['!=', '==', '<=', '>=', '<', '>', '=', '(', ')', '{', '}', ';', '?', ':']
 
     # regex that matches any of the target chars or chars sequences
     pattern = '|'.join(re.escape(char) for char in target_chars)

@@ -12,6 +12,7 @@ Rules:
 - all lines must end with a semicolon
 - when declaring multiple things is done with a space, not a comma
 - when declaring an array, size must be given
+- all string must be one word (no spaces allowed)
 
 | Normal | Enchanto |
 | --- | --- | 

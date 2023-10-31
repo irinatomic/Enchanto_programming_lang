@@ -59,5 +59,7 @@ class WordType:
     NEWLINE = 'newline'
     DU = 'code_block'   
     TU = 'to'
-    # special case -> length function
-    VARIABLE_LENGTH = 'variable_length'                          
+    # special case -> 
+    LENGTH_FUNCTION = 'length_function' 
+    ARRAY_SIZE = 'array_size'
+    ARRAY_ELEMENT = 'array_element'
