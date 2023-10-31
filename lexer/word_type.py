@@ -55,7 +55,7 @@ class WordType:
     CLOSE_BRACKET = 'close_bracket'
     TERNARY_THEN = 'ternary_then'
     TERNARY_ELSE = 'ternary_else'
-    SEMICOLON = ';'
+    SEMICOLON = 'semicolon'
     NEWLINE = 'newline'
     DU = 'code_block'   
     TU = 'to'

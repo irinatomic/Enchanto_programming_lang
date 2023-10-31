@@ -7,6 +7,8 @@ def main():
     file_contents = open_file(file_path)
 
     words = lex(file_contents)
+    for word in words:
+        print(word)
 
 if __name__ == "__main__":
     main()

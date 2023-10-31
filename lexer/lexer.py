@@ -1,4 +1,5 @@
 from lexer.regexes import RegexCollection
+from .word import Word
 import re
 
 # RegexCollection -> holds list of regexes
@@ -26,13 +27,13 @@ def preprocess_code(input_string):
     return result
 
 def lex(input_string):
-
+    result = []
     if input_string is not None:
         code = preprocess_code(input_string)
         words = code.split(" ")
         for word in words:
             for regex in regexes:
                 if regex.matches(word):
-                    print(f"{word} : {regex.word_type}")
+                    result.append(Word(word, regex.word_type))
                     break
-    return []
+    return result
