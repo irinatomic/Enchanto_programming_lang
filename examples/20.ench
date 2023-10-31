@@ -3,7 +3,7 @@ enchanto {
     declaro incantum k broj trenutni_broj broj_prostih i;
     broj_prostih = 0;
 
-    revelio "Unesite_vrednost_za_k_maksimalno 20";
+    revelio "Unesite_vrednost_za_k_maksimalno_20";
     scriptum k;
 
     mystime k >= 1 andus k <= 20 du {
@@ -35,6 +35,6 @@ enchanto {
 
         revelio scriptum(broj);
     } returntime du {
-        revelio "Nevazeci unos za k";
+        revelio "Nevazeci_unos_za_k";
     }
 }

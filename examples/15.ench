@@ -7,7 +7,7 @@ enchanto {
         delilac = 2;
         ispis = "";
 
-        whilegardium delilac <= i/2 du {
+        whilegardium delilac <= i / 2 du {
             kolicnik = i / delilac;
             ostatak = i - kolicnik * delilac;
             mystime ostatak == 0 du {

@@ -3,7 +3,7 @@ from loader.loader import open_file
 from lexer.lexer import lex
 
 def main():
-    file_path = "./examples/20.ench"
+    file_path = "./examples/07.ench"
     file_contents = open_file(file_path)
 
     words = lex(file_contents)

@@ -12,7 +12,7 @@ enchanto {
     }
 
     forculus i = 0 tu n du {
-        forculus j = i+1 tu n du {
+        forculus j = i + 1 tu n du {
             mystime niz[i] > niz[j] du {
                 temp = niz[i];
                 niz[i] = niz[j];

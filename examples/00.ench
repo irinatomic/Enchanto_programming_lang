@@ -1,0 +1,17 @@
+enchanto {
+
+    declaro stringo ispis;
+    declaro arraygo [10] niz;
+    declaro dublatum a b c;
+    declaro incantum d e f g;
+
+    mystime a >= b orus c != d du {
+        revelio "ola";
+    }
+
+    a = b - c;
+    e = d - f;
+    l = -5;
+
+    d = tribus a > b? 3 + 5: -2;
+}
