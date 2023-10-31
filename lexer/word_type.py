@@ -55,4 +55,5 @@ class WordType:
     CLOSE_BRACKET = 'close_bracket'
     SEMICOLON = ';'
     NEWLINE = 'newline'
-    DU = 'code_block'                             
+    DU = 'code_block'   
+    TU = 'to'                          

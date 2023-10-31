@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# ignore all tempCodeRunner.py files
+tempCodeRunner*.py
+
 # C extensions
 *.so
 

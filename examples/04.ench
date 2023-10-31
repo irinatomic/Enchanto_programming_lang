@@ -10,7 +10,7 @@ enchanto {
 
     forculus i = pocetak tu kraj du {
         tmp = i - pocetak + 1;
-        ispis = "Element " + tmp + " je " + i;
+        ispis = "Element_" + tmp + "_je_" + i;
         revelio ispis;
     }
 }

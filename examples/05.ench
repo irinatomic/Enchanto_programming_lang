@@ -12,9 +12,9 @@ enchanto {
     broj = a * 3 + b * 2 + c;
 
     mystime broj > 200 du {
-        revelio "Broj je lud";
+        revelio "Broj_je_lud";
     } returntime du {
-        revelio "Broj nije lud";
+        revelio "Broj_nije_lud";
     }
 
 }

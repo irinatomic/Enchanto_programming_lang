@@ -42,6 +42,8 @@ class RegexCollection:
             Regex(re.compile(r'!='), WordType.NOT_EQUAL),
             Regex(re.compile(r'>='), WordType.GREATER_THAN_EQUAL),
             Regex(re.compile(r'<='), WordType.LESS_THAN_EQUAL),
+            Regex(re.compile(r'\bdu\b'), WordType.DU),
+            Regex(re.compile(r'\btu\b'), WordType.TU),
             # third, check for constants
             Regex(re.compile(r'\bincantum\b'), WordType.INCANTUM),
             Regex(re.compile(r'\bdublatum\b'), WordType.DUBLATUM),
@@ -65,7 +67,7 @@ class RegexCollection:
             Regex(re.compile(r'\bwhilegardium\b'), WordType.WHILEGARDIUM),
             # fourth, check for variables, characters, numbers and strings
             Regex(re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*'), WordType.VARIABLE),
-            Regex(re.compile(r'\'.\''), WordType.CHARACTER),
+            Regex(re.compile(r'\'.\'|\'\''), WordType.CHARACTER),
             Regex(re.compile(r'0|[1-9]\d*'), WordType.NUMBER),
             Regex(re.compile(r'\".*?\"'), WordType.STRING),
         ]
