@@ -1,5 +1,3 @@
-from .word_type import WordType
-
 class Word:
     def __init__(self, word, word_type):
         self.word = word

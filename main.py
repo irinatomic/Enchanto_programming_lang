@@ -1,4 +1,3 @@
-from lexer.regexes import RegexCollection
 from loader.loader import open_file
 from lexer.lexer import lex
 
