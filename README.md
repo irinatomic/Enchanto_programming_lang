@@ -10,7 +10,7 @@ Enchanto uses a set of naming conventions inspired by the enchanting world of Ha
 Rules:
 - the arithmetic operations must have a space on eiher side of them
 - all lines must end with a semicolon
-- when declaring multiple things is done with a space, not a comma
+- when declaring multiple variables it is done with a space, not a comma
 - when declaring an array, size must be given
 - all string must be one word (no spaces allowed)
 

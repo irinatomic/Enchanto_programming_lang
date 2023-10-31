@@ -60,6 +60,6 @@ class WordType:
     DU = 'code_block'   
     TU = 'to'
     # special case -> 
-    LENGTH_FUNCTION = 'length_function' 
-    ARRAY_SIZE = 'array_size'
-    ARRAY_ELEMENT = 'array_element'
+    LENGTH_FUNCTION = 'length_function'              # for array and string
+    ARRAY_SIZE = 'array_size'                        # when declaring the array
+    ARRAY_ELEMENT = 'array_element'                  # when getting the i'th element
