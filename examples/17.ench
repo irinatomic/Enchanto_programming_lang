@@ -1,8 +1,8 @@
 enchanto {
 
-    declaro incantum poeni, ocena;
+    declaro incantum poeni ocena;
 
-    revelio "Unesite_broj_poena_(0-100):";
+    revelio "Unesite_broj_poena_do_100";
     scriptum poeni;
 
     mystime poeni >= 0 andus poeni <= 100 du {
@@ -28,6 +28,6 @@ enchanto {
     mystime ocena >= 5 andus ocena <= 10 du {
         revelio ocena;
     } returntime {
-        revelio "Nevazeca_ocena.";
+        revelio "Nevazeca_ocena";
     }
 }

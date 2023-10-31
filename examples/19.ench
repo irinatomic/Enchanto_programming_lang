@@ -1,6 +1,6 @@
 enchanto {
 
-    declaro incantum originalni_broj, izbacena_cifra, izmenjen_broj, cifra;
+    declaro incantum originalni_broj izbacena_cifra izmenjen_broj cifra;
 
     revelio "Unesite_originalni_broj";
     scriptum originalni_broj;
@@ -14,7 +14,7 @@ enchanto {
     whilegardium originalni_broj > 0 du {
         cifra = originalni_broj % 10;
         mystime cifra != izbacena_cifra du {
-            izmenjen_broj = (izmenjen_broj * 10) + cifra;
+            izmenjen_broj = izmenjen_broj * 10 + cifra;
         }
         originalni_broj = originalni_broj / 10;
     }

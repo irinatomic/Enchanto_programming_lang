@@ -58,4 +58,6 @@ class WordType:
     SEMICOLON = ';'
     NEWLINE = 'newline'
     DU = 'code_block'   
-    TU = 'to'                          
+    TU = 'to'
+    # special case -> length function
+    VARIABLE_LENGTH = 'variable_length'                          

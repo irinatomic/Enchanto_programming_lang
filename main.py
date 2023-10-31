@@ -38,7 +38,7 @@ def open_file(file_path):
         return None
 
 def main():
-    file_path = "./examples/11.ench"
+    file_path = "./examples/20.ench"
     file_contents = open_file(file_path)
 
     # input = "whilegardium broj > 1 andus c >= d du"

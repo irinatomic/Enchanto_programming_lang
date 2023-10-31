@@ -20,6 +20,8 @@ class RegexCollection:
 
     def init_regex(self):
         regexes = [
+            # special case -> length function
+            Regex(re.compile(r'[a-zA-Z_][a-zA-Z0-9_]*\.length'), WordType.VARIABLE_LENGTH),
             # first, check for constants
             Regex(re.compile(r'\bincantum\b'), WordType.INCANTUM),
             Regex(re.compile(r'\bdublatum\b'), WordType.DUBLATUM),

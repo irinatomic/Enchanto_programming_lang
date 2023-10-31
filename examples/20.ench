@@ -1,6 +1,6 @@
 enchanto {
 
-    declaro incantum k, broj, trenutni_bro, broj_prostih, i;
+    declaro incantum k broj trenutni_broj broj_prostih i;
     broj_prostih = 0;
 
     revelio "Unesite_vrednost_za_k_maksimalno 20";
