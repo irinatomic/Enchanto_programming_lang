@@ -1,0 +1,9 @@
+START -> S
+S -> if ( C ) body E
+E -> else B
+B -> S
+B -> body
+C -> cond O cond
+O -> and
+O -> or
+C -> not cond
