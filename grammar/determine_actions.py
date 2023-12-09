@@ -2,10 +2,6 @@ from typing import List
 from classes.state import State
 from classes.action import Shift, Reduce, Accept
 
-def filterForUniqueStates(states: List[State]):
-    unique = [s for s in states if not s.isCopy]
-    return unique
-
 def findStateByOrderNumber(states: List[State], prevStateNo: int) -> State:
     return next((s for s in states if s.orderNumber == prevStateNo), None)
 

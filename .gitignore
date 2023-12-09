@@ -9,6 +9,9 @@ tempCodeRunner*.py
 # C extensions
 *.so
 
+# Ignore .DS_Store file
+.DS_Store
+
 # Distribution / packaging
 .Python
 build/

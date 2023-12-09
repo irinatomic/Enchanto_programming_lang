@@ -55,3 +55,19 @@ class State:
         if isinstance(__value, State):
             return self.gotoSymbol == __value.gotoSymbol and self.transitions == __value.transitions
         return False
+    
+    def __str__(self) -> str:
+        state_string = f"State {self.orderNumber} = goto({self.prevStateOrderNumber}, {self.gotoSymbol}) {'copy of State ' + str(self.copiedFromStateNumber) if self.isCopy else ''}\n"
+
+        transitions_string = ""
+        if self.transitions:
+            for t in self.transitions:
+                transitions_string += f'\t{t}\n'
+
+        actions_string = ""
+        if self.actions:
+            actions_string += '\n\tActions:\n'
+            for symbol, action in self.actions.items():
+                actions_string += f'\tfor {symbol}: {action.name} {action}\n'
+
+        return state_string + transitions_string + actions_string
