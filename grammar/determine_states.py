@@ -1,4 +1,4 @@
-from classes import State, Transition
+from classes.state import State, Transition
 
 states: State = []
 
@@ -59,8 +59,8 @@ def addTransitionsTwo(newState, newNextSymbol):
 
 
 # Imamo 2 momenta kada dodajemo dodatna pravila (transitions u newState):
-# 1. kada u currentState, na jos mesta je naredni simbol == nonTerminal (addAdditionalRules)
-# 2. kada je naredni simbol nonTerminal -> impl u klasi State/addTransition
+# 1. kada u currentState, na jos mesta je naredni simbol == nonTerminal (addTransitionsOne)
+# 2. kada je naredni simbol nonTerminal -> dodajemo pravila za njega iz stateZero (addTransitionsTwo)
 def generateStates():
     global states
 
@@ -83,7 +83,7 @@ def generateStates():
                 if not newState.alreadyHasTransForNonTerminal(nextSymbol):
                     addTransitionsOne(state, newState, nextSymbol)
 
-                # NA KRAJU: da li nase je odvelo u neko vec postojce stanje
+                # NA KRAJU: da li nas je odvelo u neko vec postojce stanje?
                 copyOf = ledIntoAnExistingState(newState)
                 if copyOf is not None:
                     newState.stateIsACopy(copyOf)
