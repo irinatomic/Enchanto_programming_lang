@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Dict
+from .action import Action
 
 # Rule from grammar + position dot
 # Rules are an array of Symbols (string)
@@ -33,6 +34,8 @@ class State:
         # is added later
         self.isCopy = False
         self.copiedFromStateNumber = None
+        # actions for LR table
+        self.actions: Dict[str, Action] = {}
 
     def addTransition(self, transition: Transition):
         self.transitions.append(transition)

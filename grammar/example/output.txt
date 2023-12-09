@@ -1,65 +1,12 @@
-State 0 = goto(None, None) 
-         START -> . S
-         S -> . if ( C ) body E
-         E -> . else B
-         B -> . S
-         B -> . body
-         C -> . cond O cond
-         O -> . and
-         O -> . or
-         C -> . not cond
-State 1 = goto(0, S) 
-         START -> S .
-         B -> S .
-State 2 = goto(0, if) 
-         S -> if . ( C ) body E
-State 3 = goto(0, else) 
-         E -> else . B
-         B -> . S
-         S -> . if ( C ) body E
-         B -> . body
-State 4 = goto(0, body) 
-         B -> body .
-State 5 = goto(0, cond) 
-         C -> cond . O cond
-         O -> . and
-         O -> . or
-State 6 = goto(0, and) 
-         O -> and .
-State 7 = goto(0, or) 
-         O -> or .
-State 8 = goto(0, not) 
-         C -> not . cond
-State 9 = goto(2, () 
-         S -> if ( . C ) body E
-         C -> . cond O cond
-         C -> . not cond
-State 10 = goto(3, B) 
-         E -> else B .
-State 11 = goto(3, S) 
-         B -> S .
-State 12 = goto(3, if) copy of State 2
-State 13 = goto(3, body) copy of State 4
-State 14 = goto(5, O) 
-         C -> cond O . cond
-State 15 = goto(5, and) copy of State 6
-State 16 = goto(5, or) copy of State 7
-State 17 = goto(8, cond) 
-         C -> not cond .
-State 18 = goto(9, C) 
-         S -> if ( C . ) body E
-State 19 = goto(9, cond) copy of State 5
-State 20 = goto(9, not) copy of State 8
-State 21 = goto(14, cond) 
-         C -> cond O cond .
-State 22 = goto(18, )) 
-         S -> if ( C ) . body E
-State 23 = goto(22, body) 
-         S -> if ( C ) body . E
-         E -> . else B
-State 24 = goto(23, E) 
-         S -> if ( C ) body E .
-State 25 = goto(23, else) copy of State 3
+GRAMMAR
+[(0, 'START', 'S'), (1, 'S', 'if ( C ) body E'), (2, 'E', 'else B'), (3, 'B', 'S'), (4, 'B', 'body'), (5, 'C', 'cond O cond'), 
+ (6, 'O', 'and'), (7, 'O', 'or'), (8, 'C', 'not cond')]
+
+TERMINALS
+['if', '(', ')', 'body', 'else', 'cond', 'and', 'or', 'not', '$']
+
+NON-TERMINALS
+['START', 'S', 'C', 'E', 'B', 'O']
 
 FIRST SETS
 START {'if'}
@@ -76,3 +23,161 @@ C {')'}
 E {'#'}
 B {'#'}
 O {'cond'}
+
+State 0 = goto(None, None) 
+         START -> . S
+         S -> . if ( C ) body E
+         E -> . else B
+         B -> . S
+         B -> . body
+         C -> . cond O cond
+         O -> . and
+         O -> . or
+         C -> . not cond
+
+        Actions:
+         for S: Shift s1
+         for if: Shift s2
+         for else: Shift s3
+         for body: Shift s4
+         for cond: Shift s5
+         for and: Shift s6
+         for or: Shift s7
+         for not: Shift s8
+
+State 1 = goto(0, S) 
+         START -> S .
+         B -> S .
+
+        Actions:
+         for #: Accept acc
+
+State 2 = goto(0, if) 
+         S -> if . ( C ) body E
+
+        Actions:
+         for (: Shift s9
+
+State 3 = goto(0, else) 
+         E -> else . B
+         B -> . S
+         S -> . if ( C ) body E
+         B -> . body
+
+        Actions:
+         for B: Shift s10
+         for S: Shift s11
+         for if: Shift s2
+         for body: Shift s4
+
+State 4 = goto(0, body) 
+         B -> body .
+
+        Actions:
+         for #: Reduce r4
+
+State 5 = goto(0, cond) 
+         C -> cond . O cond
+         O -> . and
+         O -> . or
+
+        Actions:
+         for O: Shift s14
+         for and: Shift s6
+         for or: Shift s7
+
+State 6 = goto(0, and) 
+         O -> and .
+
+        Actions:
+         for cond: Reduce r6
+
+State 7 = goto(0, or) 
+         O -> or .
+
+        Actions:
+         for cond: Reduce r7
+
+State 8 = goto(0, not) 
+         C -> not . cond
+
+        Actions:
+         for cond: Shift s17
+
+State 9 = goto(2, () 
+         S -> if ( . C ) body E
+         C -> . cond O cond
+         C -> . not cond
+
+        Actions:
+         for C: Shift s18
+         for cond: Shift s5
+         for not: Shift s8
+
+State 10 = goto(3, B) 
+         E -> else B .
+
+        Actions:
+         for #: Reduce r2
+
+State 11 = goto(3, S) 
+         B -> S .
+
+        Actions:
+         for #: Reduce r3
+
+State 12 = goto(3, if) copy of State 2
+
+State 13 = goto(3, body) copy of State 4
+
+State 14 = goto(5, O) 
+         C -> cond O . cond
+
+        Actions:
+         for cond: Shift s21
+
+State 15 = goto(5, and) copy of State 6
+
+State 16 = goto(5, or) copy of State 7
+
+State 17 = goto(8, cond) 
+         C -> not cond .
+
+        Actions:
+         for ): Reduce r8
+
+State 18 = goto(9, C) 
+         S -> if ( C . ) body E
+
+        Actions:
+         for ): Shift s22
+
+State 19 = goto(9, cond) copy of State 5
+
+State 20 = goto(9, not) copy of State 8
+
+State 21 = goto(14, cond) 
+         C -> cond O cond .
+
+        Actions:
+         for ): Reduce r5
+
+State 22 = goto(18, )) 
+         S -> if ( C ) . body E
+
+        Actions:
+         for body: Shift s23
+
+State 23 = goto(22, body) 
+         S -> if ( C ) body . E
+         E -> . else B
+
+        Actions:
+         for E: Shift s24
+         for else: Shift s3
+
+State 24 = goto(23, E) 
+         S -> if ( C ) body E .
+
+        Actions:
+         for #: Reduce r1
