@@ -45,7 +45,7 @@ def generateFirstSets(G, T, nT):
 # FOLLOW SETS
 def generateFollowSets(G, T, nT):
     follow_sets = {symbol: set() for symbol in nT}
-    epsilon = '$'       # Representing end of input (added as a terminal)
+    epsilon = '#'       # Representing end of input (added as a terminal)
 
     changed = True      # track changes in the FOLLOW sets
     while changed:

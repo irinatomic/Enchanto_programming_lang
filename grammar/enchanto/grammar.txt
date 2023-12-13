@@ -1,0 +1,98 @@
+START -> S
+S -> enchanto { SN }
+SN -> SN N ;
+SN -> N ;
+N -> IN
+N -> OUT
+N -> DECL
+N -> UNARY
+N -> ASSIGN
+N -> IFBLOCK
+N -> FORBLOCK 
+N -> WHILEBLOCK
+IFBLOCK -> IFB ELIFB ELSEB
+IFBLOCK -> IFB ELIFB
+IFBLOCK -> IFB ELSEB
+IFBLOCK -> IFB
+IFB -> mystime LOGICAL { BLOCK }
+ELIFB -> ELIFBC ELIFB
+ELIFB -> ELIFBC
+ELIFBC -> turntime LOGICAL { BLOCK }
+ELSEB -> returntime { BLOCK }
+FORBLOCK -> forculus FFROM tu FTO du { BLOCK }
+FFROM -> SAASIGN
+FFROM -> variable
+SAASIGN -> variable = SRHS
+SRHS -> TNV
+SRHS -> EXPR
+FTO -> TNV
+FTO -> EXPR
+WHILEBLOCK -> whilegardium LOGICAL du { BLOCK }
+BLOCK -> SN
+TERNARY -> tribus LOGICAL ? OPTION : OPTION
+OPTION -> EDT
+OPTION -> EXPR
+EXPR -> EXPR NOP TERM
+EXPR -> TERM
+NOP -> +
+NOP -> -
+NOP -> %
+TERM -> TERM FOR FACTOR
+TERM -> FACTOR
+FOP -> *
+FOP -> /
+FACTOR -> TNV
+FACTOR -> ( EXPR )
+EXPR -> SS
+SS -> SS + TSV
+SS -> TSV
+EXPR -> LOGICAL
+LOGICAL -> LOGICAL LOP ER
+LOGICAL -> ER
+LOP -> andus
+LOP -> orus
+LOP -> notus
+ER -> ER ROP R
+ER -> R
+ROP -> ==
+ROP -> !=
+ROP -> >
+ROP -> <
+ROP -> >=
+ROP -> <=
+R -> ( LOGICAL )
+R -> EDT
+R -> ( EXPR )
+ASSIGN -> LHS = RHS
+LHS -> variable
+LHS -> variable [ TNV ]
+RHS -> ARRAY
+RHS -> TERNARY
+RHS -> EDT
+RHS -> EXPR
+ARRAY -> [ AELEM ]
+AELEM -> TNV , AELEM
+AELEM -> TNV
+DECL -> declaro EDDT SV
+EDDT -> DDT
+EDDT -> DARRAY
+DDT -> incantum
+DDT -> dublatum
+DDT -> charmax
+DDT -> stringo
+DARRAY -> arraygo [ TNV ] DDT
+SV -> SV variable
+SV -> variable
+UNARY -> ascendo variable
+UNARY -> descendo variable
+IN -> scriptum variable
+OUT -> revelio EDT
+TNV -> number
+TNV -> variable
+TSV -> string
+TSV -> variable
+DT -> number
+DT -> char
+DT -> string
+EDT -> DT
+EDT -> variable

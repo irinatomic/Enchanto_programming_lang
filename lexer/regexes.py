@@ -76,5 +76,6 @@ class RegexCollection:
             Regex(re.compile(r'<'), WordType.LESS_THAN),
             Regex(re.compile(r'\?'), WordType.TERNARY_THEN),
             Regex(re.compile(r':'), WordType.TERNARY_ELSE),
+            Regex(re.compile(r','), WordType.COMMA),
         ]
         return regexes

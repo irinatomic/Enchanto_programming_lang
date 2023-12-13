@@ -3,7 +3,7 @@ enchanto {
     declaro arraygo [10] incantum niz;
     declaro incantum velicina i j najveci privremeno;
 
-    niz = [12, 5, 8, 10, 1, 7, 6, 3, 15, 9];
+    niz = [ 12, 5, 8, 10, 1, 7, 6, 3, 15, 9 ];
     velicina = niz.length;
 
     revelio "Niz_pre";

@@ -36,6 +36,8 @@ class State:
         self.copiedFromStateNumber = None
         # actions for LR table
         self.actions: Dict[str, Action] = {}
+        # za rekurziju
+        self.addedNTphaseTwo = []
 
     def addTransition(self, transition: Transition):
         self.transitions.append(transition)

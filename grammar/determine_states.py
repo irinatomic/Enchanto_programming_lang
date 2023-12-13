@@ -42,9 +42,14 @@ def addTransitionsOne(currState, newState, nextSymbol):
 # U PRAVILIMA ZERO STATE-a
 def addTransitionsTwo(newState, newNextSymbol):
 
+    # zbog rekurzije - jednom dodajemo pravila za newNextSymbol za newState
+    if newNextSymbol in newState.addedNTphaseTwo:
+        return
+    newState.addedNTphaseTwo.append(newNextSymbol)
+
     if newNextSymbol is None or newNextSymbol.islower():
         return
-
+    
     global states
     zeroState = states[0]
     for t in zeroState.transitions:

@@ -16,7 +16,7 @@ enchanto {
                     i = 3;
                     prost = 1;
 
-                    whilegardium i * i <= trenutni_broj andus prost du {
+                    whilegardium ( i * i ) <= trenutni_broj andus prost du {
                         mystime trenutni_broj % i == 0 du {
                             prost = 0;
                         }

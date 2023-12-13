@@ -31,7 +31,7 @@ def import_grammar(fileData):
 
 def main():
 
-    fileData = open('example/grammar.txt', 'r').readlines()
+    fileData = open('enchanto/grammar.txt', 'r').readlines()
 
     # Grammar - list of rules (tuple: index, lhs, rhs)
     G, T, nT = import_grammar(fileData)
