@@ -37,7 +37,7 @@ EXPR -> TERM
 NOP -> +
 NOP -> -
 NOP -> %
-TERM -> TERM FOR FACTOR
+TERM -> TERM FOP FACTOR
 TERM -> FACTOR
 FOP -> *
 FOP -> /

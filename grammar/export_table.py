@@ -2,8 +2,6 @@ from openpyxl import Workbook
 from classes.state import State
 from typing import List
 
-# Your code that generates T, nT, and states
-
 def filterForUniqueStates(states: List[State]):
     unique = [s for s in states if not s.isCopy]
     return unique

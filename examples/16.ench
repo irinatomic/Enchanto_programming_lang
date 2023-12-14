@@ -4,7 +4,7 @@ enchanto {
     declaro incantum velicina i j najveci privremeno;
 
     niz = [ 12, 5, 8, 10, 1, 7, 6, 3, 15, 9 ];
-    velicina = niz.length;
+    velicina = 10;
 
     revelio "Niz_pre";
     forculus i = 0 tu velicina du {

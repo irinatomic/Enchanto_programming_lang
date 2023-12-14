@@ -1,0 +1,3943 @@
+Non-terminal symbols:
+S
+SN
+N
+IN
+OUT
+DECL
+UNARY
+ASSIGN
+IFBLOCK
+FORBLOCK
+WHILEBLOCK
+IFB
+ELIFB
+ELSEB
+LOGICAL
+BLOCK
+ELIFBC
+FFROM
+FTO
+SAASIGN
+SRHS
+TNV
+EXPR
+TERNARY
+OPTION
+EDT
+NOP
+TERM
+FOP
+FACTOR
+SS
+TSV
+LOP
+ER
+ROP
+R
+LHS
+RHS
+ARRAY
+AELEM
+EDDT
+SV
+DDT
+DARRAY
+DT
+
+Terminal symbols:
+enchanto
+{
+}
+;
+mystime
+turntime
+returntime
+forculus
+tu
+du
+variable
+=
+whilegardium
+tribus
+?
+:
++
+-
+%
+*
+/
+(
+)
+andus
+orus
+notus
+==
+!=
+>
+<
+>=
+<=
+[
+]
+,
+declaro
+incantum
+dublatum
+charmax
+stringo
+arraygo
+ascendo
+descendo
+scriptum
+revelio
+number
+string
+char
+
+First sets:
+S -> {'enchanto'}
+SN -> {'forculus', 'revelio', 'variable', 'whilegardium', 'ascendo', 'descendo', 'declaro', 'mystime', 'scriptum'}
+N -> {'forculus', 'revelio', 'variable', 'whilegardium', 'ascendo', 'descendo', 'declaro', 'mystime', 'scriptum'}
+IN -> {'scriptum'}
+OUT -> {'revelio'}
+DECL -> {'declaro'}
+UNARY -> {'descendo', 'ascendo'}
+ASSIGN -> {'variable'}
+IFBLOCK -> {'mystime'}
+FORBLOCK -> {'forculus'}
+WHILEBLOCK -> {'whilegardium'}
+IFB -> {'mystime'}
+ELIFB -> {'turntime'}
+ELSEB -> {'returntime'}
+LOGICAL -> {'char', 'variable', 'string', '(', 'number'}
+BLOCK -> {'forculus', 'revelio', 'variable', 'whilegardium', 'ascendo', 'descendo', 'declaro', 'mystime', 'scriptum'}
+ELIFBC -> {'turntime'}
+FFROM -> {'variable'}
+FTO -> {'char', 'variable', 'string', '(', 'number'}
+SAASIGN -> {'variable'}
+SRHS -> {'char', 'variable', 'string', '(', 'number'}
+TNV -> {'variable', 'number'}
+EXPR -> {'char', 'variable', 'string', '(', 'number'}
+TERNARY -> {'tribus'}
+OPTION -> {'char', 'variable', 'string', '(', 'number'}
+EDT -> {'variable', 'string', 'char', 'number'}
+NOP -> {'%', '-', '+'}
+TERM -> {'variable', '(', 'number'}
+FOP -> {'*', '/'}
+FACTOR -> {'variable', '(', 'number'}
+SS -> {'variable', 'string'}
+TSV -> {'variable', 'string'}
+LOP -> {'notus', 'andus', 'orus'}
+ER -> {'char', 'variable', 'string', '(', 'number'}
+ROP -> {'!=', '<=', '==', '>', '>=', '<'}
+R -> {'char', 'variable', 'string', '(', 'number'}
+LHS -> {'variable'}
+RHS -> {'char', 'variable', '[', 'string', 'tribus', '(', 'number'}
+ARRAY -> {'['}
+AELEM -> {'variable', 'number'}
+EDDT -> {'charmax', 'arraygo', 'dublatum', 'stringo', 'incantum'}
+SV -> {'variable'}
+DDT -> {'stringo', 'charmax', 'dublatum', 'incantum'}
+DARRAY -> {'arraygo'}
+DT -> {'string', 'char', 'number'}
+
+Follow sets:
+S -> {'#'}
+SN -> {'}'}
+N -> {';', '#'}
+IN -> {';', '#'}
+OUT -> {';', '#'}
+DECL -> {';', '#'}
+UNARY -> {';', '#'}
+ASSIGN -> {';', '#'}
+IFBLOCK -> {';', '#'}
+FORBLOCK -> {';', '#'}
+WHILEBLOCK -> {';', '#'}
+IFB -> {';', '#'}
+ELIFB -> {';', '#'}
+ELSEB -> {';', '#'}
+LOGICAL -> {':', 'tu', ';', '{', '#', ')', '?', 'du'}
+BLOCK -> {'}'}
+ELIFBC -> {';', '#'}
+FFROM -> {'tu'}
+FTO -> {'du'}
+SAASIGN -> {'tu'}
+SRHS -> {'tu'}
+TNV -> {':', 'tu', ']', '#', ',', ';', ')', 'du'}
+EXPR -> {':', 'tu', ';', '#', ')', 'du'}
+TERNARY -> {';', '#'}
+OPTION -> {';', ':', '#'}
+EDT -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
+NOP -> {'#'}
+TERM -> {':', 'tu', '#', ';', ')', 'du'}
+FOP -> {'#'}
+FACTOR -> {':', 'tu', '#', ';', ')', 'du'}
+SS -> {':', 'tu', ';', '#', ')', '+', 'du'}
+TSV -> {':', 'tu', ';', '#', ')', '+', 'du'}
+LOP -> {'#'}
+ER -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
+ROP -> {'#'}
+R -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
+LHS -> {'='}
+RHS -> {';', '#'}
+ARRAY -> {';', '#'}
+AELEM -> {']'}
+EDDT -> set()
+SV -> {';', '#', 'variable'}
+DDT -> set()
+DARRAY -> set()
+DT -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
+
+States:
+State 0 = goto(None, None) 
+	START -> . S
+	S -> . enchanto { SN }
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	N -> . OUT
+	N -> . DECL
+	N -> . UNARY
+	N -> . ASSIGN
+	N -> . IFBLOCK
+	N -> . FORBLOCK
+	N -> . WHILEBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	IFB -> . mystime LOGICAL { BLOCK }
+	ELIFB -> . ELIFBC ELIFB
+	ELIFB -> . ELIFBC
+	ELIFBC -> . turntime LOGICAL { BLOCK }
+	ELSEB -> . returntime { BLOCK }
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	FFROM -> . SAASIGN
+	FFROM -> . variable
+	SAASIGN -> . variable = SRHS
+	SRHS -> . TNV
+	SRHS -> . EXPR
+	FTO -> . TNV
+	FTO -> . EXPR
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+	BLOCK -> . SN
+	TERNARY -> . tribus LOGICAL ? OPTION : OPTION
+	OPTION -> . EDT
+	OPTION -> . EXPR
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FOP -> . *
+	FOP -> . /
+	FACTOR -> . TNV
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+	ER -> . ER ROP R
+	ER -> . R
+	ROP -> . ==
+	ROP -> . !=
+	ROP -> . >
+	ROP -> . <
+	ROP -> . >=
+	ROP -> . <=
+	R -> . ( LOGICAL )
+	R -> . EDT
+	R -> . ( EXPR )
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	RHS -> . ARRAY
+	RHS -> . TERNARY
+	RHS -> . EDT
+	RHS -> . EXPR
+	ARRAY -> . [ AELEM ]
+	AELEM -> . TNV , AELEM
+	AELEM -> . TNV
+	DECL -> . declaro EDDT SV
+	EDDT -> . DDT
+	EDDT -> . DARRAY
+	DDT -> . incantum
+	DDT -> . dublatum
+	DDT -> . charmax
+	DDT -> . stringo
+	DARRAY -> . arraygo [ TNV ] DDT
+	SV -> . SV variable
+	SV -> . variable
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	IN -> . scriptum variable
+	OUT -> . revelio EDT
+	TNV -> . number
+	TNV -> . variable
+	TSV -> . string
+	TSV -> . variable
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . DT
+	EDT -> . variable
+
+	Actions:
+	for S: Shift 1
+	for enchanto: Shift 2
+	for SN: Shift 3
+	for N: Shift 4
+	for IN: Shift 5
+	for OUT: Shift 6
+	for DECL: Shift 7
+	for UNARY: Shift 8
+	for ASSIGN: Shift 9
+	for IFBLOCK: Shift 10
+	for FORBLOCK: Shift 11
+	for WHILEBLOCK: Shift 12
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for ELIFBC: Shift 15
+	for turntime: Shift 16
+	for returntime: Shift 17
+	for forculus: Shift 18
+	for SAASIGN: Shift 19
+	for variable: Shift 20
+	for TNV: Shift 21
+	for EXPR: Shift 22
+	for whilegardium: Shift 23
+	for tribus: Shift 24
+	for EDT: Shift 25
+	for TERM: Shift 26
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+	for FACTOR: Shift 30
+	for *: Shift 31
+	for /: Shift 32
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+	for R: Shift 41
+	for ==: Shift 42
+	for !=: Shift 43
+	for >: Shift 44
+	for <: Shift 45
+	for >=: Shift 46
+	for <=: Shift 47
+	for LHS: Shift 48
+	for ARRAY: Shift 49
+	for TERNARY: Shift 50
+	for [: Shift 51
+	for declaro: Shift 52
+	for DDT: Shift 53
+	for DARRAY: Shift 54
+	for incantum: Shift 55
+	for dublatum: Shift 56
+	for charmax: Shift 57
+	for stringo: Shift 58
+	for arraygo: Shift 59
+	for SV: Shift 60
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for scriptum: Shift 63
+	for revelio: Shift 64
+	for number: Shift 65
+	for string: Shift 66
+	for char: Shift 67
+	for DT: Shift 68
+
+State 1 = goto(0, S) 
+	START -> S .
+
+	Actions:
+	for #: Accept acc
+
+State 2 = goto(0, enchanto) 
+	S -> enchanto . { SN }
+
+	Actions:
+	for {: Shift 69
+
+State 3 = goto(0, SN) 
+	SN -> SN . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+	BLOCK -> SN .
+
+	Actions:
+	for N: Shift 70
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+	for }: Reduce r30
+
+State 4 = goto(0, N) 
+	SN -> N . ;
+
+	Actions:
+	for ;: Shift 90
+
+State 5 = goto(0, IN) 
+	N -> IN .
+
+	Actions:
+	for ;: Reduce r4
+	for #: Reduce r4
+
+State 6 = goto(0, OUT) 
+	N -> OUT .
+
+	Actions:
+	for ;: Reduce r5
+	for #: Reduce r5
+
+State 7 = goto(0, DECL) 
+	N -> DECL .
+
+	Actions:
+	for ;: Reduce r6
+	for #: Reduce r6
+
+State 8 = goto(0, UNARY) 
+	N -> UNARY .
+
+	Actions:
+	for ;: Reduce r7
+	for #: Reduce r7
+
+State 9 = goto(0, ASSIGN) 
+	N -> ASSIGN .
+
+	Actions:
+	for ;: Reduce r8
+	for #: Reduce r8
+
+State 10 = goto(0, IFBLOCK) 
+	N -> IFBLOCK .
+
+	Actions:
+	for ;: Reduce r9
+	for #: Reduce r9
+
+State 11 = goto(0, FORBLOCK) 
+	N -> FORBLOCK .
+
+	Actions:
+	for ;: Reduce r10
+	for #: Reduce r10
+
+State 12 = goto(0, WHILEBLOCK) 
+	N -> WHILEBLOCK .
+
+	Actions:
+	for ;: Reduce r11
+	for #: Reduce r11
+
+State 13 = goto(0, IFB) 
+	IFBLOCK -> IFB . ELIFB ELSEB
+	ELIFB -> . ELIFBC ELIFB
+	ELIFBC -> . turntime LOGICAL { BLOCK }
+	ELIFB -> . ELIFBC
+	IFBLOCK -> IFB . ELIFB
+	IFBLOCK -> IFB . ELSEB
+	ELSEB -> . returntime { BLOCK }
+	IFBLOCK -> IFB .
+
+	Actions:
+	for ELIFB: Shift 91
+	for ELIFBC: Shift 15
+	for turntime: Shift 16
+	for ELSEB: Shift 94
+	for returntime: Shift 17
+	for ;: Reduce r15
+	for #: Reduce r15
+
+State 14 = goto(0, mystime) 
+	IFB -> mystime . LOGICAL { BLOCK }
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for LOGICAL: Shift 96
+	for ER: Shift 37
+	for R: Shift 41
+	for (: Shift 99
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 15 = goto(0, ELIFBC) 
+	ELIFB -> ELIFBC . ELIFB
+	ELIFB -> . ELIFBC ELIFB
+	ELIFBC -> . turntime LOGICAL { BLOCK }
+	ELIFB -> . ELIFBC
+	ELIFB -> ELIFBC .
+
+	Actions:
+	for ELIFB: Shift 106
+	for ELIFBC: Shift 15
+	for turntime: Shift 16
+	for ;: Reduce r18
+	for #: Reduce r18
+
+State 16 = goto(0, turntime) 
+	ELIFBC -> turntime . LOGICAL { BLOCK }
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for LOGICAL: Shift 109
+	for ER: Shift 37
+	for R: Shift 41
+	for (: Shift 99
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 17 = goto(0, returntime) 
+	ELSEB -> returntime . { BLOCK }
+
+	Actions:
+	for {: Shift 119
+
+State 18 = goto(0, forculus) 
+	FORBLOCK -> forculus . FFROM tu FTO du { BLOCK }
+	FFROM -> . SAASIGN
+	SAASIGN -> . variable = SRHS
+	FFROM -> . variable
+
+	Actions:
+	for FFROM: Shift 120
+	for SAASIGN: Shift 19
+	for variable: Shift 122
+
+State 19 = goto(0, SAASIGN) 
+	FFROM -> SAASIGN .
+
+	Actions:
+	for tu: Reduce r22
+
+State 20 = goto(0, variable) 
+	FFROM -> variable .
+	SAASIGN -> variable . = SRHS
+	LHS -> variable .
+	LHS -> variable . [ TNV ]
+	SV -> variable .
+	TNV -> variable .
+	TSV -> variable .
+	EDT -> variable .
+
+	Actions:
+	for =: Reduce r66
+	for [: Shift 124
+	for tu: Reduce r97
+	for ;: Reduce r97
+	for #: Reduce r97
+	for variable: Reduce r84
+	for :: Reduce r97
+	for ]: Reduce r90
+	for ,: Reduce r90
+	for ): Reduce r97
+	for du: Reduce r97
+	for +: Reduce r92
+	for {: Reduce r97
+	for ?: Reduce r97
+
+State 21 = goto(0, TNV) 
+	SRHS -> TNV .
+	FTO -> TNV .
+	FACTOR -> TNV .
+	AELEM -> TNV . , AELEM
+	AELEM -> TNV .
+
+	Actions:
+	for ,: Shift 125
+	for tu: Reduce r43
+	for du: Reduce r43
+	for :: Reduce r43
+	for #: Reduce r43
+	for ;: Reduce r43
+	for ): Reduce r43
+	for ]: Reduce r74
+
+State 22 = goto(0, EXPR) 
+	SRHS -> EXPR .
+	FTO -> EXPR .
+	OPTION -> EXPR .
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+	RHS -> EXPR .
+
+	Actions:
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+	for tu: Reduce r26
+	for du: Reduce r28
+	for ;: Reduce r71
+	for :: Reduce r33
+	for #: Reduce r71
+
+State 23 = goto(0, whilegardium) 
+	WHILEBLOCK -> whilegardium . LOGICAL du { BLOCK }
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for LOGICAL: Shift 130
+	for ER: Shift 37
+	for R: Shift 41
+	for (: Shift 99
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 24 = goto(0, tribus) 
+	TERNARY -> tribus . LOGICAL ? OPTION : OPTION
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for LOGICAL: Shift 140
+	for ER: Shift 37
+	for R: Shift 41
+	for (: Shift 99
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 25 = goto(0, EDT) 
+	OPTION -> EDT .
+	R -> EDT .
+	RHS -> EDT .
+
+	Actions:
+	for ;: Reduce r70
+	for :: Reduce r63
+	for #: Reduce r70
+	for tu: Reduce r63
+	for {: Reduce r63
+	for ): Reduce r63
+	for ?: Reduce r63
+	for du: Reduce r63
+
+State 26 = goto(0, TERM) 
+	EXPR -> TERM .
+	TERM -> TERM . FOP FACTOR
+	FOP -> . *
+	FOP -> . /
+
+	Actions:
+	for FOP: Shift 150
+	for *: Shift 31
+	for /: Shift 32
+	for :: Reduce r35
+	for tu: Reduce r35
+	for ;: Reduce r35
+	for #: Reduce r35
+	for ): Reduce r35
+	for du: Reduce r35
+
+State 27 = goto(0, +) 
+	NOP -> + .
+
+	Actions:
+	for #: Reduce r36
+
+State 28 = goto(0, -) 
+	NOP -> - .
+
+	Actions:
+	for #: Reduce r37
+
+State 29 = goto(0, %) 
+	NOP -> % .
+
+	Actions:
+	for #: Reduce r38
+
+State 30 = goto(0, FACTOR) 
+	TERM -> FACTOR .
+
+	Actions:
+	for :: Reduce r40
+	for tu: Reduce r40
+	for #: Reduce r40
+	for ;: Reduce r40
+	for ): Reduce r40
+	for du: Reduce r40
+
+State 31 = goto(0, *) 
+	FOP -> * .
+
+	Actions:
+	for #: Reduce r41
+
+State 32 = goto(0, /) 
+	FOP -> / .
+
+	Actions:
+	for #: Reduce r42
+
+State 33 = goto(0, () 
+	FACTOR -> ( . EXPR )
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+	R -> ( . LOGICAL )
+	R -> ( . EXPR )
+
+	Actions:
+	for EXPR: Shift 153
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for number: Shift 65
+	for variable: Shift 158
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for string: Shift 66
+	for LOGICAL: Shift 163
+	for ER: Shift 37
+	for R: Shift 41
+	for EDT: Shift 100
+	for DT: Shift 68
+	for char: Shift 67
+
+State 34 = goto(0, SS) 
+	EXPR -> SS .
+	SS -> SS . + TSV
+
+	Actions:
+	for +: Shift 169
+	for :: Reduce r45
+	for tu: Reduce r45
+	for ;: Reduce r45
+	for #: Reduce r45
+	for ): Reduce r45
+	for du: Reduce r45
+
+State 35 = goto(0, TSV) 
+	SS -> TSV .
+
+	Actions:
+	for :: Reduce r47
+	for tu: Reduce r47
+	for ;: Reduce r47
+	for #: Reduce r47
+	for ): Reduce r47
+	for +: Reduce r47
+	for du: Reduce r47
+
+State 36 = goto(0, LOGICAL) 
+	EXPR -> LOGICAL .
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+
+	Actions:
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+	for :: Reduce r48
+	for tu: Reduce r48
+	for ;: Reduce r48
+	for #: Reduce r48
+	for ): Reduce r48
+	for du: Reduce r48
+
+State 37 = goto(0, ER) 
+	LOGICAL -> ER .
+	ER -> ER . ROP R
+	ROP -> . ==
+	ROP -> . !=
+	ROP -> . >
+	ROP -> . <
+	ROP -> . >=
+	ROP -> . <=
+
+	Actions:
+	for ROP: Shift 174
+	for ==: Shift 42
+	for !=: Shift 43
+	for >: Shift 44
+	for <: Shift 45
+	for >=: Shift 46
+	for <=: Shift 47
+	for :: Reduce r50
+	for tu: Reduce r50
+	for ;: Reduce r50
+	for {: Reduce r50
+	for #: Reduce r50
+	for ): Reduce r50
+	for ?: Reduce r50
+	for du: Reduce r50
+
+State 38 = goto(0, andus) 
+	LOP -> andus .
+
+	Actions:
+	for #: Reduce r51
+
+State 39 = goto(0, orus) 
+	LOP -> orus .
+
+	Actions:
+	for #: Reduce r52
+
+State 40 = goto(0, notus) 
+	LOP -> notus .
+
+	Actions:
+	for #: Reduce r53
+
+State 41 = goto(0, R) 
+	ER -> R .
+
+	Actions:
+	for :: Reduce r55
+	for tu: Reduce r55
+	for #: Reduce r55
+	for {: Reduce r55
+	for ;: Reduce r55
+	for ): Reduce r55
+	for ?: Reduce r55
+	for du: Reduce r55
+
+State 42 = goto(0, ==) 
+	ROP -> == .
+
+	Actions:
+	for #: Reduce r56
+
+State 43 = goto(0, !=) 
+	ROP -> != .
+
+	Actions:
+	for #: Reduce r57
+
+State 44 = goto(0, >) 
+	ROP -> > .
+
+	Actions:
+	for #: Reduce r58
+
+State 45 = goto(0, <) 
+	ROP -> < .
+
+	Actions:
+	for #: Reduce r59
+
+State 46 = goto(0, >=) 
+	ROP -> >= .
+
+	Actions:
+	for #: Reduce r60
+
+State 47 = goto(0, <=) 
+	ROP -> <= .
+
+	Actions:
+	for #: Reduce r61
+
+State 48 = goto(0, LHS) 
+	ASSIGN -> LHS . = RHS
+
+	Actions:
+	for =: Shift 181
+
+State 49 = goto(0, ARRAY) 
+	RHS -> ARRAY .
+
+	Actions:
+	for ;: Reduce r68
+	for #: Reduce r68
+
+State 50 = goto(0, TERNARY) 
+	RHS -> TERNARY .
+
+	Actions:
+	for ;: Reduce r69
+	for #: Reduce r69
+
+State 51 = goto(0, [) 
+	ARRAY -> [ . AELEM ]
+	AELEM -> . TNV , AELEM
+	TNV -> . number
+	TNV -> . variable
+	AELEM -> . TNV
+
+	Actions:
+	for AELEM: Shift 182
+	for TNV: Shift 183
+	for number: Shift 184
+	for variable: Shift 185
+
+State 52 = goto(0, declaro) 
+	DECL -> declaro . EDDT SV
+	EDDT -> . DDT
+	DDT -> . incantum
+	DDT -> . dublatum
+	DDT -> . charmax
+	DDT -> . stringo
+	EDDT -> . DARRAY
+	DARRAY -> . arraygo [ TNV ] DDT
+
+	Actions:
+	for EDDT: Shift 186
+	for DDT: Shift 53
+	for incantum: Shift 55
+	for dublatum: Shift 56
+	for charmax: Shift 57
+	for stringo: Shift 58
+	for DARRAY: Shift 54
+	for arraygo: Shift 59
+
+State 53 = goto(0, DDT) 
+	EDDT -> DDT .
+
+State 54 = goto(0, DARRAY) 
+	EDDT -> DARRAY .
+
+State 55 = goto(0, incantum) 
+	DDT -> incantum .
+
+State 56 = goto(0, dublatum) 
+	DDT -> dublatum .
+
+State 57 = goto(0, charmax) 
+	DDT -> charmax .
+
+State 58 = goto(0, stringo) 
+	DDT -> stringo .
+
+State 59 = goto(0, arraygo) 
+	DARRAY -> arraygo . [ TNV ] DDT
+
+	Actions:
+	for [: Shift 194
+
+State 60 = goto(0, SV) 
+	SV -> SV . variable
+
+	Actions:
+	for variable: Shift 195
+
+State 61 = goto(0, ascendo) 
+	UNARY -> ascendo . variable
+
+	Actions:
+	for variable: Shift 196
+
+State 62 = goto(0, descendo) 
+	UNARY -> descendo . variable
+
+	Actions:
+	for variable: Shift 197
+
+State 63 = goto(0, scriptum) 
+	IN -> scriptum . variable
+
+	Actions:
+	for variable: Shift 198
+
+State 64 = goto(0, revelio) 
+	OUT -> revelio . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+
+	Actions:
+	for EDT: Shift 199
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 65 = goto(0, number) 
+	TNV -> number .
+	DT -> number .
+
+	Actions:
+	for :: Reduce r93
+	for tu: Reduce r93
+	for ]: Reduce r89
+	for #: Reduce r93
+	for ,: Reduce r89
+	for ;: Reduce r93
+	for ): Reduce r93
+	for du: Reduce r93
+	for {: Reduce r93
+	for ?: Reduce r93
+
+State 66 = goto(0, string) 
+	TSV -> string .
+	DT -> string .
+
+	Actions:
+	for :: Reduce r95
+	for tu: Reduce r95
+	for ;: Reduce r95
+	for #: Reduce r95
+	for ): Reduce r95
+	for +: Reduce r91
+	for du: Reduce r95
+	for {: Reduce r95
+	for ?: Reduce r95
+
+State 67 = goto(0, char) 
+	DT -> char .
+
+	Actions:
+	for :: Reduce r94
+	for tu: Reduce r94
+	for #: Reduce r94
+	for {: Reduce r94
+	for ;: Reduce r94
+	for ): Reduce r94
+	for ?: Reduce r94
+	for du: Reduce r94
+
+State 68 = goto(0, DT) 
+	EDT -> DT .
+
+	Actions:
+	for :: Reduce r96
+	for tu: Reduce r96
+	for #: Reduce r96
+	for {: Reduce r96
+	for ;: Reduce r96
+	for ): Reduce r96
+	for ?: Reduce r96
+	for du: Reduce r96
+
+State 69 = goto(2, {) 
+	S -> enchanto { . SN }
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for SN: Shift 205
+	for N: Shift 4
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 70 = goto(3, N) 
+	SN -> SN N . ;
+
+	Actions:
+	for ;: Shift 226
+
+State 71 = goto(3, IN) copy of State 5
+
+State 72 = goto(3, scriptum) copy of State 63
+
+State 73 = goto(3, OUT) copy of State 6
+
+State 74 = goto(3, revelio) copy of State 64
+
+State 75 = goto(3, DECL) copy of State 7
+
+State 76 = goto(3, declaro) copy of State 52
+
+State 77 = goto(3, UNARY) copy of State 8
+
+State 78 = goto(3, ascendo) copy of State 61
+
+State 79 = goto(3, descendo) copy of State 62
+
+State 80 = goto(3, ASSIGN) copy of State 9
+
+State 81 = goto(3, LHS) copy of State 48
+
+State 82 = goto(3, variable) 
+	LHS -> variable .
+	LHS -> variable . [ TNV ]
+
+	Actions:
+	for [: Shift 124
+	for =: Reduce r66
+
+State 83 = goto(3, IFBLOCK) copy of State 10
+
+State 84 = goto(3, IFB) copy of State 13
+
+State 85 = goto(3, mystime) copy of State 14
+
+State 86 = goto(3, FORBLOCK) copy of State 11
+
+State 87 = goto(3, forculus) copy of State 18
+
+State 88 = goto(3, WHILEBLOCK) copy of State 12
+
+State 89 = goto(3, whilegardium) copy of State 23
+
+State 90 = goto(4, ;) 
+	SN -> N ; .
+
+	Actions:
+	for }: Reduce r3
+
+State 91 = goto(13, ELIFB) 
+	IFBLOCK -> IFB ELIFB . ELSEB
+	ELSEB -> . returntime { BLOCK }
+	IFBLOCK -> IFB ELIFB .
+
+	Actions:
+	for ELSEB: Shift 228
+	for returntime: Shift 17
+	for ;: Reduce r13
+	for #: Reduce r13
+
+State 92 = goto(13, ELIFBC) copy of State 15
+
+State 93 = goto(13, turntime) copy of State 16
+
+State 94 = goto(13, ELSEB) 
+	IFBLOCK -> IFB ELSEB .
+
+	Actions:
+	for ;: Reduce r14
+	for #: Reduce r14
+
+State 95 = goto(13, returntime) copy of State 17
+
+State 96 = goto(14, LOGICAL) 
+	IFB -> mystime LOGICAL . { BLOCK }
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+
+	Actions:
+	for {: Shift 230
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+
+State 97 = goto(14, ER) copy of State 37
+
+State 98 = goto(14, R) copy of State 41
+
+State 99 = goto(14, () 
+	R -> ( . LOGICAL )
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+	R -> ( . EXPR )
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+
+	Actions:
+	for LOGICAL: Shift 235
+	for ER: Shift 37
+	for R: Shift 41
+	for (: Shift 238
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 241
+	for char: Shift 67
+	for string: Shift 243
+	for variable: Shift 244
+	for EXPR: Shift 245
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for SS: Shift 34
+	for TSV: Shift 35
+
+State 100 = goto(14, EDT) 
+	R -> EDT .
+
+	Actions:
+	for :: Reduce r63
+	for tu: Reduce r63
+	for #: Reduce r63
+	for {: Reduce r63
+	for ;: Reduce r63
+	for ): Reduce r63
+	for ?: Reduce r63
+	for du: Reduce r63
+
+State 101 = goto(14, DT) copy of State 68
+
+State 102 = goto(14, number) 
+	DT -> number .
+
+	Actions:
+	for :: Reduce r93
+	for tu: Reduce r93
+	for #: Reduce r93
+	for {: Reduce r93
+	for ;: Reduce r93
+	for ): Reduce r93
+	for ?: Reduce r93
+	for du: Reduce r93
+
+State 103 = goto(14, char) copy of State 67
+
+State 104 = goto(14, string) 
+	DT -> string .
+
+	Actions:
+	for :: Reduce r95
+	for tu: Reduce r95
+	for #: Reduce r95
+	for {: Reduce r95
+	for ;: Reduce r95
+	for ): Reduce r95
+	for ?: Reduce r95
+	for du: Reduce r95
+
+State 105 = goto(14, variable) 
+	EDT -> variable .
+
+	Actions:
+	for :: Reduce r97
+	for tu: Reduce r97
+	for #: Reduce r97
+	for {: Reduce r97
+	for ;: Reduce r97
+	for ): Reduce r97
+	for ?: Reduce r97
+	for du: Reduce r97
+
+State 106 = goto(15, ELIFB) 
+	ELIFB -> ELIFBC ELIFB .
+
+	Actions:
+	for ;: Reduce r17
+	for #: Reduce r17
+
+State 107 = goto(15, ELIFBC) copy of State 15
+
+State 108 = goto(15, turntime) copy of State 16
+
+State 109 = goto(16, LOGICAL) 
+	ELIFBC -> turntime LOGICAL . { BLOCK }
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+
+	Actions:
+	for {: Shift 251
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+
+State 110 = goto(16, ER) copy of State 37
+
+State 111 = goto(16, R) copy of State 41
+
+State 112 = goto(16, () copy of State 99
+
+State 113 = goto(16, EDT) copy of State 100
+
+State 114 = goto(16, DT) copy of State 68
+
+State 115 = goto(16, number) copy of State 102
+
+State 116 = goto(16, char) copy of State 67
+
+State 117 = goto(16, string) copy of State 104
+
+State 118 = goto(16, variable) copy of State 105
+
+State 119 = goto(17, {) 
+	ELSEB -> returntime { . BLOCK }
+	BLOCK -> . SN
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for BLOCK: Shift 256
+	for SN: Shift 257
+	for N: Shift 4
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 120 = goto(18, FFROM) 
+	FORBLOCK -> forculus FFROM . tu FTO du { BLOCK }
+
+	Actions:
+	for tu: Shift 278
+
+State 121 = goto(18, SAASIGN) copy of State 19
+
+State 122 = goto(18, variable) 
+	SAASIGN -> variable . = SRHS
+	FFROM -> variable .
+
+	Actions:
+	for =: Shift 123
+	for tu: Reduce r23
+
+State 123 = goto(20, =) 
+	SAASIGN -> variable = . SRHS
+	SRHS -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	SRHS -> . EXPR
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for SRHS: Shift 280
+	for TNV: Shift 281
+	for number: Shift 65
+	for variable: Shift 158
+	for EXPR: Shift 284
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for string: Shift 66
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for R: Shift 41
+	for EDT: Shift 100
+	for DT: Shift 68
+	for char: Shift 67
+
+State 124 = goto(20, [) 
+	LHS -> variable [ . TNV ]
+	TNV -> . number
+	TNV -> . variable
+
+	Actions:
+	for TNV: Shift 297
+	for number: Shift 184
+	for variable: Shift 185
+
+State 125 = goto(21, ,) 
+	AELEM -> TNV , . AELEM
+	AELEM -> . TNV , AELEM
+	TNV -> . number
+	TNV -> . variable
+	AELEM -> . TNV
+
+	Actions:
+	for AELEM: Shift 300
+	for TNV: Shift 183
+	for number: Shift 184
+	for variable: Shift 185
+
+State 126 = goto(22, NOP) 
+	EXPR -> EXPR NOP . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+
+	Actions:
+	for TERM: Shift 304
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for number: Shift 184
+	for variable: Shift 185
+	for (: Shift 309
+
+State 127 = goto(22, +) copy of State 27
+
+State 128 = goto(22, -) copy of State 28
+
+State 129 = goto(22, %) copy of State 29
+
+State 130 = goto(23, LOGICAL) 
+	WHILEBLOCK -> whilegardium LOGICAL . du { BLOCK }
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+
+	Actions:
+	for du: Shift 310
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+
+State 131 = goto(23, ER) copy of State 37
+
+State 132 = goto(23, R) copy of State 41
+
+State 133 = goto(23, () copy of State 99
+
+State 134 = goto(23, EDT) copy of State 100
+
+State 135 = goto(23, DT) copy of State 68
+
+State 136 = goto(23, number) copy of State 102
+
+State 137 = goto(23, char) copy of State 67
+
+State 138 = goto(23, string) copy of State 104
+
+State 139 = goto(23, variable) copy of State 105
+
+State 140 = goto(24, LOGICAL) 
+	TERNARY -> tribus LOGICAL . ? OPTION : OPTION
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+
+	Actions:
+	for ?: Shift 315
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+
+State 141 = goto(24, ER) copy of State 37
+
+State 142 = goto(24, R) copy of State 41
+
+State 143 = goto(24, () copy of State 99
+
+State 144 = goto(24, EDT) copy of State 100
+
+State 145 = goto(24, DT) copy of State 68
+
+State 146 = goto(24, number) copy of State 102
+
+State 147 = goto(24, char) copy of State 67
+
+State 148 = goto(24, string) copy of State 104
+
+State 149 = goto(24, variable) copy of State 105
+
+State 150 = goto(26, FOP) 
+	TERM -> TERM FOP . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+
+	Actions:
+	for FACTOR: Shift 320
+	for TNV: Shift 156
+	for number: Shift 184
+	for variable: Shift 185
+	for (: Shift 309
+
+State 151 = goto(26, *) copy of State 31
+
+State 152 = goto(26, /) copy of State 32
+
+State 153 = goto(33, EXPR) 
+	FACTOR -> ( EXPR . )
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+	R -> ( EXPR . )
+
+	Actions:
+	for ): Shift 325
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+
+State 154 = goto(33, TERM) copy of State 26
+
+State 155 = goto(33, FACTOR) copy of State 30
+
+State 156 = goto(33, TNV) 
+	FACTOR -> TNV .
+
+	Actions:
+	for :: Reduce r43
+	for tu: Reduce r43
+	for #: Reduce r43
+	for ;: Reduce r43
+	for ): Reduce r43
+	for du: Reduce r43
+
+State 157 = goto(33, number) copy of State 65
+
+State 158 = goto(33, variable) 
+	TNV -> variable .
+	TSV -> variable .
+	EDT -> variable .
+
+	Actions:
+	for :: Reduce r97
+	for tu: Reduce r97
+	for ]: Reduce r90
+	for #: Reduce r97
+	for ,: Reduce r90
+	for ;: Reduce r97
+	for ): Reduce r97
+	for du: Reduce r97
+	for +: Reduce r92
+	for {: Reduce r97
+	for ?: Reduce r97
+
+State 159 = goto(33, () copy of State 33
+
+State 160 = goto(33, SS) copy of State 34
+
+State 161 = goto(33, TSV) copy of State 35
+
+State 162 = goto(33, string) copy of State 66
+
+State 163 = goto(33, LOGICAL) 
+	EXPR -> LOGICAL .
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+	R -> ( LOGICAL . )
+
+	Actions:
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+	for ): Reduce r48
+	for :: Reduce r48
+	for tu: Reduce r48
+	for ;: Reduce r48
+	for #: Reduce r48
+	for du: Reduce r48
+
+State 164 = goto(33, ER) copy of State 37
+
+State 165 = goto(33, R) copy of State 41
+
+State 166 = goto(33, EDT) copy of State 100
+
+State 167 = goto(33, DT) copy of State 68
+
+State 168 = goto(33, char) copy of State 67
+
+State 169 = goto(34, +) 
+	SS -> SS + . TSV
+	TSV -> . string
+	TSV -> . variable
+
+	Actions:
+	for TSV: Shift 335
+	for string: Shift 336
+	for variable: Shift 337
+
+State 170 = goto(36, LOP) 
+	LOGICAL -> LOGICAL LOP . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for ER: Shift 338
+	for R: Shift 41
+	for (: Shift 99
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 171 = goto(36, andus) copy of State 38
+
+State 172 = goto(36, orus) copy of State 39
+
+State 173 = goto(36, notus) copy of State 40
+
+State 174 = goto(37, ROP) 
+	ER -> ER ROP . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for R: Shift 347
+	for (: Shift 99
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 102
+	for char: Shift 67
+	for string: Shift 104
+	for variable: Shift 105
+
+State 175 = goto(37, ==) copy of State 42
+
+State 176 = goto(37, !=) copy of State 43
+
+State 177 = goto(37, >) copy of State 44
+
+State 178 = goto(37, <) copy of State 45
+
+State 179 = goto(37, >=) copy of State 46
+
+State 180 = goto(37, <=) copy of State 47
+
+State 181 = goto(48, =) 
+	ASSIGN -> LHS = . RHS
+	RHS -> . ARRAY
+	ARRAY -> . [ AELEM ]
+	RHS -> . TERNARY
+	TERNARY -> . tribus LOGICAL ? OPTION : OPTION
+	RHS -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	RHS -> . EXPR
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	R -> . ( EXPR )
+
+	Actions:
+	for RHS: Shift 355
+	for ARRAY: Shift 49
+	for [: Shift 51
+	for TERNARY: Shift 50
+	for tribus: Shift 24
+	for EDT: Shift 360
+	for DT: Shift 68
+	for number: Shift 241
+	for char: Shift 67
+	for string: Shift 243
+	for variable: Shift 244
+	for EXPR: Shift 366
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for R: Shift 41
+
+State 182 = goto(51, AELEM) 
+	ARRAY -> [ AELEM . ]
+
+	Actions:
+	for ]: Shift 376
+
+State 183 = goto(51, TNV) 
+	AELEM -> TNV . , AELEM
+	AELEM -> TNV .
+
+	Actions:
+	for ,: Shift 125
+	for ]: Reduce r74
+
+State 184 = goto(51, number) 
+	TNV -> number .
+
+	Actions:
+	for :: Reduce r89
+	for tu: Reduce r89
+	for ]: Reduce r89
+	for #: Reduce r89
+	for ,: Reduce r89
+	for ;: Reduce r89
+	for ): Reduce r89
+	for du: Reduce r89
+
+State 185 = goto(51, variable) 
+	TNV -> variable .
+
+	Actions:
+	for :: Reduce r90
+	for tu: Reduce r90
+	for ]: Reduce r90
+	for #: Reduce r90
+	for ,: Reduce r90
+	for ;: Reduce r90
+	for ): Reduce r90
+	for du: Reduce r90
+
+State 186 = goto(52, EDDT) 
+	DECL -> declaro EDDT . SV
+	SV -> . SV variable
+	SV -> . variable
+
+	Actions:
+	for SV: Shift 378
+	for variable: Shift 379
+
+State 187 = goto(52, DDT) copy of State 53
+
+State 188 = goto(52, incantum) copy of State 55
+
+State 189 = goto(52, dublatum) copy of State 56
+
+State 190 = goto(52, charmax) copy of State 57
+
+State 191 = goto(52, stringo) copy of State 58
+
+State 192 = goto(52, DARRAY) copy of State 54
+
+State 193 = goto(52, arraygo) copy of State 59
+
+State 194 = goto(59, [) 
+	DARRAY -> arraygo [ . TNV ] DDT
+	TNV -> . number
+	TNV -> . variable
+
+	Actions:
+	for TNV: Shift 380
+	for number: Shift 184
+	for variable: Shift 185
+
+State 195 = goto(60, variable) 
+	SV -> SV variable .
+
+	Actions:
+	for ;: Reduce r83
+	for #: Reduce r83
+	for variable: Reduce r83
+
+State 196 = goto(61, variable) 
+	UNARY -> ascendo variable .
+
+	Actions:
+	for ;: Reduce r85
+	for #: Reduce r85
+
+State 197 = goto(62, variable) 
+	UNARY -> descendo variable .
+
+	Actions:
+	for ;: Reduce r86
+	for #: Reduce r86
+
+State 198 = goto(63, variable) 
+	IN -> scriptum variable .
+
+	Actions:
+	for ;: Reduce r87
+	for #: Reduce r87
+
+State 199 = goto(64, EDT) 
+	OUT -> revelio EDT .
+
+	Actions:
+	for ;: Reduce r88
+	for #: Reduce r88
+
+State 200 = goto(64, DT) copy of State 68
+
+State 201 = goto(64, number) copy of State 102
+
+State 202 = goto(64, char) copy of State 67
+
+State 203 = goto(64, string) copy of State 104
+
+State 204 = goto(64, variable) copy of State 105
+
+State 205 = goto(69, SN) 
+	S -> enchanto { SN . }
+	SN -> SN . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for }: Shift 383
+	for N: Shift 70
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 206 = goto(69, N) copy of State 4
+
+State 207 = goto(69, IN) copy of State 5
+
+State 208 = goto(69, scriptum) copy of State 63
+
+State 209 = goto(69, OUT) copy of State 6
+
+State 210 = goto(69, revelio) copy of State 64
+
+State 211 = goto(69, DECL) copy of State 7
+
+State 212 = goto(69, declaro) copy of State 52
+
+State 213 = goto(69, UNARY) copy of State 8
+
+State 214 = goto(69, ascendo) copy of State 61
+
+State 215 = goto(69, descendo) copy of State 62
+
+State 216 = goto(69, ASSIGN) copy of State 9
+
+State 217 = goto(69, LHS) copy of State 48
+
+State 218 = goto(69, variable) copy of State 82
+
+State 219 = goto(69, IFBLOCK) copy of State 10
+
+State 220 = goto(69, IFB) copy of State 13
+
+State 221 = goto(69, mystime) copy of State 14
+
+State 222 = goto(69, FORBLOCK) copy of State 11
+
+State 223 = goto(69, forculus) copy of State 18
+
+State 224 = goto(69, WHILEBLOCK) copy of State 12
+
+State 225 = goto(69, whilegardium) copy of State 23
+
+State 226 = goto(70, ;) 
+	SN -> SN N ; .
+
+	Actions:
+	for }: Reduce r2
+
+State 227 = goto(82, [) copy of State 124
+
+State 228 = goto(91, ELSEB) 
+	IFBLOCK -> IFB ELIFB ELSEB .
+
+	Actions:
+	for ;: Reduce r12
+	for #: Reduce r12
+
+State 229 = goto(91, returntime) copy of State 17
+
+State 230 = goto(96, {) 
+	IFB -> mystime LOGICAL { . BLOCK }
+	BLOCK -> . SN
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for BLOCK: Shift 404
+	for SN: Shift 257
+	for N: Shift 4
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 231 = goto(96, LOP) copy of State 170
+
+State 232 = goto(96, andus) copy of State 38
+
+State 233 = goto(96, orus) copy of State 39
+
+State 234 = goto(96, notus) copy of State 40
+
+State 235 = goto(99, LOGICAL) 
+	R -> ( LOGICAL . )
+	LOGICAL -> LOGICAL . LOP ER
+	LOP -> . andus
+	LOP -> . orus
+	LOP -> . notus
+	EXPR -> LOGICAL .
+
+	Actions:
+	for ): Reduce r48
+	for LOP: Shift 170
+	for andus: Shift 38
+	for orus: Shift 39
+	for notus: Shift 40
+	for :: Reduce r48
+	for tu: Reduce r48
+	for ;: Reduce r48
+	for #: Reduce r48
+	for du: Reduce r48
+
+State 236 = goto(99, ER) copy of State 37
+
+State 237 = goto(99, R) copy of State 41
+
+State 238 = goto(99, () 
+	R -> ( . LOGICAL )
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+	R -> ( . EXPR )
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	FACTOR -> ( . EXPR )
+
+	Actions:
+	for LOGICAL: Shift 235
+	for ER: Shift 37
+	for R: Shift 41
+	for (: Shift 238
+	for EDT: Shift 100
+	for DT: Shift 68
+	for number: Shift 241
+	for char: Shift 67
+	for string: Shift 243
+	for variable: Shift 244
+	for EXPR: Shift 441
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for SS: Shift 34
+	for TSV: Shift 35
+
+State 239 = goto(99, EDT) copy of State 100
+
+State 240 = goto(99, DT) copy of State 68
+
+State 241 = goto(99, number) 
+	DT -> number .
+	TNV -> number .
+
+	Actions:
+	for :: Reduce r89
+	for tu: Reduce r89
+	for #: Reduce r89
+	for {: Reduce r93
+	for ;: Reduce r89
+	for ): Reduce r89
+	for ?: Reduce r93
+	for du: Reduce r89
+	for ]: Reduce r89
+	for ,: Reduce r89
+
+State 242 = goto(99, char) copy of State 67
+
+State 243 = goto(99, string) 
+	DT -> string .
+	TSV -> string .
+
+	Actions:
+	for :: Reduce r91
+	for tu: Reduce r91
+	for #: Reduce r91
+	for {: Reduce r95
+	for ;: Reduce r91
+	for ): Reduce r91
+	for ?: Reduce r95
+	for du: Reduce r91
+	for +: Reduce r91
+
+State 244 = goto(99, variable) 
+	EDT -> variable .
+	TNV -> variable .
+	TSV -> variable .
+
+	Actions:
+	for :: Reduce r92
+	for tu: Reduce r92
+	for #: Reduce r92
+	for {: Reduce r97
+	for ;: Reduce r92
+	for ): Reduce r92
+	for ?: Reduce r97
+	for du: Reduce r92
+	for ]: Reduce r90
+	for ,: Reduce r90
+	for +: Reduce r92
+
+State 245 = goto(99, EXPR) 
+	R -> ( EXPR . )
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+
+	Actions:
+	for ): Shift 447
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+
+State 246 = goto(99, TERM) copy of State 26
+
+State 247 = goto(99, FACTOR) copy of State 30
+
+State 248 = goto(99, TNV) copy of State 156
+
+State 249 = goto(99, SS) copy of State 34
+
+State 250 = goto(99, TSV) copy of State 35
+
+State 251 = goto(109, {) 
+	ELIFBC -> turntime LOGICAL { . BLOCK }
+	BLOCK -> . SN
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for BLOCK: Shift 452
+	for SN: Shift 257
+	for N: Shift 4
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 252 = goto(109, LOP) copy of State 170
+
+State 253 = goto(109, andus) copy of State 38
+
+State 254 = goto(109, orus) copy of State 39
+
+State 255 = goto(109, notus) copy of State 40
+
+State 256 = goto(119, BLOCK) 
+	ELSEB -> returntime { BLOCK . }
+
+	Actions:
+	for }: Shift 474
+
+State 257 = goto(119, SN) 
+	BLOCK -> SN .
+	SN -> SN . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for N: Shift 70
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+	for }: Reduce r30
+
+State 258 = goto(119, N) copy of State 4
+
+State 259 = goto(119, IN) copy of State 5
+
+State 260 = goto(119, scriptum) copy of State 63
+
+State 261 = goto(119, OUT) copy of State 6
+
+State 262 = goto(119, revelio) copy of State 64
+
+State 263 = goto(119, DECL) copy of State 7
+
+State 264 = goto(119, declaro) copy of State 52
+
+State 265 = goto(119, UNARY) copy of State 8
+
+State 266 = goto(119, ascendo) copy of State 61
+
+State 267 = goto(119, descendo) copy of State 62
+
+State 268 = goto(119, ASSIGN) copy of State 9
+
+State 269 = goto(119, LHS) copy of State 48
+
+State 270 = goto(119, variable) copy of State 82
+
+State 271 = goto(119, IFBLOCK) copy of State 10
+
+State 272 = goto(119, IFB) copy of State 13
+
+State 273 = goto(119, mystime) copy of State 14
+
+State 274 = goto(119, FORBLOCK) copy of State 11
+
+State 275 = goto(119, forculus) copy of State 18
+
+State 276 = goto(119, WHILEBLOCK) copy of State 12
+
+State 277 = goto(119, whilegardium) copy of State 23
+
+State 278 = goto(120, tu) 
+	FORBLOCK -> forculus FFROM tu . FTO du { BLOCK }
+	FTO -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FTO -> . EXPR
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for FTO: Shift 495
+	for TNV: Shift 496
+	for number: Shift 65
+	for variable: Shift 158
+	for EXPR: Shift 499
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for string: Shift 66
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for R: Shift 41
+	for EDT: Shift 100
+	for DT: Shift 68
+	for char: Shift 67
+
+State 279 = goto(122, =) copy of State 123
+
+State 280 = goto(123, SRHS) 
+	SAASIGN -> variable = SRHS .
+
+	Actions:
+	for tu: Reduce r24
+
+State 281 = goto(123, TNV) 
+	SRHS -> TNV .
+	FACTOR -> TNV .
+
+	Actions:
+	for tu: Reduce r43
+	for :: Reduce r43
+	for #: Reduce r43
+	for ;: Reduce r43
+	for ): Reduce r43
+	for du: Reduce r43
+
+State 282 = goto(123, number) copy of State 65
+
+State 283 = goto(123, variable) copy of State 158
+
+State 284 = goto(123, EXPR) 
+	SRHS -> EXPR .
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+
+	Actions:
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+	for tu: Reduce r26
+
+State 285 = goto(123, TERM) copy of State 26
+
+State 286 = goto(123, FACTOR) copy of State 30
+
+State 287 = goto(123, () copy of State 33
+
+State 288 = goto(123, SS) copy of State 34
+
+State 289 = goto(123, TSV) copy of State 35
+
+State 290 = goto(123, string) copy of State 66
+
+State 291 = goto(123, LOGICAL) copy of State 36
+
+State 292 = goto(123, ER) copy of State 37
+
+State 293 = goto(123, R) copy of State 41
+
+State 294 = goto(123, EDT) copy of State 100
+
+State 295 = goto(123, DT) copy of State 68
+
+State 296 = goto(123, char) copy of State 67
+
+State 297 = goto(124, TNV) 
+	LHS -> variable [ TNV . ]
+
+	Actions:
+	for ]: Shift 516
+
+State 298 = goto(124, number) copy of State 184
+
+State 299 = goto(124, variable) copy of State 185
+
+State 300 = goto(125, AELEM) 
+	AELEM -> TNV , AELEM .
+
+	Actions:
+	for ]: Reduce r73
+
+State 301 = goto(125, TNV) copy of State 183
+
+State 302 = goto(125, number) copy of State 184
+
+State 303 = goto(125, variable) copy of State 185
+
+State 304 = goto(126, TERM) 
+	EXPR -> EXPR NOP TERM .
+	TERM -> TERM . FOP FACTOR
+	FOP -> . *
+	FOP -> . /
+
+	Actions:
+	for FOP: Shift 150
+	for *: Shift 31
+	for /: Shift 32
+	for :: Reduce r34
+	for tu: Reduce r34
+	for ;: Reduce r34
+	for #: Reduce r34
+	for ): Reduce r34
+	for du: Reduce r34
+
+State 305 = goto(126, FACTOR) copy of State 30
+
+State 306 = goto(126, TNV) copy of State 156
+
+State 307 = goto(126, number) copy of State 184
+
+State 308 = goto(126, variable) copy of State 185
+
+State 309 = goto(126, () 
+	FACTOR -> ( . EXPR )
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	R -> . ( EXPR )
+
+	Actions:
+	for EXPR: Shift 520
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for number: Shift 65
+	for variable: Shift 158
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for string: Shift 66
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for R: Shift 41
+	for EDT: Shift 100
+	for DT: Shift 68
+	for char: Shift 67
+
+State 310 = goto(130, du) 
+	WHILEBLOCK -> whilegardium LOGICAL du . { BLOCK }
+
+	Actions:
+	for {: Shift 536
+
+State 311 = goto(130, LOP) copy of State 170
+
+State 312 = goto(130, andus) copy of State 38
+
+State 313 = goto(130, orus) copy of State 39
+
+State 314 = goto(130, notus) copy of State 40
+
+State 315 = goto(140, ?) 
+	TERNARY -> tribus LOGICAL ? . OPTION : OPTION
+	OPTION -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	OPTION -> . EXPR
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	R -> . ( EXPR )
+
+	Actions:
+	for OPTION: Shift 537
+	for EDT: Shift 538
+	for DT: Shift 68
+	for number: Shift 241
+	for char: Shift 67
+	for string: Shift 243
+	for variable: Shift 244
+	for EXPR: Shift 544
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for R: Shift 41
+
+State 316 = goto(140, LOP) copy of State 170
+
+State 317 = goto(140, andus) copy of State 38
+
+State 318 = goto(140, orus) copy of State 39
+
+State 319 = goto(140, notus) copy of State 40
+
+State 320 = goto(150, FACTOR) 
+	TERM -> TERM FOP FACTOR .
+
+	Actions:
+	for :: Reduce r39
+	for tu: Reduce r39
+	for #: Reduce r39
+	for ;: Reduce r39
+	for ): Reduce r39
+	for du: Reduce r39
+
+State 321 = goto(150, TNV) copy of State 156
+
+State 322 = goto(150, number) copy of State 184
+
+State 323 = goto(150, variable) copy of State 185
+
+State 324 = goto(150, () copy of State 309
+
+State 325 = goto(153, )) 
+	FACTOR -> ( EXPR ) .
+	R -> ( EXPR ) .
+
+	Actions:
+	for :: Reduce r64
+	for tu: Reduce r64
+	for #: Reduce r64
+	for ;: Reduce r64
+	for ): Reduce r64
+	for du: Reduce r64
+	for {: Reduce r64
+	for ?: Reduce r64
+
+State 326 = goto(153, NOP) copy of State 126
+
+State 327 = goto(153, +) copy of State 27
+
+State 328 = goto(153, -) copy of State 28
+
+State 329 = goto(153, %) copy of State 29
+
+State 330 = goto(163, LOP) copy of State 170
+
+State 331 = goto(163, andus) copy of State 38
+
+State 332 = goto(163, orus) copy of State 39
+
+State 333 = goto(163, notus) copy of State 40
+
+State 334 = goto(163, )) 
+	R -> ( LOGICAL ) .
+
+	Actions:
+	for :: Reduce r62
+	for tu: Reduce r62
+	for #: Reduce r62
+	for {: Reduce r62
+	for ;: Reduce r62
+	for ): Reduce r62
+	for ?: Reduce r62
+	for du: Reduce r62
+
+State 335 = goto(169, TSV) 
+	SS -> SS + TSV .
+
+	Actions:
+	for :: Reduce r46
+	for tu: Reduce r46
+	for ;: Reduce r46
+	for #: Reduce r46
+	for ): Reduce r46
+	for +: Reduce r46
+	for du: Reduce r46
+
+State 336 = goto(169, string) 
+	TSV -> string .
+
+	Actions:
+	for :: Reduce r91
+	for tu: Reduce r91
+	for ;: Reduce r91
+	for #: Reduce r91
+	for ): Reduce r91
+	for +: Reduce r91
+	for du: Reduce r91
+
+State 337 = goto(169, variable) 
+	TSV -> variable .
+
+	Actions:
+	for :: Reduce r92
+	for tu: Reduce r92
+	for ;: Reduce r92
+	for #: Reduce r92
+	for ): Reduce r92
+	for +: Reduce r92
+	for du: Reduce r92
+
+State 338 = goto(170, ER) 
+	LOGICAL -> LOGICAL LOP ER .
+	ER -> ER . ROP R
+	ROP -> . ==
+	ROP -> . !=
+	ROP -> . >
+	ROP -> . <
+	ROP -> . >=
+	ROP -> . <=
+
+	Actions:
+	for ROP: Shift 174
+	for ==: Shift 42
+	for !=: Shift 43
+	for >: Shift 44
+	for <: Shift 45
+	for >=: Shift 46
+	for <=: Shift 47
+	for :: Reduce r49
+	for tu: Reduce r49
+	for ;: Reduce r49
+	for {: Reduce r49
+	for #: Reduce r49
+	for ): Reduce r49
+	for ?: Reduce r49
+	for du: Reduce r49
+
+State 339 = goto(170, R) copy of State 41
+
+State 340 = goto(170, () copy of State 99
+
+State 341 = goto(170, EDT) copy of State 100
+
+State 342 = goto(170, DT) copy of State 68
+
+State 343 = goto(170, number) copy of State 102
+
+State 344 = goto(170, char) copy of State 67
+
+State 345 = goto(170, string) copy of State 104
+
+State 346 = goto(170, variable) copy of State 105
+
+State 347 = goto(174, R) 
+	ER -> ER ROP R .
+
+	Actions:
+	for :: Reduce r54
+	for tu: Reduce r54
+	for #: Reduce r54
+	for {: Reduce r54
+	for ;: Reduce r54
+	for ): Reduce r54
+	for ?: Reduce r54
+	for du: Reduce r54
+
+State 348 = goto(174, () copy of State 99
+
+State 349 = goto(174, EDT) copy of State 100
+
+State 350 = goto(174, DT) copy of State 68
+
+State 351 = goto(174, number) copy of State 102
+
+State 352 = goto(174, char) copy of State 67
+
+State 353 = goto(174, string) copy of State 104
+
+State 354 = goto(174, variable) copy of State 105
+
+State 355 = goto(181, RHS) 
+	ASSIGN -> LHS = RHS .
+
+	Actions:
+	for ;: Reduce r65
+	for #: Reduce r65
+
+State 356 = goto(181, ARRAY) copy of State 49
+
+State 357 = goto(181, [) copy of State 51
+
+State 358 = goto(181, TERNARY) copy of State 50
+
+State 359 = goto(181, tribus) copy of State 24
+
+State 360 = goto(181, EDT) 
+	RHS -> EDT .
+	R -> EDT .
+
+	Actions:
+	for ;: Reduce r63
+	for #: Reduce r63
+	for :: Reduce r63
+	for tu: Reduce r63
+	for {: Reduce r63
+	for ): Reduce r63
+	for ?: Reduce r63
+	for du: Reduce r63
+
+State 361 = goto(181, DT) copy of State 68
+
+State 362 = goto(181, number) copy of State 241
+
+State 363 = goto(181, char) copy of State 67
+
+State 364 = goto(181, string) copy of State 243
+
+State 365 = goto(181, variable) copy of State 244
+
+State 366 = goto(181, EXPR) 
+	RHS -> EXPR .
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+
+	Actions:
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+	for ;: Reduce r71
+	for #: Reduce r71
+
+State 367 = goto(181, TERM) copy of State 26
+
+State 368 = goto(181, FACTOR) copy of State 30
+
+State 369 = goto(181, TNV) copy of State 156
+
+State 370 = goto(181, () copy of State 33
+
+State 371 = goto(181, SS) copy of State 34
+
+State 372 = goto(181, TSV) copy of State 35
+
+State 373 = goto(181, LOGICAL) copy of State 36
+
+State 374 = goto(181, ER) copy of State 37
+
+State 375 = goto(181, R) copy of State 41
+
+State 376 = goto(182, ]) 
+	ARRAY -> [ AELEM ] .
+
+	Actions:
+	for ;: Reduce r72
+	for #: Reduce r72
+
+State 377 = goto(183, ,) copy of State 125
+
+State 378 = goto(186, SV) 
+	DECL -> declaro EDDT SV .
+	SV -> SV . variable
+
+	Actions:
+	for variable: Shift 195
+	for ;: Reduce r75
+	for #: Reduce r75
+
+State 379 = goto(186, variable) 
+	SV -> variable .
+
+	Actions:
+	for ;: Reduce r84
+	for #: Reduce r84
+	for variable: Reduce r84
+
+State 380 = goto(194, TNV) 
+	DARRAY -> arraygo [ TNV . ] DDT
+
+	Actions:
+	for ]: Shift 566
+
+State 381 = goto(194, number) copy of State 184
+
+State 382 = goto(194, variable) copy of State 185
+
+State 383 = goto(205, }) 
+	S -> enchanto { SN } .
+
+	Actions:
+	for #: Reduce r1
+
+State 384 = goto(205, N) copy of State 70
+
+State 385 = goto(205, IN) copy of State 5
+
+State 386 = goto(205, scriptum) copy of State 63
+
+State 387 = goto(205, OUT) copy of State 6
+
+State 388 = goto(205, revelio) copy of State 64
+
+State 389 = goto(205, DECL) copy of State 7
+
+State 390 = goto(205, declaro) copy of State 52
+
+State 391 = goto(205, UNARY) copy of State 8
+
+State 392 = goto(205, ascendo) copy of State 61
+
+State 393 = goto(205, descendo) copy of State 62
+
+State 394 = goto(205, ASSIGN) copy of State 9
+
+State 395 = goto(205, LHS) copy of State 48
+
+State 396 = goto(205, variable) copy of State 82
+
+State 397 = goto(205, IFBLOCK) copy of State 10
+
+State 398 = goto(205, IFB) copy of State 13
+
+State 399 = goto(205, mystime) copy of State 14
+
+State 400 = goto(205, FORBLOCK) copy of State 11
+
+State 401 = goto(205, forculus) copy of State 18
+
+State 402 = goto(205, WHILEBLOCK) copy of State 12
+
+State 403 = goto(205, whilegardium) copy of State 23
+
+State 404 = goto(230, BLOCK) 
+	IFB -> mystime LOGICAL { BLOCK . }
+
+	Actions:
+	for }: Shift 567
+
+State 405 = goto(230, SN) copy of State 257
+
+State 406 = goto(230, N) copy of State 4
+
+State 407 = goto(230, IN) copy of State 5
+
+State 408 = goto(230, scriptum) copy of State 63
+
+State 409 = goto(230, OUT) copy of State 6
+
+State 410 = goto(230, revelio) copy of State 64
+
+State 411 = goto(230, DECL) copy of State 7
+
+State 412 = goto(230, declaro) copy of State 52
+
+State 413 = goto(230, UNARY) copy of State 8
+
+State 414 = goto(230, ascendo) copy of State 61
+
+State 415 = goto(230, descendo) copy of State 62
+
+State 416 = goto(230, ASSIGN) copy of State 9
+
+State 417 = goto(230, LHS) copy of State 48
+
+State 418 = goto(230, variable) copy of State 82
+
+State 419 = goto(230, IFBLOCK) copy of State 10
+
+State 420 = goto(230, IFB) copy of State 13
+
+State 421 = goto(230, mystime) copy of State 14
+
+State 422 = goto(230, FORBLOCK) copy of State 11
+
+State 423 = goto(230, forculus) copy of State 18
+
+State 424 = goto(230, WHILEBLOCK) copy of State 12
+
+State 425 = goto(230, whilegardium) copy of State 23
+
+State 426 = goto(235, )) copy of State 334
+
+State 427 = goto(235, LOP) copy of State 170
+
+State 428 = goto(235, andus) copy of State 38
+
+State 429 = goto(235, orus) copy of State 39
+
+State 430 = goto(235, notus) copy of State 40
+
+State 431 = goto(238, LOGICAL) copy of State 235
+
+State 432 = goto(238, ER) copy of State 37
+
+State 433 = goto(238, R) copy of State 41
+
+State 434 = goto(238, () copy of State 238
+
+State 435 = goto(238, EDT) copy of State 100
+
+State 436 = goto(238, DT) copy of State 68
+
+State 437 = goto(238, number) copy of State 241
+
+State 438 = goto(238, char) copy of State 67
+
+State 439 = goto(238, string) copy of State 243
+
+State 440 = goto(238, variable) copy of State 244
+
+State 441 = goto(238, EXPR) 
+	R -> ( EXPR . )
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+	FACTOR -> ( EXPR . )
+
+	Actions:
+	for ): Shift 568
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+
+State 442 = goto(238, TERM) copy of State 26
+
+State 443 = goto(238, FACTOR) copy of State 30
+
+State 444 = goto(238, TNV) copy of State 156
+
+State 445 = goto(238, SS) copy of State 34
+
+State 446 = goto(238, TSV) copy of State 35
+
+State 447 = goto(245, )) 
+	R -> ( EXPR ) .
+
+	Actions:
+	for :: Reduce r64
+	for tu: Reduce r64
+	for #: Reduce r64
+	for {: Reduce r64
+	for ;: Reduce r64
+	for ): Reduce r64
+	for ?: Reduce r64
+	for du: Reduce r64
+
+State 448 = goto(245, NOP) copy of State 126
+
+State 449 = goto(245, +) copy of State 27
+
+State 450 = goto(245, -) copy of State 28
+
+State 451 = goto(245, %) copy of State 29
+
+State 452 = goto(251, BLOCK) 
+	ELIFBC -> turntime LOGICAL { BLOCK . }
+
+	Actions:
+	for }: Shift 573
+
+State 453 = goto(251, SN) copy of State 257
+
+State 454 = goto(251, N) copy of State 4
+
+State 455 = goto(251, IN) copy of State 5
+
+State 456 = goto(251, scriptum) copy of State 63
+
+State 457 = goto(251, OUT) copy of State 6
+
+State 458 = goto(251, revelio) copy of State 64
+
+State 459 = goto(251, DECL) copy of State 7
+
+State 460 = goto(251, declaro) copy of State 52
+
+State 461 = goto(251, UNARY) copy of State 8
+
+State 462 = goto(251, ascendo) copy of State 61
+
+State 463 = goto(251, descendo) copy of State 62
+
+State 464 = goto(251, ASSIGN) copy of State 9
+
+State 465 = goto(251, LHS) copy of State 48
+
+State 466 = goto(251, variable) copy of State 82
+
+State 467 = goto(251, IFBLOCK) copy of State 10
+
+State 468 = goto(251, IFB) copy of State 13
+
+State 469 = goto(251, mystime) copy of State 14
+
+State 470 = goto(251, FORBLOCK) copy of State 11
+
+State 471 = goto(251, forculus) copy of State 18
+
+State 472 = goto(251, WHILEBLOCK) copy of State 12
+
+State 473 = goto(251, whilegardium) copy of State 23
+
+State 474 = goto(256, }) 
+	ELSEB -> returntime { BLOCK } .
+
+	Actions:
+	for ;: Reduce r20
+	for #: Reduce r20
+
+State 475 = goto(257, N) copy of State 70
+
+State 476 = goto(257, IN) copy of State 5
+
+State 477 = goto(257, scriptum) copy of State 63
+
+State 478 = goto(257, OUT) copy of State 6
+
+State 479 = goto(257, revelio) copy of State 64
+
+State 480 = goto(257, DECL) copy of State 7
+
+State 481 = goto(257, declaro) copy of State 52
+
+State 482 = goto(257, UNARY) copy of State 8
+
+State 483 = goto(257, ascendo) copy of State 61
+
+State 484 = goto(257, descendo) copy of State 62
+
+State 485 = goto(257, ASSIGN) copy of State 9
+
+State 486 = goto(257, LHS) copy of State 48
+
+State 487 = goto(257, variable) copy of State 82
+
+State 488 = goto(257, IFBLOCK) copy of State 10
+
+State 489 = goto(257, IFB) copy of State 13
+
+State 490 = goto(257, mystime) copy of State 14
+
+State 491 = goto(257, FORBLOCK) copy of State 11
+
+State 492 = goto(257, forculus) copy of State 18
+
+State 493 = goto(257, WHILEBLOCK) copy of State 12
+
+State 494 = goto(257, whilegardium) copy of State 23
+
+State 495 = goto(278, FTO) 
+	FORBLOCK -> forculus FFROM tu FTO . du { BLOCK }
+
+	Actions:
+	for du: Shift 574
+
+State 496 = goto(278, TNV) 
+	FTO -> TNV .
+	FACTOR -> TNV .
+
+	Actions:
+	for du: Reduce r43
+	for :: Reduce r43
+	for tu: Reduce r43
+	for #: Reduce r43
+	for ;: Reduce r43
+	for ): Reduce r43
+
+State 497 = goto(278, number) copy of State 65
+
+State 498 = goto(278, variable) copy of State 158
+
+State 499 = goto(278, EXPR) 
+	FTO -> EXPR .
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+
+	Actions:
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+	for du: Reduce r28
+
+State 500 = goto(278, TERM) copy of State 26
+
+State 501 = goto(278, FACTOR) copy of State 30
+
+State 502 = goto(278, () copy of State 33
+
+State 503 = goto(278, SS) copy of State 34
+
+State 504 = goto(278, TSV) copy of State 35
+
+State 505 = goto(278, string) copy of State 66
+
+State 506 = goto(278, LOGICAL) copy of State 36
+
+State 507 = goto(278, ER) copy of State 37
+
+State 508 = goto(278, R) copy of State 41
+
+State 509 = goto(278, EDT) copy of State 100
+
+State 510 = goto(278, DT) copy of State 68
+
+State 511 = goto(278, char) copy of State 67
+
+State 512 = goto(284, NOP) copy of State 126
+
+State 513 = goto(284, +) copy of State 27
+
+State 514 = goto(284, -) copy of State 28
+
+State 515 = goto(284, %) copy of State 29
+
+State 516 = goto(297, ]) 
+	LHS -> variable [ TNV ] .
+
+	Actions:
+	for =: Reduce r67
+
+State 517 = goto(304, FOP) copy of State 150
+
+State 518 = goto(304, *) copy of State 31
+
+State 519 = goto(304, /) copy of State 32
+
+State 520 = goto(309, EXPR) 
+	FACTOR -> ( EXPR . )
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+
+	Actions:
+	for ): Shift 579
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+
+State 521 = goto(309, TERM) copy of State 26
+
+State 522 = goto(309, FACTOR) copy of State 30
+
+State 523 = goto(309, TNV) copy of State 156
+
+State 524 = goto(309, number) copy of State 65
+
+State 525 = goto(309, variable) copy of State 158
+
+State 526 = goto(309, () copy of State 33
+
+State 527 = goto(309, SS) copy of State 34
+
+State 528 = goto(309, TSV) copy of State 35
+
+State 529 = goto(309, string) copy of State 66
+
+State 530 = goto(309, LOGICAL) copy of State 36
+
+State 531 = goto(309, ER) copy of State 37
+
+State 532 = goto(309, R) copy of State 41
+
+State 533 = goto(309, EDT) copy of State 100
+
+State 534 = goto(309, DT) copy of State 68
+
+State 535 = goto(309, char) copy of State 67
+
+State 536 = goto(310, {) 
+	WHILEBLOCK -> whilegardium LOGICAL du { . BLOCK }
+	BLOCK -> . SN
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for BLOCK: Shift 584
+	for SN: Shift 257
+	for N: Shift 4
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 537 = goto(315, OPTION) 
+	TERNARY -> tribus LOGICAL ? OPTION . : OPTION
+
+	Actions:
+	for :: Shift 606
+
+State 538 = goto(315, EDT) 
+	OPTION -> EDT .
+	R -> EDT .
+
+	Actions:
+	for ;: Reduce r63
+	for :: Reduce r63
+	for #: Reduce r63
+	for tu: Reduce r63
+	for {: Reduce r63
+	for ): Reduce r63
+	for ?: Reduce r63
+	for du: Reduce r63
+
+State 539 = goto(315, DT) copy of State 68
+
+State 540 = goto(315, number) copy of State 241
+
+State 541 = goto(315, char) copy of State 67
+
+State 542 = goto(315, string) copy of State 243
+
+State 543 = goto(315, variable) copy of State 244
+
+State 544 = goto(315, EXPR) 
+	OPTION -> EXPR .
+	EXPR -> EXPR . NOP TERM
+	NOP -> . +
+	NOP -> . -
+	NOP -> . %
+
+	Actions:
+	for NOP: Shift 126
+	for +: Shift 27
+	for -: Shift 28
+	for %: Shift 29
+	for ;: Reduce r33
+	for :: Reduce r33
+	for #: Reduce r33
+
+State 545 = goto(315, TERM) copy of State 26
+
+State 546 = goto(315, FACTOR) copy of State 30
+
+State 547 = goto(315, TNV) copy of State 156
+
+State 548 = goto(315, () copy of State 33
+
+State 549 = goto(315, SS) copy of State 34
+
+State 550 = goto(315, TSV) copy of State 35
+
+State 551 = goto(315, LOGICAL) copy of State 36
+
+State 552 = goto(315, ER) copy of State 37
+
+State 553 = goto(315, R) copy of State 41
+
+State 554 = goto(338, ROP) copy of State 174
+
+State 555 = goto(338, ==) copy of State 42
+
+State 556 = goto(338, !=) copy of State 43
+
+State 557 = goto(338, >) copy of State 44
+
+State 558 = goto(338, <) copy of State 45
+
+State 559 = goto(338, >=) copy of State 46
+
+State 560 = goto(338, <=) copy of State 47
+
+State 561 = goto(366, NOP) copy of State 126
+
+State 562 = goto(366, +) copy of State 27
+
+State 563 = goto(366, -) copy of State 28
+
+State 564 = goto(366, %) copy of State 29
+
+State 565 = goto(378, variable) copy of State 195
+
+State 566 = goto(380, ]) 
+	DARRAY -> arraygo [ TNV ] . DDT
+	DDT -> . incantum
+	DDT -> . dublatum
+	DDT -> . charmax
+	DDT -> . stringo
+
+	Actions:
+	for DDT: Shift 611
+	for incantum: Shift 55
+	for dublatum: Shift 56
+	for charmax: Shift 57
+	for stringo: Shift 58
+
+State 567 = goto(404, }) 
+	IFB -> mystime LOGICAL { BLOCK } .
+
+	Actions:
+	for ;: Reduce r16
+	for #: Reduce r16
+
+State 568 = goto(441, )) 
+	R -> ( EXPR ) .
+	FACTOR -> ( EXPR ) .
+
+	Actions:
+	for :: Reduce r44
+	for tu: Reduce r44
+	for #: Reduce r44
+	for {: Reduce r64
+	for ;: Reduce r44
+	for ): Reduce r44
+	for ?: Reduce r64
+	for du: Reduce r44
+
+State 569 = goto(441, NOP) copy of State 126
+
+State 570 = goto(441, +) copy of State 27
+
+State 571 = goto(441, -) copy of State 28
+
+State 572 = goto(441, %) copy of State 29
+
+State 573 = goto(452, }) 
+	ELIFBC -> turntime LOGICAL { BLOCK } .
+
+	Actions:
+	for ;: Reduce r19
+	for #: Reduce r19
+
+State 574 = goto(495, du) 
+	FORBLOCK -> forculus FFROM tu FTO du . { BLOCK }
+
+	Actions:
+	for {: Shift 616
+
+State 575 = goto(499, NOP) copy of State 126
+
+State 576 = goto(499, +) copy of State 27
+
+State 577 = goto(499, -) copy of State 28
+
+State 578 = goto(499, %) copy of State 29
+
+State 579 = goto(520, )) 
+	FACTOR -> ( EXPR ) .
+
+	Actions:
+	for :: Reduce r44
+	for tu: Reduce r44
+	for #: Reduce r44
+	for ;: Reduce r44
+	for ): Reduce r44
+	for du: Reduce r44
+
+State 580 = goto(520, NOP) copy of State 126
+
+State 581 = goto(520, +) copy of State 27
+
+State 582 = goto(520, -) copy of State 28
+
+State 583 = goto(520, %) copy of State 29
+
+State 584 = goto(536, BLOCK) 
+	WHILEBLOCK -> whilegardium LOGICAL du { BLOCK . }
+
+	Actions:
+	for }: Shift 617
+
+State 585 = goto(536, SN) copy of State 257
+
+State 586 = goto(536, N) copy of State 4
+
+State 587 = goto(536, IN) copy of State 5
+
+State 588 = goto(536, scriptum) copy of State 63
+
+State 589 = goto(536, OUT) copy of State 6
+
+State 590 = goto(536, revelio) copy of State 64
+
+State 591 = goto(536, DECL) copy of State 7
+
+State 592 = goto(536, declaro) copy of State 52
+
+State 593 = goto(536, UNARY) copy of State 8
+
+State 594 = goto(536, ascendo) copy of State 61
+
+State 595 = goto(536, descendo) copy of State 62
+
+State 596 = goto(536, ASSIGN) copy of State 9
+
+State 597 = goto(536, LHS) copy of State 48
+
+State 598 = goto(536, variable) copy of State 82
+
+State 599 = goto(536, IFBLOCK) copy of State 10
+
+State 600 = goto(536, IFB) copy of State 13
+
+State 601 = goto(536, mystime) copy of State 14
+
+State 602 = goto(536, FORBLOCK) copy of State 11
+
+State 603 = goto(536, forculus) copy of State 18
+
+State 604 = goto(536, WHILEBLOCK) copy of State 12
+
+State 605 = goto(536, whilegardium) copy of State 23
+
+State 606 = goto(537, :) 
+	TERNARY -> tribus LOGICAL ? OPTION : . OPTION
+	OPTION -> . EDT
+	EDT -> . DT
+	DT -> . number
+	DT -> . char
+	DT -> . string
+	EDT -> . variable
+	OPTION -> . EXPR
+	EXPR -> . EXPR NOP TERM
+	EXPR -> . TERM
+	TERM -> . TERM FOP FACTOR
+	TERM -> . FACTOR
+	FACTOR -> . TNV
+	TNV -> . number
+	TNV -> . variable
+	FACTOR -> . ( EXPR )
+	EXPR -> . SS
+	SS -> . SS + TSV
+	SS -> . TSV
+	TSV -> . string
+	TSV -> . variable
+	EXPR -> . LOGICAL
+	LOGICAL -> . LOGICAL LOP ER
+	LOGICAL -> . ER
+	ER -> . ER ROP R
+	ER -> . R
+	R -> . ( LOGICAL )
+	R -> . EDT
+	R -> . ( EXPR )
+
+	Actions:
+	for OPTION: Shift 618
+	for EDT: Shift 538
+	for DT: Shift 68
+	for number: Shift 241
+	for char: Shift 67
+	for string: Shift 243
+	for variable: Shift 244
+	for EXPR: Shift 544
+	for TERM: Shift 26
+	for FACTOR: Shift 30
+	for TNV: Shift 156
+	for (: Shift 33
+	for SS: Shift 34
+	for TSV: Shift 35
+	for LOGICAL: Shift 36
+	for ER: Shift 37
+	for R: Shift 41
+
+State 607 = goto(544, NOP) copy of State 126
+
+State 608 = goto(544, +) copy of State 27
+
+State 609 = goto(544, -) copy of State 28
+
+State 610 = goto(544, %) copy of State 29
+
+State 611 = goto(566, DDT) 
+	DARRAY -> arraygo [ TNV ] DDT .
+
+State 612 = goto(566, incantum) copy of State 55
+
+State 613 = goto(566, dublatum) copy of State 56
+
+State 614 = goto(566, charmax) copy of State 57
+
+State 615 = goto(566, stringo) copy of State 58
+
+State 616 = goto(574, {) 
+	FORBLOCK -> forculus FFROM tu FTO du { . BLOCK }
+	BLOCK -> . SN
+	SN -> . SN N ;
+	SN -> . N ;
+	N -> . IN
+	IN -> . scriptum variable
+	N -> . OUT
+	OUT -> . revelio EDT
+	N -> . DECL
+	DECL -> . declaro EDDT SV
+	N -> . UNARY
+	UNARY -> . ascendo variable
+	UNARY -> . descendo variable
+	N -> . ASSIGN
+	ASSIGN -> . LHS = RHS
+	LHS -> . variable
+	LHS -> . variable [ TNV ]
+	N -> . IFBLOCK
+	IFBLOCK -> . IFB ELIFB ELSEB
+	IFB -> . mystime LOGICAL { BLOCK }
+	IFBLOCK -> . IFB ELIFB
+	IFBLOCK -> . IFB ELSEB
+	IFBLOCK -> . IFB
+	N -> . FORBLOCK
+	FORBLOCK -> . forculus FFROM tu FTO du { BLOCK }
+	N -> . WHILEBLOCK
+	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
+
+	Actions:
+	for BLOCK: Shift 635
+	for SN: Shift 257
+	for N: Shift 4
+	for IN: Shift 5
+	for scriptum: Shift 63
+	for OUT: Shift 6
+	for revelio: Shift 64
+	for DECL: Shift 7
+	for declaro: Shift 52
+	for UNARY: Shift 8
+	for ascendo: Shift 61
+	for descendo: Shift 62
+	for ASSIGN: Shift 9
+	for LHS: Shift 48
+	for variable: Shift 82
+	for IFBLOCK: Shift 10
+	for IFB: Shift 13
+	for mystime: Shift 14
+	for FORBLOCK: Shift 11
+	for forculus: Shift 18
+	for WHILEBLOCK: Shift 12
+	for whilegardium: Shift 23
+
+State 617 = goto(584, }) 
+	WHILEBLOCK -> whilegardium LOGICAL du { BLOCK } .
+
+	Actions:
+	for ;: Reduce r29
+	for #: Reduce r29
+
+State 618 = goto(606, OPTION) 
+	TERNARY -> tribus LOGICAL ? OPTION : OPTION .
+
+	Actions:
+	for ;: Reduce r31
+	for #: Reduce r31
+
+State 619 = goto(606, EDT) copy of State 538
+
+State 620 = goto(606, DT) copy of State 68
+
+State 621 = goto(606, number) copy of State 241
+
+State 622 = goto(606, char) copy of State 67
+
+State 623 = goto(606, string) copy of State 243
+
+State 624 = goto(606, variable) copy of State 244
+
+State 625 = goto(606, EXPR) copy of State 544
+
+State 626 = goto(606, TERM) copy of State 26
+
+State 627 = goto(606, FACTOR) copy of State 30
+
+State 628 = goto(606, TNV) copy of State 156
+
+State 629 = goto(606, () copy of State 33
+
+State 630 = goto(606, SS) copy of State 34
+
+State 631 = goto(606, TSV) copy of State 35
+
+State 632 = goto(606, LOGICAL) copy of State 36
+
+State 633 = goto(606, ER) copy of State 37
+
+State 634 = goto(606, R) copy of State 41
+
+State 635 = goto(616, BLOCK) 
+	FORBLOCK -> forculus FFROM tu FTO du { BLOCK . }
+
+	Actions:
+	for }: Shift 657
+
+State 636 = goto(616, SN) copy of State 257
+
+State 637 = goto(616, N) copy of State 4
+
+State 638 = goto(616, IN) copy of State 5
+
+State 639 = goto(616, scriptum) copy of State 63
+
+State 640 = goto(616, OUT) copy of State 6
+
+State 641 = goto(616, revelio) copy of State 64
+
+State 642 = goto(616, DECL) copy of State 7
+
+State 643 = goto(616, declaro) copy of State 52
+
+State 644 = goto(616, UNARY) copy of State 8
+
+State 645 = goto(616, ascendo) copy of State 61
+
+State 646 = goto(616, descendo) copy of State 62
+
+State 647 = goto(616, ASSIGN) copy of State 9
+
+State 648 = goto(616, LHS) copy of State 48
+
+State 649 = goto(616, variable) copy of State 82
+
+State 650 = goto(616, IFBLOCK) copy of State 10
+
+State 651 = goto(616, IFB) copy of State 13
+
+State 652 = goto(616, mystime) copy of State 14
+
+State 653 = goto(616, FORBLOCK) copy of State 11
+
+State 654 = goto(616, forculus) copy of State 18
+
+State 655 = goto(616, WHILEBLOCK) copy of State 12
+
+State 656 = goto(616, whilegardium) copy of State 23
+
+State 657 = goto(635, }) 
+	FORBLOCK -> forculus FFROM tu FTO du { BLOCK } .
+
+	Actions:
+	for ;: Reduce r21
+	for #: Reduce r21
