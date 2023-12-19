@@ -1,5 +1,5 @@
 from openpyxl import Workbook
-from classes.state import State
+from grammar.classes.state import State
 from typing import List
 
 def filterForUniqueStates(states: List[State]):

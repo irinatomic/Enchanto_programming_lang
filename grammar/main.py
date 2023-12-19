@@ -1,7 +1,7 @@
-from determine_states import generateStateZero, generateStates
-from determine_sets import generateFirstSets, generateFollowSets
-from determine_actions import determineActions
-from export_table import exportLRTAble
+from grammar.determine_states import generateStateZero, generateStates
+from grammar.determine_sets import generateFirstSets, generateFollowSets
+from grammar.determine_actions import determineActions
+from grammar.export_table import exportLRTAble
 
 # Grammar, Non-terminal symbols (uppercase), Terminal (all else)
 def import_grammar(fileData):
@@ -29,9 +29,9 @@ def import_grammar(fileData):
     T.append('$')
     return G, T, nT
 
-def main():
+def process_grammar():
 
-    fileData = open('enchanto/grammar.txt', 'r').readlines()
+    fileData = open('grammar/enchanto/grammar.txt', 'r').readlines()
 
     # Grammar - list of rules (tuple: index, lhs, rhs)
     G, T, nT = import_grammar(fileData)
@@ -47,7 +47,6 @@ def main():
     determineActions(states, G, follow_sets)
 
     # export table to excel
-    exportLRTAble(T, nT, states)
+    # exportLRTAble(T, nT, states)
 
-if __name__ == "__main__":
-    main()
+    return states

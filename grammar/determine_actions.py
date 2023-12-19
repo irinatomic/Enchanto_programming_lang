@@ -1,6 +1,6 @@
 from typing import List
-from classes.state import State
-from classes.action import Shift, Reduce, Accept
+from grammar.classes.state import State
+from grammar.classes.action import Shift, Reduce, Accept
 
 def findStateByOrderNumber(states: List[State], prevStateNo: int) -> State:
     return next((s for s in states if s.orderNumber == prevStateNo), None)

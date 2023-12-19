@@ -1,4 +1,4 @@
-from classes.state import State, Transition
+from grammar.classes.state import State, Transition
 
 states: State = []
 
