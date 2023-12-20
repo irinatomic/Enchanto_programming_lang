@@ -1,25 +1,26 @@
 enchanto {
 
-    declaro incantum i j ostatak kolicnik delilac;
+    declaro incantum i j ostatak kolicnik delilac pola_i;
     declaro stringo ispis;
 
     forculus i = 2 tu 100 du {
         delilac = 2;
         ispis = "";
 
-        whilegardium delilac <= i / 2 du {
+        pola_i = i / 2;
+        whilegardium delilac <= pola_i du {
             kolicnik = i / delilac;
             ostatak = i - kolicnik * delilac;
             mystime ostatak == 0 du {
-                ispis = "Broj_" + i + "_nije_prost_broj";
-            } 
+                ispis = "nije_prost";
+            }; 
             delilac = delilac + 1;
-        }
+        };
 
-        mystime (ispis == "") {
-            ispis = "Broj_" + i + "_je_prost_broj";
-        }
-    }
+        mystime ispis == "" du {
+            ispis = "prost_broj";
+        };
+    };
 
     revelio ispis;
 }

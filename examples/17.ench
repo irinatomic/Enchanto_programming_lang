@@ -20,14 +20,14 @@ enchanto {
             ocena = 10;
         } returntime du {
             revelio "Nevazeci_broj_poena";
-        }
+        };
     } returntime du {
         revelio "Nevazeci_broj_poena";
-    }
+    };
 
     mystime ocena >= 5 andus ocena <= 10 du {
         revelio ocena;
-    } returntime {
+    } returntime du {
         revelio "Nevazeca_ocena";
-    }
+    };
 }

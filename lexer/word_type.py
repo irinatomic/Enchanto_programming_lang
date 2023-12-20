@@ -2,7 +2,7 @@
 
 class WordType:
     # data types
-    INCANTUM = 'intcantum'
+    INCANTUM = 'incantum'
     DUBLATUM = 'dublatum'
     CHARMAX = 'charmax'
     STRINGO = 'stringo'

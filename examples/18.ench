@@ -11,7 +11,7 @@ enchanto {
         cifra = originalni_broj % 10;
         izvrnuti_broj = izvrnuti_broj * 10 + cifra;
         originalni_broj = originalni_broj / 10;
-    }
+    };
 
     revelio izvrnuti_broj;
 }

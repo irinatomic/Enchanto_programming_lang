@@ -12,16 +12,18 @@ def main():
     # Lexer
     words = lex(file_contents)
     words = [word.word_type for word in words]
+    words.append('#')
 
-    # Test on a simple grammar
-    # words = ['if', '(', 'cond', 'and', 'cond', ')', 'body', 'else', 'body']
+    # Test on a simple grammar for grammar/example/grammar.txt
+    # words = ['if', '(', 'cond', 'and', 'cond', ')', 'body', 'else', 'body', '#']
 
     # Generate grammar states
     grammar_path = "./grammar/enchanto/grammar.txt"
     states = process_grammar(grammar_path)
 
     # Check syntax
-    # check_syntax(words, states)
+    correct = check_syntax(words, states)
+    print(correct)
 
 if __name__ == "__main__":
     main()

@@ -1,13 +1,13 @@
 enchanto {
 
     declaro stringo ispis;
-    declaro arraygo [10] niz;
+    declaro arraygo [10] incantum niz;
     declaro dublatum a b c;
     declaro incantum d e f g i;
 
     mystime a >= b orus c != d du {
         revelio "ola";
-    }
+    };
 
     a = b - c;
     e = d - f;
@@ -18,5 +18,5 @@ enchanto {
     i = 0;
     forculus i tu 10 du {
         niz[i] = i;
-    }
+    };
 }

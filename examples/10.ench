@@ -1,30 +1,31 @@
 enchanto {
 
-    declaro incantum n i j temp;
+    declaro incantum n i j temp a b;
     declaro arraygo [100] incantum niz;
 
-    revelio "Unesite_pozitivan_ceo_broj_do_100:";
+    revelio "Unesite_pozitivan_ceo_broj_do_100";
     scriptum n;
 
-    revelio "Unesite_element_po_element_niza: ";
+    revelio "Unesite_element_po_element_niza";
     forculus i = 0 tu n du {
         scriptum niz[i];
-    }
+    };
 
     forculus i = 0 tu n du {
         forculus j = i + 1 tu n du {
-            mystime niz[i] > niz[j] du {
+            a = niz[i];
+            b = niz[j];
+            mystime a > b du {
                 temp = niz[i];
                 niz[i] = niz[j];
                 niz[j] = niz[i];
-            }
-        }
-    }
+            };
+        };
+    };
 
-    revelio "Sortirani_niz:";
+    revelio "Sortirani_niz";
     
     forculus i = 0 tu n du {
         revelio niz[i];
-        revelio " ";
-    }
+    };
 }

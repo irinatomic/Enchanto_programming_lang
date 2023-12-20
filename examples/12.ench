@@ -12,7 +12,7 @@ enchanto {
     whilegardium broj > 1 du {
         broj = broj / 2;
         eksponent = eksponent + 1;
-    }
+    };
 
     ispis = "Logaritam_osnove_2_od_unetog_broja_je" + eksponent;
     revelio ispis;

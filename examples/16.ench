@@ -1,7 +1,7 @@
 enchanto {
 
     declaro arraygo [10] incantum niz;
-    declaro incantum velicina i j najveci privremeno;
+    declaro incantum velicina i j najveci privremeno a b;
 
     niz = [ 12, 5, 8, 10, 1, 7, 6, 3, 15, 9 ];
     velicina = 10;
@@ -9,14 +9,16 @@ enchanto {
     revelio "Niz_pre";
     forculus i = 0 tu velicina du {
         revelio niz[i];
-    }
+    };
 
     najveci = 0;
     forculus i = 1 tu velicina du {
-        mystime niz[i] > niz[najveci] du {
+        a = niz[i];
+        b = niz[najveci];
+        mystime a > b du {
             najveci = i;
-        }
-    }
+        };
+    };
 
     privremeno = niz[0];
     niz[0] = niz[najveci];
@@ -25,5 +27,5 @@ enchanto {
     revelio "Niz_nakon_postavljanja_najveceg_elementa_na_pocetak";
     forculus i = 0 tu velicina du {
         revelio niz[i];
-    }
+    };
 }

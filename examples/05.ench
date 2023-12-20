@@ -2,7 +2,7 @@ enchanto {
 
     declaro incantum broj a b c;
 
-    revelio "Unesite_pozitivne_cele_brojeve:";
+    revelio "Unesite_pozitivne_cele_brojeve";
     scriptum broj;
 
     a = broj - 10;
@@ -15,6 +15,6 @@ enchanto {
         revelio "Broj_je_lud";
     } returntime du {
         revelio "Broj_nije_lud";
-    }
+    };
 
 }

@@ -15,9 +15,9 @@ enchanto {
         cifra = originalni_broj % 10;
         mystime cifra != izbacena_cifra du {
             izmenjen_broj = izmenjen_broj * 10 + cifra;
-        }
+        };
         originalni_broj = originalni_broj / 10;
-    }
+    };
 
     revelio izmenjen_broj;
 }

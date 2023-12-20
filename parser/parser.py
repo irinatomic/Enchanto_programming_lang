@@ -4,56 +4,65 @@ from typing import List
 import sys
 
 def check_syntax(words: List[str], states: List[State]) -> bool:
-    stateZero = states[0]
 
+    state_zero = states[0]
     magazine = []
-    magazine.append(stateZero)
+    magazine.append(state_zero)
 
-    while True:
-        currentState = magazine[len(magazine) - 1]
-        nextWord = words[0]
+    correct = None
 
-        # ----------
-        for obj in magazine:
-            if isinstance(obj, State):
-                sys.stdout.write(f'S{obj.orderNumber}')
-            else:
-                sys.stdout.write(str(obj))
-            sys.stdout.write(' ')
-        print('\n')
-        # ----------
+    while correct is None:
 
-        # Next action
-        action: Action = currentState.actions[nextWord]
+        # ----------------- DEBUG -----------------------
+        # print(words)
+        # for obj in magazine:
+        #     if isinstance(obj, State):
+        #         sys.stdout.write(f'S{obj.orderNumber}')
+        #     else:
+        #         sys.stdout.write(str(obj))
+        #     sys.stdout.write(' ')
+        # print('\n')
+        # -----------------------------------------------
+
+        current_state = magazine[len(magazine) - 1]
+        next_word = words[0]
+        action: Action = current_state.actions[next_word]
 
         # Error
         if action is None:
+            correct = False
             return False
-
+        
         # Accept
         if action.name == 'Accept':
+            correct = True
             return True
-
+        
         # Shift
         if action.name == 'Shift':
-            magazine.append(nextWord)
-            magazine.append(action.intoState)
+            magazine.append(next_word)                  # word
+            magazine.append(action.intoState)           # state
             words = words[1:]
-            continue
 
         # Reduce
         if action.name == 'Reduce':
-            ruleRhs = action.rhs
-            print(ruleRhs)
-            return
-        # # If the action is reduce, pop the magazine for the length of the right hand side of the rule
-        # # and push the left hand side of the rule
-        # if action.type == 'reduce':
-        #     for i in range(action.rule.rhs.length):
-        #         magazine.pop()
-        #     magazine.push(action.rule.lhs)
-        #     continue
+            ruleRhs: List[str] = action.rhs.split(' ')
+            # pop the magazine for rhs.len * 2
+            for i in range(len(ruleRhs) * 2):
+                magazine.pop()
 
+            # push the lhs to magazine
+            lhs = action.lhs
+            curr_state = magazine[len(magazine) - 1]
+            tmp_action = curr_state.actions.get(lhs)        # get -> to prevent KeyError
 
+            # just in case 
+            if tmp_action is None or tmp_action.name != 'Shift':
+                correct = False
+                return False
+            
+            next_state = tmp_action.intoState
+            magazine.append(lhs)                        # word
+            magazine.append(next_state)                 # state
 
-
+    return correct

@@ -12,15 +12,15 @@ enchanto {
     revelio "Unesite_moc_magija_ili_vesticarstvo";
     scriptum moc;
 
-    mystime (godine >= 18) andus (moc == "magija") du {
-        ispis = ime + "_je_punoletni_magicar";
-    } turntime (godine >= 18) andus (moc == "veštičarstvo") du {
-        ispis = ime + "_je_punoletni_vesticar";
-    } turntime (godine < 18) du {
-        ispis = ime + "_nije_punoletna_osoba";
-    } returntime {
+    mystime godine >= 18 andus moc == "magija" du {
+        ispis = "punoletan_magicar";
+    } turntime godine >= 18 andus moc == "veštičarstvo" du {
+        ispis = "punoletan_vesticar";
+    } turntime godine < 18 du {
+        ispis = "nije_punoletan";
+    } returntime du {
         ispis = "Nepostojeci_slucaj";
-    }
+    };
 
     revelio ispis;
 }

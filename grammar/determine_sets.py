@@ -1,5 +1,7 @@
 from typing import List
 
+follow_sets: dict = {}
+
 # FIRST SETS
 def generateFirstSets(G, T, nT):
 
@@ -45,8 +47,8 @@ def generateFirstSets(G, T, nT):
     return first_sets
 
 # FOLLOW SETS
-def generateFollowSets(G, firstSets):
-
+def generateFollowSets(G, first_sets): 
+    global follow_sets
     nT = extractNonTerminalsInOrder(G)
 
     follow_sets = {symbol: set() for symbol in nT}
@@ -62,7 +64,10 @@ def generateFollowSets(G, firstSets):
 
             # A -> c CURR
             # follow(CURR) += follow(A)
+            # PROBLEM: follow(A) might not be initialized yet
             if nt == rhs[-1]:
+                if (len(follow_sets[lhs]) == 0):
+                    generateFollowSetForNT(G, first_sets, lhs, nT)
                 follow_sets[nt] = follow_sets[nt].union(follow_sets[lhs])
 
             nextSymbol = rhs[ntIndex + 1] if ntIndex + 1 < len(rhs) else None
@@ -71,13 +76,44 @@ def generateFollowSets(G, firstSets):
             # A -> c CURR NEXT
             # follow(curr) += first(next)
             if nextSymbol is not None and nextSymbol in nT:
-                follow_sets[nt] = follow_sets[nt].union(firstSets[nextSymbol])
+                follow_sets[nt] = follow_sets[nt].union(first_sets[nextSymbol])
 
             # if the next symbol is a terminal
             if nextSymbol is not None and nextSymbol not in nT:
                 follow_sets[nt].add(nextSymbol)
 
     return follow_sets
+
+# FOLLOW SETS - helper
+# Only for 1 non-terminal
+def generateFollowSetForNT(G, first_sets, nt: str, nT: List[str]):
+    global follow_sets
+    rules = findRulesWithNonTeminal(G, nt)
+
+    for rule in rules:
+            lhs = rule[1]
+            rhs = rule[2].split(' ')
+            ntIndex = rhs.index(nt)
+
+            # A -> c CURR
+            # follow(CURR) += follow(A)
+            # PROBLEM: follow(A) might not be initialized yet
+            if nt == rhs[-1]:
+                if (len(follow_sets[lhs]) == 0):
+                    generateFollowSetForNT(G, first_sets, lhs, nT)
+                follow_sets[nt] = follow_sets[nt].union(follow_sets[lhs])
+
+            nextSymbol = rhs[ntIndex + 1] if ntIndex + 1 < len(rhs) else None
+
+            # if the next symbol is a non-terminal
+            # A -> c CURR NEXT
+            # follow(curr) += first(next)
+            if nextSymbol is not None and nextSymbol in nT:
+                follow_sets[nt] = follow_sets[nt].union(first_sets[nextSymbol])
+
+            # if the next symbol is a terminal
+            if nextSymbol is not None and nextSymbol not in nT:
+                follow_sets[nt].add(nextSymbol)
 
 def extractNonTerminalsInOrder(G):
     nT = []

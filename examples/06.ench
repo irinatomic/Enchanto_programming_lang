@@ -3,16 +3,16 @@ enchanto {
     declaro incantum n fact i;
     declaro stringo ispis;
 
-    revelio "Unesite_pozitivan_ceo_broj:";
+    revelio "Unesite_pozitivan_ceo_broj";
     scriptum n;
 
     fact = 1;
 
     forculus i = 2 tu n du {
         fact = fact * i;
-    }
+    };
 
-    ispis = "Faktorijel_broja_" + n + "_je_" + fact;
+    ispis = "Faktorijel_je_" + fact;
     revelio ispis;
 }
 

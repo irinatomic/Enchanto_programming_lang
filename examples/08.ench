@@ -4,7 +4,7 @@ enchanto {
 
     a = "prvo";
 
-    revelio "Unesite_string:";
+    revelio "Unesite_string";
     scriptum b;
 
     c = a + b;

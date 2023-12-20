@@ -6,17 +6,17 @@ enchanto {
     revelio "Unesite_pozitivan_ceo_broj";
     scriptum n;
 
-    razmak = ' ';
+    razmak = '_';
     zvezda = '*';
 
     forculus i = 1 tu n du {
 
         forculus j = 1 tu n - i du {
             revelio space;
-        }
+        };
 
         forculus j = 1 tu 2 * i - 1 du {
             revelio zvezda;
-        }
-    }
+        };
+    };
 }
