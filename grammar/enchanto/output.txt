@@ -1,195 +1,200 @@
-Non-terminal symbols:
-S
-SN
-N
-IN
-OUT
-DECL
-UNARY
-ASSIGN
-IFBLOCK
-FORBLOCK
-WHILEBLOCK
-IFB
-ELIFB
-ELSEB
-LOGICAL
-BLOCK
-ELIFBC
-FFROM
-FTO
-SAASIGN
-SRHS
-TNV
-EXPR
-TERNARY
-OPTION
-EDT
-NOP
-TERM
-FOP
-FACTOR
-SS
-TSV
-LOP
-ER
-ROP
-R
-LHS
-RHS
-ARRAY
-AELEM
-EDDT
-SV
-DDT
-DARRAY
-DT
+GRAMMAR
+(0, 'START', 'S')
+(1, 'S', 'enchanto { SN }')
+(2, 'SN', 'SN N ;')
+(3, 'SN', 'N ;')
+(4, 'N', 'IN')
+(5, 'N', 'OUT')
+(6, 'N', 'DECL')
+(7, 'N', 'UNARY')
+(8, 'N', 'ASSIGN')
+(9, 'N', 'IFBLOCK')
+(10, 'N', 'FORBLOCK')
+(11, 'N', 'WHILEBLOCK')
+(12, 'IFBLOCK', 'IFB ELIFB ELSEB')
+(13, 'IFBLOCK', 'IFB ELIFB')
+(14, 'IFBLOCK', 'IFB ELSEB')
+(15, 'IFBLOCK', 'IFB')
+(16, 'IFB', 'mystime LOGICAL { BLOCK }')
+(17, 'ELIFB', 'ELIFBC ELIFB')
+(18, 'ELIFB', 'ELIFBC')
+(19, 'ELIFBC', 'turntime LOGICAL { BLOCK }')
+(20, 'ELSEB', 'returntime { BLOCK }')
+(21, 'FORBLOCK', 'forculus FFROM tu FTO du { BLOCK }')
+(22, 'FFROM', 'SAASIGN')
+(23, 'FFROM', 'variable')
+(24, 'SAASIGN', 'variable = SRHS')
+(25, 'SRHS', 'TNV')
+(26, 'SRHS', 'EXPR')
+(27, 'FTO', 'TNV')
+(28, 'FTO', 'EXPR')
+(29, 'WHILEBLOCK', 'whilegardium LOGICAL du { BLOCK }')
+(30, 'BLOCK', 'SN')
+(31, 'TERNARY', 'tribus LOGICAL ? OPTION : OPTION')
+(32, 'OPTION', 'EDT')
+(33, 'OPTION', 'EXPR')
+(34, 'EXPR', 'EXPR NOP TERM')
+(35, 'EXPR', 'TERM')
+(36, 'NOP', '+')
+(37, 'NOP', '-')
+(38, 'NOP', '%')
+(39, 'TERM', 'TERM FOP FACTOR')
+(40, 'TERM', 'FACTOR')
+(41, 'FOP', '*')
+(42, 'FOP', '/')
+(43, 'FACTOR', 'TNV')
+(44, 'FACTOR', '( EXPR )')
+(45, 'EXPR', 'SS')
+(46, 'SS', 'SS + TSV')
+(47, 'SS', 'TSV')
+(48, 'EXPR', 'LOGICAL')
+(49, 'LOGICAL', 'LOGICAL LOP ER')
+(50, 'LOGICAL', 'ER')
+(51, 'LOP', 'andus')
+(52, 'LOP', 'orus')
+(53, 'LOP', 'notus')
+(54, 'ER', 'ER ROP R')
+(55, 'ER', 'R')
+(56, 'ROP', '==')
+(57, 'ROP', '!=')
+(58, 'ROP', '>')
+(59, 'ROP', '<')
+(60, 'ROP', '>=')
+(61, 'ROP', '<=')
+(62, 'R', '( LOGICAL )')
+(63, 'R', 'EDT')
+(64, 'R', '( EXPR )')
+(65, 'ASSIGN', 'LHS = RHS')
+(66, 'LHS', 'variable')
+(67, 'LHS', 'variable [ TNV ]')
+(68, 'RHS', 'ARRAY')
+(69, 'RHS', 'TERNARY')
+(70, 'RHS', 'EDT')
+(71, 'RHS', 'EXPR')
+(72, 'ARRAY', '[ AELEM ]')
+(73, 'AELEM', 'TNV , AELEM')
+(74, 'AELEM', 'TNV')
+(75, 'DECL', 'declaro EDDT SV')
+(76, 'SV', 'SV variable')
+(77, 'SV', 'variable')
+(78, 'EDDT', 'DDT')
+(79, 'EDDT', 'DARRAY')
+(80, 'DDT', 'incantum')
+(81, 'DDT', 'dublatum')
+(82, 'DDT', 'charmax')
+(83, 'DDT', 'stringo')
+(84, 'DARRAY', 'arraygo [ TNV ] DDT')
+(85, 'UNARY', 'ascendo variable')
+(86, 'UNARY', 'descendo variable')
+(87, 'IN', 'scriptum variable')
+(88, 'OUT', 'revelio EDT')
+(89, 'TNV', 'number')
+(90, 'TNV', 'variable')
+(91, 'TSV', 'string')
+(92, 'TSV', 'variable')
+(93, 'DT', 'number')
+(94, 'DT', 'char')
+(95, 'DT', 'string')
+(96, 'EDT', 'DT')
+(97, 'EDT', 'variable')
 
-Terminal symbols:
-enchanto
-{
-}
-;
-mystime
-turntime
-returntime
-forculus
-tu
-du
-variable
-=
-whilegardium
-tribus
-?
-:
-+
--
-%
-*
-/
-(
-)
-andus
-orus
-notus
-==
-!=
->
-<
->=
-<=
-[
-]
-,
-declaro
-incantum
-dublatum
-charmax
-stringo
-arraygo
-ascendo
-descendo
-scriptum
-revelio
-number
-string
-char
+FIRST SETS
+START: {'enchanto'}
+S: {'enchanto'}
+SN: {'declaro', 'variable', 'descendo', 'forculus', 'scriptum', 'whilegardium', 'ascendo', 'revelio', 'mystime'}
+N: {'declaro', 'variable', 'descendo', 'forculus', 'scriptum', 'whilegardium', 'ascendo', 'revelio', 'mystime'}
+IN: {'scriptum'}
+OUT: {'revelio'}
+DECL: {'declaro'}
+UNARY: {'ascendo', 'descendo'}
+ASSIGN: {'variable'}
+IFBLOCK: {'mystime'}
+FORBLOCK: {'forculus'}
+WHILEBLOCK: {'whilegardium'}
+IFB: {'mystime'}
+ELIFB: {'turntime'}
+ELSEB: {'returntime'}
+LOGICAL: {'number', '(', 'variable', 'string', 'char'}
+BLOCK: {'declaro', 'variable', 'descendo', 'forculus', 'scriptum', 'whilegardium', 'ascendo', 'revelio', 'mystime'}
+ELIFBC: {'turntime'}
+FFROM: {'variable'}
+FTO: {'number', '(', 'variable', 'string', 'char'}
+SAASIGN: {'variable'}
+SRHS: {'number', '(', 'variable', 'string', 'char'}
+TNV: {'number', 'variable'}
+EXPR: {'number', '(', 'variable', 'string', 'char'}
+TERNARY: {'tribus'}
+OPTION: {'number', '(', 'variable', 'string', 'char'}
+EDT: {'number', 'variable', 'string', 'char'}
+NOP: {'-', '+', '%'}
+TERM: {'number', 'variable', '('}
+FOP: {'/', '*'}
+FACTOR: {'number', 'variable', '('}
+SS: {'variable', 'string'}
+TSV: {'variable', 'string'}
+LOP: {'andus', 'notus', 'orus'}
+ER: {'number', '(', 'variable', 'string', 'char'}
+ROP: {'>=', '<=', '==', '!=', '>', '<'}
+R: {'number', '(', 'variable', 'string', 'char'}
+LHS: {'variable'}
+RHS: {'number', '(', 'char', 'variable', 'tribus', 'string', '['}
+ARRAY: {'['}
+AELEM: {'number', 'variable'}
+EDDT: {'stringo', 'charmax', 'incantum', 'dublatum', 'arraygo'}
+SV: {'variable'}
+DDT: {'stringo', 'dublatum', 'charmax', 'incantum'}
+DARRAY: {'arraygo'}
+DT: {'number', 'string', 'char'}
 
-First sets:
-S -> {'enchanto'}
-SN -> {'forculus', 'revelio', 'variable', 'whilegardium', 'ascendo', 'descendo', 'declaro', 'mystime', 'scriptum'}
-N -> {'forculus', 'revelio', 'variable', 'whilegardium', 'ascendo', 'descendo', 'declaro', 'mystime', 'scriptum'}
-IN -> {'scriptum'}
-OUT -> {'revelio'}
-DECL -> {'declaro'}
-UNARY -> {'descendo', 'ascendo'}
-ASSIGN -> {'variable'}
-IFBLOCK -> {'mystime'}
-FORBLOCK -> {'forculus'}
-WHILEBLOCK -> {'whilegardium'}
-IFB -> {'mystime'}
-ELIFB -> {'turntime'}
-ELSEB -> {'returntime'}
-LOGICAL -> {'char', 'variable', 'string', '(', 'number'}
-BLOCK -> {'forculus', 'revelio', 'variable', 'whilegardium', 'ascendo', 'descendo', 'declaro', 'mystime', 'scriptum'}
-ELIFBC -> {'turntime'}
-FFROM -> {'variable'}
-FTO -> {'char', 'variable', 'string', '(', 'number'}
-SAASIGN -> {'variable'}
-SRHS -> {'char', 'variable', 'string', '(', 'number'}
-TNV -> {'variable', 'number'}
-EXPR -> {'char', 'variable', 'string', '(', 'number'}
-TERNARY -> {'tribus'}
-OPTION -> {'char', 'variable', 'string', '(', 'number'}
-EDT -> {'variable', 'string', 'char', 'number'}
-NOP -> {'%', '-', '+'}
-TERM -> {'variable', '(', 'number'}
-FOP -> {'*', '/'}
-FACTOR -> {'variable', '(', 'number'}
-SS -> {'variable', 'string'}
-TSV -> {'variable', 'string'}
-LOP -> {'notus', 'andus', 'orus'}
-ER -> {'char', 'variable', 'string', '(', 'number'}
-ROP -> {'!=', '<=', '==', '>', '>=', '<'}
-R -> {'char', 'variable', 'string', '(', 'number'}
-LHS -> {'variable'}
-RHS -> {'char', 'variable', '[', 'string', 'tribus', '(', 'number'}
-ARRAY -> {'['}
-AELEM -> {'variable', 'number'}
-EDDT -> {'charmax', 'arraygo', 'dublatum', 'stringo', 'incantum'}
-SV -> {'variable'}
-DDT -> {'stringo', 'charmax', 'dublatum', 'incantum'}
-DARRAY -> {'arraygo'}
-DT -> {'string', 'char', 'number'}
+FOLLOW SETS
+START: {'#'}
+S: {'#'}
+SN: {'declaro', 'variable', 'descendo', 'forculus', 'scriptum', 'whilegardium', 'ascendo', 'revelio', '}', 'mystime'}
+N: {';'}
+IFBLOCK: {';'}
+IFB: {'turntime', ';', 'returntime'}
+ELIFB: {';', 'returntime'}
+ELIFBC: {'turntime', ';', 'returntime'}
+ELSEB: {';'}
+FORBLOCK: {';'}
+FFROM: {'tu'}
+SAASIGN: {'tu'}
+SRHS: {'tu'}
+FTO: {'du'}
+WHILEBLOCK: {';'}
+BLOCK: {'}'}
+TERNARY: set()
+OPTION: {':'}
+EXPR: {'-', '+', 'du', '%', ')', 'tu', ':'}
+NOP: {'number', 'variable', '('}
+TERM: {'*', ')', '/', 'tu', '-', '+', 'du', '%', ':'}
+FOP: {'number', 'variable', '('}
+FACTOR: {'*', ')', '/', 'tu', '-', '+', 'du', '%', ':'}
+SS: {'-', '+', 'du', '%', ')', 'tu', ':'}
+LOGICAL: {'orus', ')', 'tu', '?', 'andus', '-', '+', 'du', '%', '{', 'notus', ':'}
+LOP: {'variable', 'number', '(', 'string', 'char'}
+ER: {'<', 'orus', ')', '>=', 'tu', '<=', '?', 'andus', '-', '+', 'du', '%', '==', '!=', '>', '{', 'notus', ':'}
+ROP: {'variable', 'number', '(', 'string', 'char'}
+R: {'orus', ')', '>=', '-', '+', 'du', '%', '==', '>', '{', 'notus', 'tu', '<=', '?', 'andus', '!=', '<', ':'}
+ASSIGN: {';'}
+LHS: {'='}
+RHS: {';'}
+ARRAY: {';'}
+AELEM: {']'}
+DECL: {';'}
+SV: {'variable', ';'}
+EDDT: {'variable'}
+DDT: {'variable'}
+DARRAY: {'variable'}
+UNARY: {';'}
+IN: {';'}
+OUT: {';'}
+TNV: {'*', ')', '/', 'tu', '-', '+', 'du', '%', ']', ',', ':'}
+TSV: {')', 'tu', '-', '+', 'du', '%', ':'}
+DT: set()
+EDT: {'orus', ')', '>=', '-', '+', 'du', '%', '==', '>', '{', 'notus', ';', 'tu', '<=', '?', 'andus', '!=', '<', ':'}
 
-Follow sets:
-S -> {'#'}
-SN -> {'}'}
-N -> {';', '#'}
-IN -> {';', '#'}
-OUT -> {';', '#'}
-DECL -> {';', '#'}
-UNARY -> {';', '#'}
-ASSIGN -> {';', '#'}
-IFBLOCK -> {';', '#'}
-FORBLOCK -> {';', '#'}
-WHILEBLOCK -> {';', '#'}
-IFB -> {';', '#'}
-ELIFB -> {';', '#'}
-ELSEB -> {';', '#'}
-LOGICAL -> {':', 'tu', ';', '{', '#', ')', '?', 'du'}
-BLOCK -> {'}'}
-ELIFBC -> {';', '#'}
-FFROM -> {'tu'}
-FTO -> {'du'}
-SAASIGN -> {'tu'}
-SRHS -> {'tu'}
-TNV -> {':', 'tu', ']', '#', ',', ';', ')', 'du'}
-EXPR -> {':', 'tu', ';', '#', ')', 'du'}
-TERNARY -> {';', '#'}
-OPTION -> {';', ':', '#'}
-EDT -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
-NOP -> {'#'}
-TERM -> {':', 'tu', '#', ';', ')', 'du'}
-FOP -> {'#'}
-FACTOR -> {':', 'tu', '#', ';', ')', 'du'}
-SS -> {':', 'tu', ';', '#', ')', '+', 'du'}
-TSV -> {':', 'tu', ';', '#', ')', '+', 'du'}
-LOP -> {'#'}
-ER -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
-ROP -> {'#'}
-R -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
-LHS -> {'='}
-RHS -> {';', '#'}
-ARRAY -> {';', '#'}
-AELEM -> {']'}
-EDDT -> set()
-SV -> {';', '#', 'variable'}
-DDT -> set()
-DARRAY -> set()
-DT -> {':', 'tu', '#', '{', ';', ')', '?', 'du'}
-
-States:
+STATES:
 State 0 = goto(None, None) 
 	START -> . S
 	S -> . enchanto { SN }
@@ -267,6 +272,8 @@ State 0 = goto(None, None)
 	AELEM -> . TNV , AELEM
 	AELEM -> . TNV
 	DECL -> . declaro EDDT SV
+	SV -> . SV variable
+	SV -> . variable
 	EDDT -> . DDT
 	EDDT -> . DARRAY
 	DDT -> . incantum
@@ -274,8 +281,6 @@ State 0 = goto(None, None)
 	DDT -> . charmax
 	DDT -> . stringo
 	DARRAY -> . arraygo [ TNV ] DDT
-	SV -> . SV variable
-	SV -> . variable
 	UNARY -> . ascendo variable
 	UNARY -> . descendo variable
 	IN -> . scriptum variable
@@ -291,74 +296,74 @@ State 0 = goto(None, None)
 	EDT -> . variable
 
 	Actions:
-	for S: Shift 1
-	for enchanto: Shift 2
-	for SN: Shift 3
-	for N: Shift 4
-	for IN: Shift 5
-	for OUT: Shift 6
-	for DECL: Shift 7
-	for UNARY: Shift 8
-	for ASSIGN: Shift 9
-	for IFBLOCK: Shift 10
-	for FORBLOCK: Shift 11
-	for WHILEBLOCK: Shift 12
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for ELIFBC: Shift 15
-	for turntime: Shift 16
-	for returntime: Shift 17
-	for forculus: Shift 18
-	for SAASIGN: Shift 19
-	for variable: Shift 20
-	for TNV: Shift 21
-	for EXPR: Shift 22
-	for whilegardium: Shift 23
-	for tribus: Shift 24
-	for EDT: Shift 25
-	for TERM: Shift 26
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
-	for FACTOR: Shift 30
-	for *: Shift 31
-	for /: Shift 32
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
-	for R: Shift 41
-	for ==: Shift 42
-	for !=: Shift 43
-	for >: Shift 44
-	for <: Shift 45
-	for >=: Shift 46
-	for <=: Shift 47
-	for LHS: Shift 48
-	for ARRAY: Shift 49
-	for TERNARY: Shift 50
-	for [: Shift 51
-	for declaro: Shift 52
-	for DDT: Shift 53
-	for DARRAY: Shift 54
-	for incantum: Shift 55
-	for dublatum: Shift 56
-	for charmax: Shift 57
-	for stringo: Shift 58
-	for arraygo: Shift 59
-	for SV: Shift 60
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for scriptum: Shift 63
-	for revelio: Shift 64
-	for number: Shift 65
-	for string: Shift 66
-	for char: Shift 67
-	for DT: Shift 68
+	for S: Shift s1
+	for enchanto: Shift s2
+	for SN: Shift s3
+	for N: Shift s4
+	for IN: Shift s5
+	for OUT: Shift s6
+	for DECL: Shift s7
+	for UNARY: Shift s8
+	for ASSIGN: Shift s9
+	for IFBLOCK: Shift s10
+	for FORBLOCK: Shift s11
+	for WHILEBLOCK: Shift s12
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for ELIFBC: Shift s15
+	for turntime: Shift s16
+	for returntime: Shift s17
+	for forculus: Shift s18
+	for SAASIGN: Shift s19
+	for variable: Shift s20
+	for TNV: Shift s21
+	for EXPR: Shift s22
+	for whilegardium: Shift s23
+	for tribus: Shift s24
+	for EDT: Shift s25
+	for TERM: Shift s26
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
+	for FACTOR: Shift s30
+	for *: Shift s31
+	for /: Shift s32
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
+	for R: Shift s41
+	for ==: Shift s42
+	for !=: Shift s43
+	for >: Shift s44
+	for <: Shift s45
+	for >=: Shift s46
+	for <=: Shift s47
+	for LHS: Shift s48
+	for ARRAY: Shift s49
+	for TERNARY: Shift s50
+	for [: Shift s51
+	for declaro: Shift s52
+	for SV: Shift s53
+	for DDT: Shift s54
+	for DARRAY: Shift s55
+	for incantum: Shift s56
+	for dublatum: Shift s57
+	for charmax: Shift s58
+	for stringo: Shift s59
+	for arraygo: Shift s60
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for scriptum: Shift s63
+	for revelio: Shift s64
+	for number: Shift s65
+	for string: Shift s66
+	for char: Shift s67
+	for DT: Shift s68
 
 State 1 = goto(0, S) 
 	START -> S .
@@ -370,7 +375,7 @@ State 2 = goto(0, enchanto)
 	S -> enchanto . { SN }
 
 	Actions:
-	for {: Shift 69
+	for {: Shift s69
 
 State 3 = goto(0, SN) 
 	SN -> SN . N ;
@@ -400,89 +405,81 @@ State 3 = goto(0, SN)
 	BLOCK -> SN .
 
 	Actions:
-	for N: Shift 70
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for N: Shift s70
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 	for }: Reduce r30
 
 State 4 = goto(0, N) 
 	SN -> N . ;
 
 	Actions:
-	for ;: Shift 90
+	for ;: Shift s90
 
 State 5 = goto(0, IN) 
 	N -> IN .
 
 	Actions:
 	for ;: Reduce r4
-	for #: Reduce r4
 
 State 6 = goto(0, OUT) 
 	N -> OUT .
 
 	Actions:
 	for ;: Reduce r5
-	for #: Reduce r5
 
 State 7 = goto(0, DECL) 
 	N -> DECL .
 
 	Actions:
 	for ;: Reduce r6
-	for #: Reduce r6
 
 State 8 = goto(0, UNARY) 
 	N -> UNARY .
 
 	Actions:
 	for ;: Reduce r7
-	for #: Reduce r7
 
 State 9 = goto(0, ASSIGN) 
 	N -> ASSIGN .
 
 	Actions:
 	for ;: Reduce r8
-	for #: Reduce r8
 
 State 10 = goto(0, IFBLOCK) 
 	N -> IFBLOCK .
 
 	Actions:
 	for ;: Reduce r9
-	for #: Reduce r9
 
 State 11 = goto(0, FORBLOCK) 
 	N -> FORBLOCK .
 
 	Actions:
 	for ;: Reduce r10
-	for #: Reduce r10
 
 State 12 = goto(0, WHILEBLOCK) 
 	N -> WHILEBLOCK .
 
 	Actions:
 	for ;: Reduce r11
-	for #: Reduce r11
 
 State 13 = goto(0, IFB) 
 	IFBLOCK -> IFB . ELIFB ELSEB
@@ -495,13 +492,12 @@ State 13 = goto(0, IFB)
 	IFBLOCK -> IFB .
 
 	Actions:
-	for ELIFB: Shift 91
-	for ELIFBC: Shift 15
-	for turntime: Shift 16
-	for ELSEB: Shift 94
-	for returntime: Shift 17
+	for ELIFB: Shift s91
+	for ELIFBC: Shift s15
+	for turntime: Shift s16
+	for ELSEB: Shift s94
+	for returntime: Shift s17
 	for ;: Reduce r15
-	for #: Reduce r15
 
 State 14 = goto(0, mystime) 
 	IFB -> mystime . LOGICAL { BLOCK }
@@ -519,16 +515,16 @@ State 14 = goto(0, mystime)
 	R -> . ( EXPR )
 
 	Actions:
-	for LOGICAL: Shift 96
-	for ER: Shift 37
-	for R: Shift 41
-	for (: Shift 99
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for LOGICAL: Shift s96
+	for ER: Shift s37
+	for R: Shift s41
+	for (: Shift s99
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 15 = goto(0, ELIFBC) 
 	ELIFB -> ELIFBC . ELIFB
@@ -538,11 +534,11 @@ State 15 = goto(0, ELIFBC)
 	ELIFB -> ELIFBC .
 
 	Actions:
-	for ELIFB: Shift 106
-	for ELIFBC: Shift 15
-	for turntime: Shift 16
+	for ELIFB: Shift s106
+	for ELIFBC: Shift s15
+	for turntime: Shift s16
 	for ;: Reduce r18
-	for #: Reduce r18
+	for returntime: Reduce r18
 
 State 16 = goto(0, turntime) 
 	ELIFBC -> turntime . LOGICAL { BLOCK }
@@ -560,22 +556,22 @@ State 16 = goto(0, turntime)
 	R -> . ( EXPR )
 
 	Actions:
-	for LOGICAL: Shift 109
-	for ER: Shift 37
-	for R: Shift 41
-	for (: Shift 99
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for LOGICAL: Shift s109
+	for ER: Shift s37
+	for R: Shift s41
+	for (: Shift s99
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 17 = goto(0, returntime) 
 	ELSEB -> returntime . { BLOCK }
 
 	Actions:
-	for {: Shift 119
+	for {: Shift s119
 
 State 18 = goto(0, forculus) 
 	FORBLOCK -> forculus . FFROM tu FTO du { BLOCK }
@@ -584,9 +580,9 @@ State 18 = goto(0, forculus)
 	FFROM -> . variable
 
 	Actions:
-	for FFROM: Shift 120
-	for SAASIGN: Shift 19
-	for variable: Shift 122
+	for FFROM: Shift s120
+	for SAASIGN: Shift s19
+	for variable: Shift s122
 
 State 19 = goto(0, SAASIGN) 
 	FFROM -> SAASIGN .
@@ -606,19 +602,31 @@ State 20 = goto(0, variable)
 
 	Actions:
 	for =: Reduce r66
-	for [: Shift 124
+	for [: Shift s124
 	for tu: Reduce r97
+	for variable: Reduce r77
 	for ;: Reduce r97
-	for #: Reduce r97
-	for variable: Reduce r84
-	for :: Reduce r97
+	for *: Reduce r90
+	for ): Reduce r97
+	for /: Reduce r90
+	for -: Reduce r97
+	for +: Reduce r97
+	for du: Reduce r97
+	for %: Reduce r97
 	for ]: Reduce r90
 	for ,: Reduce r90
-	for ): Reduce r97
-	for du: Reduce r97
-	for +: Reduce r92
+	for :: Reduce r97
+	for orus: Reduce r97
+	for >=: Reduce r97
+	for ==: Reduce r97
+	for >: Reduce r97
 	for {: Reduce r97
+	for notus: Reduce r97
+	for <=: Reduce r97
 	for ?: Reduce r97
+	for andus: Reduce r97
+	for !=: Reduce r97
+	for <: Reduce r97
 
 State 21 = goto(0, TNV) 
 	SRHS -> TNV .
@@ -628,13 +636,16 @@ State 21 = goto(0, TNV)
 	AELEM -> TNV .
 
 	Actions:
-	for ,: Shift 125
+	for ,: Shift s125
 	for tu: Reduce r43
 	for du: Reduce r43
-	for :: Reduce r43
-	for #: Reduce r43
-	for ;: Reduce r43
+	for *: Reduce r43
 	for ): Reduce r43
+	for /: Reduce r43
+	for -: Reduce r43
+	for +: Reduce r43
+	for %: Reduce r43
+	for :: Reduce r43
 	for ]: Reduce r74
 
 State 22 = goto(0, EXPR) 
@@ -648,15 +659,14 @@ State 22 = goto(0, EXPR)
 	RHS -> EXPR .
 
 	Actions:
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 	for tu: Reduce r26
 	for du: Reduce r28
-	for ;: Reduce r71
 	for :: Reduce r33
-	for #: Reduce r71
+	for ;: Reduce r71
 
 State 23 = goto(0, whilegardium) 
 	WHILEBLOCK -> whilegardium . LOGICAL du { BLOCK }
@@ -674,16 +684,16 @@ State 23 = goto(0, whilegardium)
 	R -> . ( EXPR )
 
 	Actions:
-	for LOGICAL: Shift 130
-	for ER: Shift 37
-	for R: Shift 41
-	for (: Shift 99
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for LOGICAL: Shift s130
+	for ER: Shift s37
+	for R: Shift s41
+	for (: Shift s99
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 24 = goto(0, tribus) 
 	TERNARY -> tribus . LOGICAL ? OPTION : OPTION
@@ -701,16 +711,16 @@ State 24 = goto(0, tribus)
 	R -> . ( EXPR )
 
 	Actions:
-	for LOGICAL: Shift 140
-	for ER: Shift 37
-	for R: Shift 41
-	for (: Shift 99
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for LOGICAL: Shift s140
+	for ER: Shift s37
+	for R: Shift s41
+	for (: Shift s99
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 25 = goto(0, EDT) 
 	OPTION -> EDT .
@@ -718,14 +728,25 @@ State 25 = goto(0, EDT)
 	RHS -> EDT .
 
 	Actions:
-	for ;: Reduce r70
 	for :: Reduce r63
-	for #: Reduce r70
-	for tu: Reduce r63
-	for {: Reduce r63
+	for orus: Reduce r63
 	for ): Reduce r63
-	for ?: Reduce r63
+	for >=: Reduce r63
+	for -: Reduce r63
+	for +: Reduce r63
 	for du: Reduce r63
+	for %: Reduce r63
+	for ==: Reduce r63
+	for >: Reduce r63
+	for {: Reduce r63
+	for notus: Reduce r63
+	for tu: Reduce r63
+	for <=: Reduce r63
+	for ?: Reduce r63
+	for andus: Reduce r63
+	for !=: Reduce r63
+	for <: Reduce r63
+	for ;: Reduce r70
 
 State 26 = goto(0, TERM) 
 	EXPR -> TERM .
@@ -734,56 +755,70 @@ State 26 = goto(0, TERM)
 	FOP -> . /
 
 	Actions:
-	for FOP: Shift 150
-	for *: Shift 31
-	for /: Shift 32
-	for :: Reduce r35
-	for tu: Reduce r35
-	for ;: Reduce r35
-	for #: Reduce r35
-	for ): Reduce r35
+	for FOP: Shift s150
+	for *: Shift s31
+	for /: Shift s32
+	for -: Reduce r35
+	for +: Reduce r35
 	for du: Reduce r35
+	for %: Reduce r35
+	for ): Reduce r35
+	for tu: Reduce r35
+	for :: Reduce r35
 
 State 27 = goto(0, +) 
 	NOP -> + .
 
 	Actions:
-	for #: Reduce r36
+	for number: Reduce r36
+	for variable: Reduce r36
+	for (: Reduce r36
 
 State 28 = goto(0, -) 
 	NOP -> - .
 
 	Actions:
-	for #: Reduce r37
+	for number: Reduce r37
+	for variable: Reduce r37
+	for (: Reduce r37
 
 State 29 = goto(0, %) 
 	NOP -> % .
 
 	Actions:
-	for #: Reduce r38
+	for number: Reduce r38
+	for variable: Reduce r38
+	for (: Reduce r38
 
 State 30 = goto(0, FACTOR) 
 	TERM -> FACTOR .
 
 	Actions:
-	for :: Reduce r40
-	for tu: Reduce r40
-	for #: Reduce r40
-	for ;: Reduce r40
+	for *: Reduce r40
 	for ): Reduce r40
+	for /: Reduce r40
+	for tu: Reduce r40
+	for -: Reduce r40
+	for +: Reduce r40
 	for du: Reduce r40
+	for %: Reduce r40
+	for :: Reduce r40
 
 State 31 = goto(0, *) 
 	FOP -> * .
 
 	Actions:
-	for #: Reduce r41
+	for number: Reduce r41
+	for variable: Reduce r41
+	for (: Reduce r41
 
 State 32 = goto(0, /) 
 	FOP -> / .
 
 	Actions:
-	for #: Reduce r42
+	for number: Reduce r42
+	for variable: Reduce r42
+	for (: Reduce r42
 
 State 33 = goto(0, () 
 	FACTOR -> ( . EXPR )
@@ -817,47 +852,47 @@ State 33 = goto(0, ()
 	R -> ( . EXPR )
 
 	Actions:
-	for EXPR: Shift 153
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for number: Shift 65
-	for variable: Shift 158
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for string: Shift 66
-	for LOGICAL: Shift 163
-	for ER: Shift 37
-	for R: Shift 41
-	for EDT: Shift 100
-	for DT: Shift 68
-	for char: Shift 67
+	for EXPR: Shift s153
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for number: Shift s65
+	for variable: Shift s158
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for string: Shift s66
+	for LOGICAL: Shift s163
+	for ER: Shift s37
+	for R: Shift s41
+	for EDT: Shift s100
+	for DT: Shift s68
+	for char: Shift s67
 
 State 34 = goto(0, SS) 
 	EXPR -> SS .
 	SS -> SS . + TSV
 
 	Actions:
-	for +: Shift 169
-	for :: Reduce r45
-	for tu: Reduce r45
-	for ;: Reduce r45
-	for #: Reduce r45
-	for ): Reduce r45
+	for +: Reduce r45
+	for -: Reduce r45
 	for du: Reduce r45
+	for %: Reduce r45
+	for ): Reduce r45
+	for tu: Reduce r45
+	for :: Reduce r45
 
 State 35 = goto(0, TSV) 
 	SS -> TSV .
 
 	Actions:
-	for :: Reduce r47
-	for tu: Reduce r47
-	for ;: Reduce r47
-	for #: Reduce r47
-	for ): Reduce r47
+	for -: Reduce r47
 	for +: Reduce r47
 	for du: Reduce r47
+	for %: Reduce r47
+	for ): Reduce r47
+	for tu: Reduce r47
+	for :: Reduce r47
 
 State 36 = goto(0, LOGICAL) 
 	EXPR -> LOGICAL .
@@ -867,16 +902,17 @@ State 36 = goto(0, LOGICAL)
 	LOP -> . notus
 
 	Actions:
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
-	for :: Reduce r48
-	for tu: Reduce r48
-	for ;: Reduce r48
-	for #: Reduce r48
-	for ): Reduce r48
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
+	for -: Reduce r48
+	for +: Reduce r48
 	for du: Reduce r48
+	for %: Reduce r48
+	for ): Reduce r48
+	for tu: Reduce r48
+	for :: Reduce r48
 
 State 37 = goto(0, ER) 
 	LOGICAL -> ER .
@@ -889,108 +925,156 @@ State 37 = goto(0, ER)
 	ROP -> . <=
 
 	Actions:
-	for ROP: Shift 174
-	for ==: Shift 42
-	for !=: Shift 43
-	for >: Shift 44
-	for <: Shift 45
-	for >=: Shift 46
-	for <=: Shift 47
-	for :: Reduce r50
-	for tu: Reduce r50
-	for ;: Reduce r50
-	for {: Reduce r50
-	for #: Reduce r50
+	for ROP: Shift s174
+	for ==: Shift s42
+	for !=: Shift s43
+	for >: Shift s44
+	for <: Shift s45
+	for >=: Shift s46
+	for <=: Shift s47
+	for orus: Reduce r50
 	for ): Reduce r50
+	for tu: Reduce r50
 	for ?: Reduce r50
+	for andus: Reduce r50
+	for -: Reduce r50
+	for +: Reduce r50
 	for du: Reduce r50
+	for %: Reduce r50
+	for {: Reduce r50
+	for notus: Reduce r50
+	for :: Reduce r50
 
 State 38 = goto(0, andus) 
 	LOP -> andus .
 
 	Actions:
-	for #: Reduce r51
+	for variable: Reduce r51
+	for number: Reduce r51
+	for (: Reduce r51
+	for string: Reduce r51
+	for char: Reduce r51
 
 State 39 = goto(0, orus) 
 	LOP -> orus .
 
 	Actions:
-	for #: Reduce r52
+	for variable: Reduce r52
+	for number: Reduce r52
+	for (: Reduce r52
+	for string: Reduce r52
+	for char: Reduce r52
 
 State 40 = goto(0, notus) 
 	LOP -> notus .
 
 	Actions:
-	for #: Reduce r53
+	for variable: Reduce r53
+	for number: Reduce r53
+	for (: Reduce r53
+	for string: Reduce r53
+	for char: Reduce r53
 
 State 41 = goto(0, R) 
 	ER -> R .
 
 	Actions:
-	for :: Reduce r55
-	for tu: Reduce r55
-	for #: Reduce r55
-	for {: Reduce r55
-	for ;: Reduce r55
+	for <: Reduce r55
+	for orus: Reduce r55
 	for ): Reduce r55
+	for >=: Reduce r55
+	for tu: Reduce r55
+	for <=: Reduce r55
 	for ?: Reduce r55
+	for andus: Reduce r55
+	for -: Reduce r55
+	for +: Reduce r55
 	for du: Reduce r55
+	for %: Reduce r55
+	for ==: Reduce r55
+	for !=: Reduce r55
+	for >: Reduce r55
+	for {: Reduce r55
+	for notus: Reduce r55
+	for :: Reduce r55
 
 State 42 = goto(0, ==) 
 	ROP -> == .
 
 	Actions:
-	for #: Reduce r56
+	for variable: Reduce r56
+	for number: Reduce r56
+	for (: Reduce r56
+	for string: Reduce r56
+	for char: Reduce r56
 
 State 43 = goto(0, !=) 
 	ROP -> != .
 
 	Actions:
-	for #: Reduce r57
+	for variable: Reduce r57
+	for number: Reduce r57
+	for (: Reduce r57
+	for string: Reduce r57
+	for char: Reduce r57
 
 State 44 = goto(0, >) 
 	ROP -> > .
 
 	Actions:
-	for #: Reduce r58
+	for variable: Reduce r58
+	for number: Reduce r58
+	for (: Reduce r58
+	for string: Reduce r58
+	for char: Reduce r58
 
 State 45 = goto(0, <) 
 	ROP -> < .
 
 	Actions:
-	for #: Reduce r59
+	for variable: Reduce r59
+	for number: Reduce r59
+	for (: Reduce r59
+	for string: Reduce r59
+	for char: Reduce r59
 
 State 46 = goto(0, >=) 
 	ROP -> >= .
 
 	Actions:
-	for #: Reduce r60
+	for variable: Reduce r60
+	for number: Reduce r60
+	for (: Reduce r60
+	for string: Reduce r60
+	for char: Reduce r60
 
 State 47 = goto(0, <=) 
 	ROP -> <= .
 
 	Actions:
-	for #: Reduce r61
+	for variable: Reduce r61
+	for number: Reduce r61
+	for (: Reduce r61
+	for string: Reduce r61
+	for char: Reduce r61
 
 State 48 = goto(0, LHS) 
 	ASSIGN -> LHS . = RHS
 
 	Actions:
-	for =: Shift 181
+	for =: Shift s181
 
 State 49 = goto(0, ARRAY) 
 	RHS -> ARRAY .
 
 	Actions:
 	for ;: Reduce r68
-	for #: Reduce r68
 
 State 50 = goto(0, TERNARY) 
 	RHS -> TERNARY .
 
 	Actions:
 	for ;: Reduce r69
-	for #: Reduce r69
 
 State 51 = goto(0, [) 
 	ARRAY -> [ . AELEM ]
@@ -1000,10 +1084,10 @@ State 51 = goto(0, [)
 	AELEM -> . TNV
 
 	Actions:
-	for AELEM: Shift 182
-	for TNV: Shift 183
-	for number: Shift 184
-	for variable: Shift 185
+	for AELEM: Shift s182
+	for TNV: Shift s183
+	for number: Shift s184
+	for variable: Shift s185
 
 State 52 = goto(0, declaro) 
 	DECL -> declaro . EDDT SV
@@ -1016,62 +1100,80 @@ State 52 = goto(0, declaro)
 	DARRAY -> . arraygo [ TNV ] DDT
 
 	Actions:
-	for EDDT: Shift 186
-	for DDT: Shift 53
-	for incantum: Shift 55
-	for dublatum: Shift 56
-	for charmax: Shift 57
-	for stringo: Shift 58
-	for DARRAY: Shift 54
-	for arraygo: Shift 59
+	for EDDT: Shift s186
+	for DDT: Shift s54
+	for incantum: Shift s56
+	for dublatum: Shift s57
+	for charmax: Shift s58
+	for stringo: Shift s59
+	for DARRAY: Shift s55
+	for arraygo: Shift s60
 
-State 53 = goto(0, DDT) 
-	EDDT -> DDT .
-
-State 54 = goto(0, DARRAY) 
-	EDDT -> DARRAY .
-
-State 55 = goto(0, incantum) 
-	DDT -> incantum .
-
-State 56 = goto(0, dublatum) 
-	DDT -> dublatum .
-
-State 57 = goto(0, charmax) 
-	DDT -> charmax .
-
-State 58 = goto(0, stringo) 
-	DDT -> stringo .
-
-State 59 = goto(0, arraygo) 
-	DARRAY -> arraygo . [ TNV ] DDT
-
-	Actions:
-	for [: Shift 194
-
-State 60 = goto(0, SV) 
+State 53 = goto(0, SV) 
 	SV -> SV . variable
 
 	Actions:
-	for variable: Shift 195
+	for variable: Shift s194
+
+State 54 = goto(0, DDT) 
+	EDDT -> DDT .
+
+	Actions:
+	for variable: Reduce r78
+
+State 55 = goto(0, DARRAY) 
+	EDDT -> DARRAY .
+
+	Actions:
+	for variable: Reduce r79
+
+State 56 = goto(0, incantum) 
+	DDT -> incantum .
+
+	Actions:
+	for variable: Reduce r80
+
+State 57 = goto(0, dublatum) 
+	DDT -> dublatum .
+
+	Actions:
+	for variable: Reduce r81
+
+State 58 = goto(0, charmax) 
+	DDT -> charmax .
+
+	Actions:
+	for variable: Reduce r82
+
+State 59 = goto(0, stringo) 
+	DDT -> stringo .
+
+	Actions:
+	for variable: Reduce r83
+
+State 60 = goto(0, arraygo) 
+	DARRAY -> arraygo . [ TNV ] DDT
+
+	Actions:
+	for [: Shift s195
 
 State 61 = goto(0, ascendo) 
 	UNARY -> ascendo . variable
 
 	Actions:
-	for variable: Shift 196
+	for variable: Shift s196
 
 State 62 = goto(0, descendo) 
 	UNARY -> descendo . variable
 
 	Actions:
-	for variable: Shift 197
+	for variable: Shift s197
 
 State 63 = goto(0, scriptum) 
 	IN -> scriptum . variable
 
 	Actions:
-	for variable: Shift 198
+	for variable: Shift s198
 
 State 64 = goto(0, revelio) 
 	OUT -> revelio . EDT
@@ -1082,69 +1184,69 @@ State 64 = goto(0, revelio)
 	EDT -> . variable
 
 	Actions:
-	for EDT: Shift 199
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for EDT: Shift s199
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 65 = goto(0, number) 
 	TNV -> number .
 	DT -> number .
 
 	Actions:
-	for :: Reduce r93
-	for tu: Reduce r93
+	for *: Reduce r89
+	for ): Reduce r89
+	for /: Reduce r89
+	for tu: Reduce r89
+	for -: Reduce r89
+	for +: Reduce r89
+	for du: Reduce r89
+	for %: Reduce r89
 	for ]: Reduce r89
-	for #: Reduce r93
 	for ,: Reduce r89
-	for ;: Reduce r93
-	for ): Reduce r93
-	for du: Reduce r93
-	for {: Reduce r93
-	for ?: Reduce r93
+	for :: Reduce r89
 
 State 66 = goto(0, string) 
 	TSV -> string .
 	DT -> string .
 
 	Actions:
-	for :: Reduce r95
-	for tu: Reduce r95
-	for ;: Reduce r95
-	for #: Reduce r95
-	for ): Reduce r95
+	for ): Reduce r91
+	for tu: Reduce r91
+	for -: Reduce r91
 	for +: Reduce r91
-	for du: Reduce r95
-	for {: Reduce r95
-	for ?: Reduce r95
+	for du: Reduce r91
+	for %: Reduce r91
+	for :: Reduce r91
 
 State 67 = goto(0, char) 
 	DT -> char .
-
-	Actions:
-	for :: Reduce r94
-	for tu: Reduce r94
-	for #: Reduce r94
-	for {: Reduce r94
-	for ;: Reduce r94
-	for ): Reduce r94
-	for ?: Reduce r94
-	for du: Reduce r94
 
 State 68 = goto(0, DT) 
 	EDT -> DT .
 
 	Actions:
-	for :: Reduce r96
-	for tu: Reduce r96
-	for #: Reduce r96
-	for {: Reduce r96
-	for ;: Reduce r96
+	for orus: Reduce r96
 	for ): Reduce r96
-	for ?: Reduce r96
+	for >=: Reduce r96
+	for -: Reduce r96
+	for +: Reduce r96
 	for du: Reduce r96
+	for %: Reduce r96
+	for ==: Reduce r96
+	for >: Reduce r96
+	for {: Reduce r96
+	for notus: Reduce r96
+	for ;: Reduce r96
+	for tu: Reduce r96
+	for <=: Reduce r96
+	for ?: Reduce r96
+	for andus: Reduce r96
+	for !=: Reduce r96
+	for <: Reduce r96
+	for :: Reduce r96
 
 State 69 = goto(2, {) 
 	S -> enchanto { . SN }
@@ -1175,33 +1277,33 @@ State 69 = goto(2, {)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for SN: Shift 205
-	for N: Shift 4
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for SN: Shift s205
+	for N: Shift s4
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 70 = goto(3, N) 
 	SN -> SN N . ;
 
 	Actions:
-	for ;: Shift 226
+	for ;: Shift s226
 
 State 71 = goto(3, IN) copy of State 5
 
@@ -1230,7 +1332,7 @@ State 82 = goto(3, variable)
 	LHS -> variable . [ TNV ]
 
 	Actions:
-	for [: Shift 124
+	for [: Shift s124
 	for =: Reduce r66
 
 State 83 = goto(3, IFBLOCK) copy of State 10
@@ -1251,7 +1353,16 @@ State 90 = goto(4, ;)
 	SN -> N ; .
 
 	Actions:
+	for declaro: Reduce r3
+	for variable: Reduce r3
+	for descendo: Reduce r3
+	for forculus: Reduce r3
+	for scriptum: Reduce r3
+	for whilegardium: Reduce r3
+	for ascendo: Reduce r3
+	for revelio: Reduce r3
 	for }: Reduce r3
+	for mystime: Reduce r3
 
 State 91 = goto(13, ELIFB) 
 	IFBLOCK -> IFB ELIFB . ELSEB
@@ -1259,10 +1370,9 @@ State 91 = goto(13, ELIFB)
 	IFBLOCK -> IFB ELIFB .
 
 	Actions:
-	for ELSEB: Shift 228
-	for returntime: Shift 17
+	for ELSEB: Shift s228
+	for returntime: Shift s17
 	for ;: Reduce r13
-	for #: Reduce r13
 
 State 92 = goto(13, ELIFBC) copy of State 15
 
@@ -1273,7 +1383,6 @@ State 94 = goto(13, ELSEB)
 
 	Actions:
 	for ;: Reduce r14
-	for #: Reduce r14
 
 State 95 = goto(13, returntime) copy of State 17
 
@@ -1285,11 +1394,11 @@ State 96 = goto(14, LOGICAL)
 	LOP -> . notus
 
 	Actions:
-	for {: Shift 230
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
+	for {: Shift s230
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
 
 State 97 = goto(14, ER) copy of State 37
 
@@ -1326,85 +1435,86 @@ State 99 = goto(14, ()
 	EXPR -> . LOGICAL
 
 	Actions:
-	for LOGICAL: Shift 235
-	for ER: Shift 37
-	for R: Shift 41
-	for (: Shift 238
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 241
-	for char: Shift 67
-	for string: Shift 243
-	for variable: Shift 244
-	for EXPR: Shift 245
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for SS: Shift 34
-	for TSV: Shift 35
+	for LOGICAL: Shift s235
+	for ER: Shift s37
+	for R: Shift s41
+	for (: Shift s238
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s241
+	for char: Shift s67
+	for string: Shift s243
+	for variable: Shift s244
+	for EXPR: Shift s245
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for SS: Shift s34
+	for TSV: Shift s35
 
 State 100 = goto(14, EDT) 
 	R -> EDT .
 
 	Actions:
-	for :: Reduce r63
-	for tu: Reduce r63
-	for #: Reduce r63
-	for {: Reduce r63
-	for ;: Reduce r63
+	for orus: Reduce r63
 	for ): Reduce r63
-	for ?: Reduce r63
+	for >=: Reduce r63
+	for -: Reduce r63
+	for +: Reduce r63
 	for du: Reduce r63
+	for %: Reduce r63
+	for ==: Reduce r63
+	for >: Reduce r63
+	for {: Reduce r63
+	for notus: Reduce r63
+	for tu: Reduce r63
+	for <=: Reduce r63
+	for ?: Reduce r63
+	for andus: Reduce r63
+	for !=: Reduce r63
+	for <: Reduce r63
+	for :: Reduce r63
 
 State 101 = goto(14, DT) copy of State 68
 
 State 102 = goto(14, number) 
 	DT -> number .
 
-	Actions:
-	for :: Reduce r93
-	for tu: Reduce r93
-	for #: Reduce r93
-	for {: Reduce r93
-	for ;: Reduce r93
-	for ): Reduce r93
-	for ?: Reduce r93
-	for du: Reduce r93
-
 State 103 = goto(14, char) copy of State 67
 
 State 104 = goto(14, string) 
 	DT -> string .
 
-	Actions:
-	for :: Reduce r95
-	for tu: Reduce r95
-	for #: Reduce r95
-	for {: Reduce r95
-	for ;: Reduce r95
-	for ): Reduce r95
-	for ?: Reduce r95
-	for du: Reduce r95
-
 State 105 = goto(14, variable) 
 	EDT -> variable .
 
 	Actions:
-	for :: Reduce r97
-	for tu: Reduce r97
-	for #: Reduce r97
-	for {: Reduce r97
-	for ;: Reduce r97
+	for orus: Reduce r97
 	for ): Reduce r97
-	for ?: Reduce r97
+	for >=: Reduce r97
+	for -: Reduce r97
+	for +: Reduce r97
 	for du: Reduce r97
+	for %: Reduce r97
+	for ==: Reduce r97
+	for >: Reduce r97
+	for {: Reduce r97
+	for notus: Reduce r97
+	for ;: Reduce r97
+	for tu: Reduce r97
+	for <=: Reduce r97
+	for ?: Reduce r97
+	for andus: Reduce r97
+	for !=: Reduce r97
+	for <: Reduce r97
+	for :: Reduce r97
 
 State 106 = goto(15, ELIFB) 
 	ELIFB -> ELIFBC ELIFB .
 
 	Actions:
 	for ;: Reduce r17
-	for #: Reduce r17
+	for returntime: Reduce r17
 
 State 107 = goto(15, ELIFBC) copy of State 15
 
@@ -1418,11 +1528,11 @@ State 109 = goto(16, LOGICAL)
 	LOP -> . notus
 
 	Actions:
-	for {: Shift 251
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
+	for {: Shift s251
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
 
 State 110 = goto(16, ER) copy of State 37
 
@@ -1472,34 +1582,34 @@ State 119 = goto(17, {)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for BLOCK: Shift 256
-	for SN: Shift 257
-	for N: Shift 4
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for BLOCK: Shift s256
+	for SN: Shift s257
+	for N: Shift s4
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 120 = goto(18, FFROM) 
 	FORBLOCK -> forculus FFROM . tu FTO du { BLOCK }
 
 	Actions:
-	for tu: Shift 278
+	for tu: Shift s278
 
 State 121 = goto(18, SAASIGN) copy of State 19
 
@@ -1508,7 +1618,7 @@ State 122 = goto(18, variable)
 	FFROM -> variable .
 
 	Actions:
-	for =: Shift 123
+	for =: Shift s123
 	for tu: Reduce r23
 
 State 123 = goto(20, =) 
@@ -1543,23 +1653,23 @@ State 123 = goto(20, =)
 	R -> . ( EXPR )
 
 	Actions:
-	for SRHS: Shift 280
-	for TNV: Shift 281
-	for number: Shift 65
-	for variable: Shift 158
-	for EXPR: Shift 284
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for string: Shift 66
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for R: Shift 41
-	for EDT: Shift 100
-	for DT: Shift 68
-	for char: Shift 67
+	for SRHS: Shift s280
+	for TNV: Shift s281
+	for number: Shift s65
+	for variable: Shift s158
+	for EXPR: Shift s284
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for string: Shift s66
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for R: Shift s41
+	for EDT: Shift s100
+	for DT: Shift s68
+	for char: Shift s67
 
 State 124 = goto(20, [) 
 	LHS -> variable [ . TNV ]
@@ -1567,9 +1677,9 @@ State 124 = goto(20, [)
 	TNV -> . variable
 
 	Actions:
-	for TNV: Shift 297
-	for number: Shift 184
-	for variable: Shift 185
+	for TNV: Shift s297
+	for number: Shift s184
+	for variable: Shift s185
 
 State 125 = goto(21, ,) 
 	AELEM -> TNV , . AELEM
@@ -1579,10 +1689,10 @@ State 125 = goto(21, ,)
 	AELEM -> . TNV
 
 	Actions:
-	for AELEM: Shift 300
-	for TNV: Shift 183
-	for number: Shift 184
-	for variable: Shift 185
+	for AELEM: Shift s300
+	for TNV: Shift s183
+	for number: Shift s184
+	for variable: Shift s185
 
 State 126 = goto(22, NOP) 
 	EXPR -> EXPR NOP . TERM
@@ -1594,12 +1704,12 @@ State 126 = goto(22, NOP)
 	FACTOR -> . ( EXPR )
 
 	Actions:
-	for TERM: Shift 304
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for number: Shift 184
-	for variable: Shift 185
-	for (: Shift 309
+	for TERM: Shift s304
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for number: Shift s184
+	for variable: Shift s185
+	for (: Shift s309
 
 State 127 = goto(22, +) copy of State 27
 
@@ -1615,11 +1725,11 @@ State 130 = goto(23, LOGICAL)
 	LOP -> . notus
 
 	Actions:
-	for du: Shift 310
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
+	for du: Shift s310
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
 
 State 131 = goto(23, ER) copy of State 37
 
@@ -1647,11 +1757,11 @@ State 140 = goto(24, LOGICAL)
 	LOP -> . notus
 
 	Actions:
-	for ?: Shift 315
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
+	for ?: Shift s315
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
 
 State 141 = goto(24, ER) copy of State 37
 
@@ -1679,11 +1789,11 @@ State 150 = goto(26, FOP)
 	FACTOR -> . ( EXPR )
 
 	Actions:
-	for FACTOR: Shift 320
-	for TNV: Shift 156
-	for number: Shift 184
-	for variable: Shift 185
-	for (: Shift 309
+	for FACTOR: Shift s320
+	for TNV: Shift s156
+	for number: Shift s184
+	for variable: Shift s185
+	for (: Shift s309
 
 State 151 = goto(26, *) copy of State 31
 
@@ -1698,11 +1808,11 @@ State 153 = goto(33, EXPR)
 	R -> ( EXPR . )
 
 	Actions:
-	for ): Shift 325
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for ): Shift s325
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 
 State 154 = goto(33, TERM) copy of State 26
 
@@ -1712,12 +1822,15 @@ State 156 = goto(33, TNV)
 	FACTOR -> TNV .
 
 	Actions:
-	for :: Reduce r43
-	for tu: Reduce r43
-	for #: Reduce r43
-	for ;: Reduce r43
+	for *: Reduce r43
 	for ): Reduce r43
+	for /: Reduce r43
+	for tu: Reduce r43
+	for -: Reduce r43
+	for +: Reduce r43
 	for du: Reduce r43
+	for %: Reduce r43
+	for :: Reduce r43
 
 State 157 = goto(33, number) copy of State 65
 
@@ -1727,17 +1840,29 @@ State 158 = goto(33, variable)
 	EDT -> variable .
 
 	Actions:
-	for :: Reduce r97
-	for tu: Reduce r97
-	for ]: Reduce r90
-	for #: Reduce r97
-	for ,: Reduce r90
-	for ;: Reduce r97
+	for *: Reduce r90
 	for ): Reduce r97
+	for /: Reduce r90
+	for tu: Reduce r97
+	for -: Reduce r97
+	for +: Reduce r97
 	for du: Reduce r97
-	for +: Reduce r92
+	for %: Reduce r97
+	for ]: Reduce r90
+	for ,: Reduce r90
+	for :: Reduce r97
+	for orus: Reduce r97
+	for >=: Reduce r97
+	for ==: Reduce r97
+	for >: Reduce r97
 	for {: Reduce r97
+	for notus: Reduce r97
+	for ;: Reduce r97
+	for <=: Reduce r97
 	for ?: Reduce r97
+	for andus: Reduce r97
+	for !=: Reduce r97
+	for <: Reduce r97
 
 State 159 = goto(33, () copy of State 33
 
@@ -1756,16 +1881,17 @@ State 163 = goto(33, LOGICAL)
 	R -> ( LOGICAL . )
 
 	Actions:
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
 	for ): Reduce r48
-	for :: Reduce r48
-	for tu: Reduce r48
-	for ;: Reduce r48
-	for #: Reduce r48
+	for -: Reduce r48
+	for +: Reduce r48
 	for du: Reduce r48
+	for %: Reduce r48
+	for tu: Reduce r48
+	for :: Reduce r48
 
 State 164 = goto(33, ER) copy of State 37
 
@@ -1783,9 +1909,9 @@ State 169 = goto(34, +)
 	TSV -> . variable
 
 	Actions:
-	for TSV: Shift 335
-	for string: Shift 336
-	for variable: Shift 337
+	for TSV: Shift s335
+	for string: Shift s336
+	for variable: Shift s337
 
 State 170 = goto(36, LOP) 
 	LOGICAL -> LOGICAL LOP . ER
@@ -1801,15 +1927,15 @@ State 170 = goto(36, LOP)
 	R -> . ( EXPR )
 
 	Actions:
-	for ER: Shift 338
-	for R: Shift 41
-	for (: Shift 99
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for ER: Shift s338
+	for R: Shift s41
+	for (: Shift s99
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 171 = goto(36, andus) copy of State 38
 
@@ -1829,14 +1955,14 @@ State 174 = goto(37, ROP)
 	R -> . ( EXPR )
 
 	Actions:
-	for R: Shift 347
-	for (: Shift 99
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 102
-	for char: Shift 67
-	for string: Shift 104
-	for variable: Shift 105
+	for R: Shift s347
+	for (: Shift s99
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s102
+	for char: Shift s67
+	for string: Shift s104
+	for variable: Shift s105
 
 State 175 = goto(37, ==) copy of State 42
 
@@ -1886,67 +2012,73 @@ State 181 = goto(48, =)
 	R -> . ( EXPR )
 
 	Actions:
-	for RHS: Shift 355
-	for ARRAY: Shift 49
-	for [: Shift 51
-	for TERNARY: Shift 50
-	for tribus: Shift 24
-	for EDT: Shift 360
-	for DT: Shift 68
-	for number: Shift 241
-	for char: Shift 67
-	for string: Shift 243
-	for variable: Shift 244
-	for EXPR: Shift 366
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for R: Shift 41
+	for RHS: Shift s355
+	for ARRAY: Shift s49
+	for [: Shift s51
+	for TERNARY: Shift s50
+	for tribus: Shift s24
+	for EDT: Shift s360
+	for DT: Shift s68
+	for number: Shift s241
+	for char: Shift s67
+	for string: Shift s243
+	for variable: Shift s244
+	for EXPR: Shift s366
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for R: Shift s41
 
 State 182 = goto(51, AELEM) 
 	ARRAY -> [ AELEM . ]
 
 	Actions:
-	for ]: Shift 376
+	for ]: Shift s376
 
 State 183 = goto(51, TNV) 
 	AELEM -> TNV . , AELEM
 	AELEM -> TNV .
 
 	Actions:
-	for ,: Shift 125
+	for ,: Shift s125
 	for ]: Reduce r74
 
 State 184 = goto(51, number) 
 	TNV -> number .
 
 	Actions:
-	for :: Reduce r89
-	for tu: Reduce r89
-	for ]: Reduce r89
-	for #: Reduce r89
-	for ,: Reduce r89
-	for ;: Reduce r89
+	for *: Reduce r89
 	for ): Reduce r89
+	for /: Reduce r89
+	for tu: Reduce r89
+	for -: Reduce r89
+	for +: Reduce r89
 	for du: Reduce r89
+	for %: Reduce r89
+	for ]: Reduce r89
+	for ,: Reduce r89
+	for :: Reduce r89
 
 State 185 = goto(51, variable) 
 	TNV -> variable .
 
 	Actions:
-	for :: Reduce r90
-	for tu: Reduce r90
-	for ]: Reduce r90
-	for #: Reduce r90
-	for ,: Reduce r90
-	for ;: Reduce r90
+	for *: Reduce r90
 	for ): Reduce r90
+	for /: Reduce r90
+	for tu: Reduce r90
+	for -: Reduce r90
+	for +: Reduce r90
 	for du: Reduce r90
+	for %: Reduce r90
+	for ]: Reduce r90
+	for ,: Reduce r90
+	for :: Reduce r90
 
 State 186 = goto(52, EDDT) 
 	DECL -> declaro EDDT . SV
@@ -1954,68 +2086,63 @@ State 186 = goto(52, EDDT)
 	SV -> . variable
 
 	Actions:
-	for SV: Shift 378
-	for variable: Shift 379
+	for SV: Shift s378
+	for variable: Shift s379
 
-State 187 = goto(52, DDT) copy of State 53
+State 187 = goto(52, DDT) copy of State 54
 
-State 188 = goto(52, incantum) copy of State 55
+State 188 = goto(52, incantum) copy of State 56
 
-State 189 = goto(52, dublatum) copy of State 56
+State 189 = goto(52, dublatum) copy of State 57
 
-State 190 = goto(52, charmax) copy of State 57
+State 190 = goto(52, charmax) copy of State 58
 
-State 191 = goto(52, stringo) copy of State 58
+State 191 = goto(52, stringo) copy of State 59
 
-State 192 = goto(52, DARRAY) copy of State 54
+State 192 = goto(52, DARRAY) copy of State 55
 
-State 193 = goto(52, arraygo) copy of State 59
+State 193 = goto(52, arraygo) copy of State 60
 
-State 194 = goto(59, [) 
+State 194 = goto(53, variable) 
+	SV -> SV variable .
+
+	Actions:
+	for variable: Reduce r76
+	for ;: Reduce r76
+
+State 195 = goto(60, [) 
 	DARRAY -> arraygo [ . TNV ] DDT
 	TNV -> . number
 	TNV -> . variable
 
 	Actions:
-	for TNV: Shift 380
-	for number: Shift 184
-	for variable: Shift 185
-
-State 195 = goto(60, variable) 
-	SV -> SV variable .
-
-	Actions:
-	for ;: Reduce r83
-	for #: Reduce r83
-	for variable: Reduce r83
+	for TNV: Shift s380
+	for number: Shift s184
+	for variable: Shift s185
 
 State 196 = goto(61, variable) 
 	UNARY -> ascendo variable .
 
 	Actions:
 	for ;: Reduce r85
-	for #: Reduce r85
 
 State 197 = goto(62, variable) 
 	UNARY -> descendo variable .
 
 	Actions:
 	for ;: Reduce r86
-	for #: Reduce r86
 
 State 198 = goto(63, variable) 
 	IN -> scriptum variable .
 
 	Actions:
 	for ;: Reduce r87
-	for #: Reduce r87
 
 State 199 = goto(64, EDT) 
 	OUT -> revelio EDT .
 
 	Actions:
 	for ;: Reduce r88
-	for #: Reduce r88
 
 State 200 = goto(64, DT) copy of State 68
 
@@ -2055,27 +2182,27 @@ State 205 = goto(69, SN)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for }: Shift 383
-	for N: Shift 70
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for }: Shift s383
+	for N: Shift s70
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 206 = goto(69, N) copy of State 4
 
@@ -2121,7 +2248,16 @@ State 226 = goto(70, ;)
 	SN -> SN N ; .
 
 	Actions:
+	for declaro: Reduce r2
+	for variable: Reduce r2
+	for descendo: Reduce r2
+	for forculus: Reduce r2
+	for scriptum: Reduce r2
+	for whilegardium: Reduce r2
+	for ascendo: Reduce r2
+	for revelio: Reduce r2
 	for }: Reduce r2
+	for mystime: Reduce r2
 
 State 227 = goto(82, [) copy of State 124
 
@@ -2130,7 +2266,6 @@ State 228 = goto(91, ELSEB)
 
 	Actions:
 	for ;: Reduce r12
-	for #: Reduce r12
 
 State 229 = goto(91, returntime) copy of State 17
 
@@ -2164,28 +2299,28 @@ State 230 = goto(96, {)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for BLOCK: Shift 404
-	for SN: Shift 257
-	for N: Shift 4
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for BLOCK: Shift s404
+	for SN: Shift s257
+	for N: Shift s4
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 231 = goto(96, LOP) copy of State 170
 
@@ -2205,15 +2340,16 @@ State 235 = goto(99, LOGICAL)
 
 	Actions:
 	for ): Reduce r48
-	for LOP: Shift 170
-	for andus: Shift 38
-	for orus: Shift 39
-	for notus: Shift 40
-	for :: Reduce r48
-	for tu: Reduce r48
-	for ;: Reduce r48
-	for #: Reduce r48
+	for LOP: Shift s170
+	for andus: Shift s38
+	for orus: Shift s39
+	for notus: Shift s40
+	for -: Reduce r48
+	for +: Reduce r48
 	for du: Reduce r48
+	for %: Reduce r48
+	for tu: Reduce r48
+	for :: Reduce r48
 
 State 236 = goto(99, ER) copy of State 37
 
@@ -2251,22 +2387,22 @@ State 238 = goto(99, ()
 	FACTOR -> ( . EXPR )
 
 	Actions:
-	for LOGICAL: Shift 235
-	for ER: Shift 37
-	for R: Shift 41
-	for (: Shift 238
-	for EDT: Shift 100
-	for DT: Shift 68
-	for number: Shift 241
-	for char: Shift 67
-	for string: Shift 243
-	for variable: Shift 244
-	for EXPR: Shift 441
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for SS: Shift 34
-	for TSV: Shift 35
+	for LOGICAL: Shift s235
+	for ER: Shift s37
+	for R: Shift s41
+	for (: Shift s238
+	for EDT: Shift s100
+	for DT: Shift s68
+	for number: Shift s241
+	for char: Shift s67
+	for string: Shift s243
+	for variable: Shift s244
+	for EXPR: Shift s441
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for SS: Shift s34
+	for TSV: Shift s35
 
 State 239 = goto(99, EDT) copy of State 100
 
@@ -2277,16 +2413,17 @@ State 241 = goto(99, number)
 	TNV -> number .
 
 	Actions:
-	for :: Reduce r89
-	for tu: Reduce r89
-	for #: Reduce r89
-	for {: Reduce r93
-	for ;: Reduce r89
+	for *: Reduce r89
 	for ): Reduce r89
-	for ?: Reduce r93
+	for /: Reduce r89
+	for tu: Reduce r89
+	for -: Reduce r89
+	for +: Reduce r89
 	for du: Reduce r89
+	for %: Reduce r89
 	for ]: Reduce r89
 	for ,: Reduce r89
+	for :: Reduce r89
 
 State 242 = goto(99, char) copy of State 67
 
@@ -2295,15 +2432,13 @@ State 243 = goto(99, string)
 	TSV -> string .
 
 	Actions:
-	for :: Reduce r91
-	for tu: Reduce r91
-	for #: Reduce r91
-	for {: Reduce r95
-	for ;: Reduce r91
 	for ): Reduce r91
-	for ?: Reduce r95
-	for du: Reduce r91
+	for tu: Reduce r91
+	for -: Reduce r91
 	for +: Reduce r91
+	for du: Reduce r91
+	for %: Reduce r91
+	for :: Reduce r91
 
 State 244 = goto(99, variable) 
 	EDT -> variable .
@@ -2311,17 +2446,29 @@ State 244 = goto(99, variable)
 	TSV -> variable .
 
 	Actions:
-	for :: Reduce r92
-	for tu: Reduce r92
-	for #: Reduce r92
-	for {: Reduce r97
-	for ;: Reduce r92
+	for orus: Reduce r97
 	for ): Reduce r92
-	for ?: Reduce r97
+	for >=: Reduce r97
+	for -: Reduce r92
+	for +: Reduce r92
 	for du: Reduce r92
+	for %: Reduce r92
+	for ==: Reduce r97
+	for >: Reduce r97
+	for {: Reduce r97
+	for notus: Reduce r97
+	for ;: Reduce r97
+	for tu: Reduce r92
+	for <=: Reduce r97
+	for ?: Reduce r97
+	for andus: Reduce r97
+	for !=: Reduce r97
+	for <: Reduce r97
+	for :: Reduce r92
+	for *: Reduce r90
+	for /: Reduce r90
 	for ]: Reduce r90
 	for ,: Reduce r90
-	for +: Reduce r92
 
 State 245 = goto(99, EXPR) 
 	R -> ( EXPR . )
@@ -2331,11 +2478,11 @@ State 245 = goto(99, EXPR)
 	NOP -> . %
 
 	Actions:
-	for ): Shift 447
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for ): Shift s447
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 
 State 246 = goto(99, TERM) copy of State 26
 
@@ -2377,28 +2524,28 @@ State 251 = goto(109, {)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for BLOCK: Shift 452
-	for SN: Shift 257
-	for N: Shift 4
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for BLOCK: Shift s452
+	for SN: Shift s257
+	for N: Shift s4
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 252 = goto(109, LOP) copy of State 170
 
@@ -2412,7 +2559,7 @@ State 256 = goto(119, BLOCK)
 	ELSEB -> returntime { BLOCK . }
 
 	Actions:
-	for }: Shift 474
+	for }: Shift s474
 
 State 257 = goto(119, SN) 
 	BLOCK -> SN .
@@ -2442,26 +2589,26 @@ State 257 = goto(119, SN)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for N: Shift 70
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for N: Shift s70
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 	for }: Reduce r30
 
 State 258 = goto(119, N) copy of State 4
@@ -2536,23 +2683,23 @@ State 278 = goto(120, tu)
 	R -> . ( EXPR )
 
 	Actions:
-	for FTO: Shift 495
-	for TNV: Shift 496
-	for number: Shift 65
-	for variable: Shift 158
-	for EXPR: Shift 499
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for string: Shift 66
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for R: Shift 41
-	for EDT: Shift 100
-	for DT: Shift 68
-	for char: Shift 67
+	for FTO: Shift s495
+	for TNV: Shift s496
+	for number: Shift s65
+	for variable: Shift s158
+	for EXPR: Shift s499
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for string: Shift s66
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for R: Shift s41
+	for EDT: Shift s100
+	for DT: Shift s68
+	for char: Shift s67
 
 State 279 = goto(122, =) copy of State 123
 
@@ -2568,11 +2715,14 @@ State 281 = goto(123, TNV)
 
 	Actions:
 	for tu: Reduce r43
-	for :: Reduce r43
-	for #: Reduce r43
-	for ;: Reduce r43
+	for *: Reduce r43
 	for ): Reduce r43
+	for /: Reduce r43
+	for -: Reduce r43
+	for +: Reduce r43
 	for du: Reduce r43
+	for %: Reduce r43
+	for :: Reduce r43
 
 State 282 = goto(123, number) copy of State 65
 
@@ -2586,10 +2736,10 @@ State 284 = goto(123, EXPR)
 	NOP -> . %
 
 	Actions:
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 	for tu: Reduce r26
 
 State 285 = goto(123, TERM) copy of State 26
@@ -2620,7 +2770,7 @@ State 297 = goto(124, TNV)
 	LHS -> variable [ TNV . ]
 
 	Actions:
-	for ]: Shift 516
+	for ]: Shift s516
 
 State 298 = goto(124, number) copy of State 184
 
@@ -2645,15 +2795,16 @@ State 304 = goto(126, TERM)
 	FOP -> . /
 
 	Actions:
-	for FOP: Shift 150
-	for *: Shift 31
-	for /: Shift 32
-	for :: Reduce r34
-	for tu: Reduce r34
-	for ;: Reduce r34
-	for #: Reduce r34
-	for ): Reduce r34
+	for FOP: Shift s150
+	for *: Shift s31
+	for /: Shift s32
+	for -: Reduce r34
+	for +: Reduce r34
 	for du: Reduce r34
+	for %: Reduce r34
+	for ): Reduce r34
+	for tu: Reduce r34
+	for :: Reduce r34
 
 State 305 = goto(126, FACTOR) copy of State 30
 
@@ -2693,28 +2844,28 @@ State 309 = goto(126, ()
 	R -> . ( EXPR )
 
 	Actions:
-	for EXPR: Shift 520
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for number: Shift 65
-	for variable: Shift 158
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for string: Shift 66
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for R: Shift 41
-	for EDT: Shift 100
-	for DT: Shift 68
-	for char: Shift 67
+	for EXPR: Shift s520
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for number: Shift s65
+	for variable: Shift s158
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for string: Shift s66
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for R: Shift s41
+	for EDT: Shift s100
+	for DT: Shift s68
+	for char: Shift s67
 
 State 310 = goto(130, du) 
 	WHILEBLOCK -> whilegardium LOGICAL du . { BLOCK }
 
 	Actions:
-	for {: Shift 536
+	for {: Shift s536
 
 State 311 = goto(130, LOP) copy of State 170
 
@@ -2756,23 +2907,23 @@ State 315 = goto(140, ?)
 	R -> . ( EXPR )
 
 	Actions:
-	for OPTION: Shift 537
-	for EDT: Shift 538
-	for DT: Shift 68
-	for number: Shift 241
-	for char: Shift 67
-	for string: Shift 243
-	for variable: Shift 244
-	for EXPR: Shift 544
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for R: Shift 41
+	for OPTION: Shift s537
+	for EDT: Shift s538
+	for DT: Shift s68
+	for number: Shift s241
+	for char: Shift s67
+	for string: Shift s243
+	for variable: Shift s244
+	for EXPR: Shift s544
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for R: Shift s41
 
 State 316 = goto(140, LOP) copy of State 170
 
@@ -2786,12 +2937,15 @@ State 320 = goto(150, FACTOR)
 	TERM -> TERM FOP FACTOR .
 
 	Actions:
-	for :: Reduce r39
-	for tu: Reduce r39
-	for #: Reduce r39
-	for ;: Reduce r39
+	for *: Reduce r39
 	for ): Reduce r39
+	for /: Reduce r39
+	for tu: Reduce r39
+	for -: Reduce r39
+	for +: Reduce r39
 	for du: Reduce r39
+	for %: Reduce r39
+	for :: Reduce r39
 
 State 321 = goto(150, TNV) copy of State 156
 
@@ -2806,14 +2960,26 @@ State 325 = goto(153, ))
 	R -> ( EXPR ) .
 
 	Actions:
-	for :: Reduce r64
-	for tu: Reduce r64
-	for #: Reduce r64
-	for ;: Reduce r64
+	for *: Reduce r44
 	for ): Reduce r64
+	for /: Reduce r44
+	for tu: Reduce r64
+	for -: Reduce r64
+	for +: Reduce r64
 	for du: Reduce r64
+	for %: Reduce r64
+	for :: Reduce r64
+	for orus: Reduce r64
+	for >=: Reduce r64
+	for ==: Reduce r64
+	for >: Reduce r64
 	for {: Reduce r64
+	for notus: Reduce r64
+	for <=: Reduce r64
 	for ?: Reduce r64
+	for andus: Reduce r64
+	for !=: Reduce r64
+	for <: Reduce r64
 
 State 326 = goto(153, NOP) copy of State 126
 
@@ -2835,50 +3001,60 @@ State 334 = goto(163, ))
 	R -> ( LOGICAL ) .
 
 	Actions:
-	for :: Reduce r62
-	for tu: Reduce r62
-	for #: Reduce r62
-	for {: Reduce r62
-	for ;: Reduce r62
+	for orus: Reduce r62
 	for ): Reduce r62
-	for ?: Reduce r62
+	for >=: Reduce r62
+	for -: Reduce r62
+	for +: Reduce r62
 	for du: Reduce r62
+	for %: Reduce r62
+	for ==: Reduce r62
+	for >: Reduce r62
+	for {: Reduce r62
+	for notus: Reduce r62
+	for tu: Reduce r62
+	for <=: Reduce r62
+	for ?: Reduce r62
+	for andus: Reduce r62
+	for !=: Reduce r62
+	for <: Reduce r62
+	for :: Reduce r62
 
 State 335 = goto(169, TSV) 
 	SS -> SS + TSV .
 
 	Actions:
-	for :: Reduce r46
-	for tu: Reduce r46
-	for ;: Reduce r46
-	for #: Reduce r46
-	for ): Reduce r46
+	for -: Reduce r46
 	for +: Reduce r46
 	for du: Reduce r46
+	for %: Reduce r46
+	for ): Reduce r46
+	for tu: Reduce r46
+	for :: Reduce r46
 
 State 336 = goto(169, string) 
 	TSV -> string .
 
 	Actions:
-	for :: Reduce r91
-	for tu: Reduce r91
-	for ;: Reduce r91
-	for #: Reduce r91
 	for ): Reduce r91
+	for tu: Reduce r91
+	for -: Reduce r91
 	for +: Reduce r91
 	for du: Reduce r91
+	for %: Reduce r91
+	for :: Reduce r91
 
 State 337 = goto(169, variable) 
 	TSV -> variable .
 
 	Actions:
-	for :: Reduce r92
-	for tu: Reduce r92
-	for ;: Reduce r92
-	for #: Reduce r92
 	for ): Reduce r92
+	for tu: Reduce r92
+	for -: Reduce r92
 	for +: Reduce r92
 	for du: Reduce r92
+	for %: Reduce r92
+	for :: Reduce r92
 
 State 338 = goto(170, ER) 
 	LOGICAL -> LOGICAL LOP ER .
@@ -2891,21 +3067,25 @@ State 338 = goto(170, ER)
 	ROP -> . <=
 
 	Actions:
-	for ROP: Shift 174
-	for ==: Shift 42
-	for !=: Shift 43
-	for >: Shift 44
-	for <: Shift 45
-	for >=: Shift 46
-	for <=: Shift 47
-	for :: Reduce r49
-	for tu: Reduce r49
-	for ;: Reduce r49
-	for {: Reduce r49
-	for #: Reduce r49
+	for ROP: Shift s174
+	for ==: Shift s42
+	for !=: Shift s43
+	for >: Shift s44
+	for <: Shift s45
+	for >=: Shift s46
+	for <=: Shift s47
+	for orus: Reduce r49
 	for ): Reduce r49
+	for tu: Reduce r49
 	for ?: Reduce r49
+	for andus: Reduce r49
+	for -: Reduce r49
+	for +: Reduce r49
 	for du: Reduce r49
+	for %: Reduce r49
+	for {: Reduce r49
+	for notus: Reduce r49
+	for :: Reduce r49
 
 State 339 = goto(170, R) copy of State 41
 
@@ -2927,14 +3107,24 @@ State 347 = goto(174, R)
 	ER -> ER ROP R .
 
 	Actions:
-	for :: Reduce r54
-	for tu: Reduce r54
-	for #: Reduce r54
-	for {: Reduce r54
-	for ;: Reduce r54
+	for <: Reduce r54
+	for orus: Reduce r54
 	for ): Reduce r54
+	for >=: Reduce r54
+	for tu: Reduce r54
+	for <=: Reduce r54
 	for ?: Reduce r54
+	for andus: Reduce r54
+	for -: Reduce r54
+	for +: Reduce r54
 	for du: Reduce r54
+	for %: Reduce r54
+	for ==: Reduce r54
+	for !=: Reduce r54
+	for >: Reduce r54
+	for {: Reduce r54
+	for notus: Reduce r54
+	for :: Reduce r54
 
 State 348 = goto(174, () copy of State 99
 
@@ -2955,7 +3145,6 @@ State 355 = goto(181, RHS)
 
 	Actions:
 	for ;: Reduce r65
-	for #: Reduce r65
 
 State 356 = goto(181, ARRAY) copy of State 49
 
@@ -2970,14 +3159,25 @@ State 360 = goto(181, EDT)
 	R -> EDT .
 
 	Actions:
-	for ;: Reduce r63
-	for #: Reduce r63
-	for :: Reduce r63
-	for tu: Reduce r63
-	for {: Reduce r63
+	for ;: Reduce r70
+	for orus: Reduce r63
 	for ): Reduce r63
-	for ?: Reduce r63
+	for >=: Reduce r63
+	for -: Reduce r63
+	for +: Reduce r63
 	for du: Reduce r63
+	for %: Reduce r63
+	for ==: Reduce r63
+	for >: Reduce r63
+	for {: Reduce r63
+	for notus: Reduce r63
+	for tu: Reduce r63
+	for <=: Reduce r63
+	for ?: Reduce r63
+	for andus: Reduce r63
+	for !=: Reduce r63
+	for <: Reduce r63
+	for :: Reduce r63
 
 State 361 = goto(181, DT) copy of State 68
 
@@ -2997,12 +3197,11 @@ State 366 = goto(181, EXPR)
 	NOP -> . %
 
 	Actions:
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 	for ;: Reduce r71
-	for #: Reduce r71
 
 State 367 = goto(181, TERM) copy of State 26
 
@@ -3027,7 +3226,6 @@ State 376 = goto(182, ])
 
 	Actions:
 	for ;: Reduce r72
-	for #: Reduce r72
 
 State 377 = goto(183, ,) copy of State 125
 
@@ -3036,27 +3234,25 @@ State 378 = goto(186, SV)
 	SV -> SV . variable
 
 	Actions:
-	for variable: Shift 195
+	for variable: Shift s194
 	for ;: Reduce r75
-	for #: Reduce r75
 
 State 379 = goto(186, variable) 
 	SV -> variable .
 
 	Actions:
-	for ;: Reduce r84
-	for #: Reduce r84
-	for variable: Reduce r84
+	for variable: Reduce r77
+	for ;: Reduce r77
 
-State 380 = goto(194, TNV) 
+State 380 = goto(195, TNV) 
 	DARRAY -> arraygo [ TNV . ] DDT
 
 	Actions:
-	for ]: Shift 566
+	for ]: Shift s566
 
-State 381 = goto(194, number) copy of State 184
+State 381 = goto(195, number) copy of State 184
 
-State 382 = goto(194, variable) copy of State 185
+State 382 = goto(195, variable) copy of State 185
 
 State 383 = goto(205, }) 
 	S -> enchanto { SN } .
@@ -3108,7 +3304,7 @@ State 404 = goto(230, BLOCK)
 	IFB -> mystime LOGICAL { BLOCK . }
 
 	Actions:
-	for }: Shift 567
+	for }: Shift s567
 
 State 405 = goto(230, SN) copy of State 257
 
@@ -3191,11 +3387,11 @@ State 441 = goto(238, EXPR)
 	FACTOR -> ( EXPR . )
 
 	Actions:
-	for ): Shift 568
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for ): Shift s568
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 
 State 442 = goto(238, TERM) copy of State 26
 
@@ -3211,14 +3407,24 @@ State 447 = goto(245, ))
 	R -> ( EXPR ) .
 
 	Actions:
-	for :: Reduce r64
-	for tu: Reduce r64
-	for #: Reduce r64
-	for {: Reduce r64
-	for ;: Reduce r64
+	for orus: Reduce r64
 	for ): Reduce r64
-	for ?: Reduce r64
+	for >=: Reduce r64
+	for -: Reduce r64
+	for +: Reduce r64
 	for du: Reduce r64
+	for %: Reduce r64
+	for ==: Reduce r64
+	for >: Reduce r64
+	for {: Reduce r64
+	for notus: Reduce r64
+	for tu: Reduce r64
+	for <=: Reduce r64
+	for ?: Reduce r64
+	for andus: Reduce r64
+	for !=: Reduce r64
+	for <: Reduce r64
+	for :: Reduce r64
 
 State 448 = goto(245, NOP) copy of State 126
 
@@ -3232,7 +3438,7 @@ State 452 = goto(251, BLOCK)
 	ELIFBC -> turntime LOGICAL { BLOCK . }
 
 	Actions:
-	for }: Shift 573
+	for }: Shift s573
 
 State 453 = goto(251, SN) copy of State 257
 
@@ -3281,7 +3487,6 @@ State 474 = goto(256, })
 
 	Actions:
 	for ;: Reduce r20
-	for #: Reduce r20
 
 State 475 = goto(257, N) copy of State 70
 
@@ -3327,7 +3532,7 @@ State 495 = goto(278, FTO)
 	FORBLOCK -> forculus FFROM tu FTO . du { BLOCK }
 
 	Actions:
-	for du: Shift 574
+	for du: Shift s574
 
 State 496 = goto(278, TNV) 
 	FTO -> TNV .
@@ -3335,11 +3540,14 @@ State 496 = goto(278, TNV)
 
 	Actions:
 	for du: Reduce r43
-	for :: Reduce r43
-	for tu: Reduce r43
-	for #: Reduce r43
-	for ;: Reduce r43
+	for *: Reduce r43
 	for ): Reduce r43
+	for /: Reduce r43
+	for tu: Reduce r43
+	for -: Reduce r43
+	for +: Reduce r43
+	for %: Reduce r43
+	for :: Reduce r43
 
 State 497 = goto(278, number) copy of State 65
 
@@ -3353,10 +3561,10 @@ State 499 = goto(278, EXPR)
 	NOP -> . %
 
 	Actions:
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 	for du: Reduce r28
 
 State 500 = goto(278, TERM) copy of State 26
@@ -3411,11 +3619,11 @@ State 520 = goto(309, EXPR)
 	NOP -> . %
 
 	Actions:
-	for ): Shift 579
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
+	for ): Shift s579
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 
 State 521 = goto(309, TERM) copy of State 26
 
@@ -3477,48 +3685,58 @@ State 536 = goto(310, {)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for BLOCK: Shift 584
-	for SN: Shift 257
-	for N: Shift 4
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for BLOCK: Shift s584
+	for SN: Shift s257
+	for N: Shift s4
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 537 = goto(315, OPTION) 
 	TERNARY -> tribus LOGICAL ? OPTION . : OPTION
 
 	Actions:
-	for :: Shift 606
+	for :: Shift s606
 
 State 538 = goto(315, EDT) 
 	OPTION -> EDT .
 	R -> EDT .
 
 	Actions:
-	for ;: Reduce r63
 	for :: Reduce r63
-	for #: Reduce r63
-	for tu: Reduce r63
-	for {: Reduce r63
+	for orus: Reduce r63
 	for ): Reduce r63
-	for ?: Reduce r63
+	for >=: Reduce r63
+	for -: Reduce r63
+	for +: Reduce r63
 	for du: Reduce r63
+	for %: Reduce r63
+	for ==: Reduce r63
+	for >: Reduce r63
+	for {: Reduce r63
+	for notus: Reduce r63
+	for tu: Reduce r63
+	for <=: Reduce r63
+	for ?: Reduce r63
+	for andus: Reduce r63
+	for !=: Reduce r63
+	for <: Reduce r63
 
 State 539 = goto(315, DT) copy of State 68
 
@@ -3538,13 +3756,11 @@ State 544 = goto(315, EXPR)
 	NOP -> . %
 
 	Actions:
-	for NOP: Shift 126
-	for +: Shift 27
-	for -: Shift 28
-	for %: Shift 29
-	for ;: Reduce r33
+	for NOP: Shift s126
+	for +: Shift s27
+	for -: Shift s28
+	for %: Shift s29
 	for :: Reduce r33
-	for #: Reduce r33
 
 State 545 = goto(315, TERM) copy of State 26
 
@@ -3586,7 +3802,7 @@ State 563 = goto(366, -) copy of State 28
 
 State 564 = goto(366, %) copy of State 29
 
-State 565 = goto(378, variable) copy of State 195
+State 565 = goto(378, variable) copy of State 194
 
 State 566 = goto(380, ]) 
 	DARRAY -> arraygo [ TNV ] . DDT
@@ -3596,32 +3812,45 @@ State 566 = goto(380, ])
 	DDT -> . stringo
 
 	Actions:
-	for DDT: Shift 611
-	for incantum: Shift 55
-	for dublatum: Shift 56
-	for charmax: Shift 57
-	for stringo: Shift 58
+	for DDT: Shift s611
+	for incantum: Shift s56
+	for dublatum: Shift s57
+	for charmax: Shift s58
+	for stringo: Shift s59
 
 State 567 = goto(404, }) 
 	IFB -> mystime LOGICAL { BLOCK } .
 
 	Actions:
+	for turntime: Reduce r16
 	for ;: Reduce r16
-	for #: Reduce r16
+	for returntime: Reduce r16
 
 State 568 = goto(441, )) 
 	R -> ( EXPR ) .
 	FACTOR -> ( EXPR ) .
 
 	Actions:
-	for :: Reduce r44
-	for tu: Reduce r44
-	for #: Reduce r44
-	for {: Reduce r64
-	for ;: Reduce r44
+	for orus: Reduce r64
 	for ): Reduce r44
-	for ?: Reduce r64
+	for >=: Reduce r64
+	for -: Reduce r44
+	for +: Reduce r44
 	for du: Reduce r44
+	for %: Reduce r44
+	for ==: Reduce r64
+	for >: Reduce r64
+	for {: Reduce r64
+	for notus: Reduce r64
+	for tu: Reduce r44
+	for <=: Reduce r64
+	for ?: Reduce r64
+	for andus: Reduce r64
+	for !=: Reduce r64
+	for <: Reduce r64
+	for :: Reduce r44
+	for *: Reduce r44
+	for /: Reduce r44
 
 State 569 = goto(441, NOP) copy of State 126
 
@@ -3635,14 +3864,15 @@ State 573 = goto(452, })
 	ELIFBC -> turntime LOGICAL { BLOCK } .
 
 	Actions:
+	for turntime: Reduce r19
 	for ;: Reduce r19
-	for #: Reduce r19
+	for returntime: Reduce r19
 
 State 574 = goto(495, du) 
 	FORBLOCK -> forculus FFROM tu FTO du . { BLOCK }
 
 	Actions:
-	for {: Shift 616
+	for {: Shift s616
 
 State 575 = goto(499, NOP) copy of State 126
 
@@ -3656,12 +3886,15 @@ State 579 = goto(520, ))
 	FACTOR -> ( EXPR ) .
 
 	Actions:
-	for :: Reduce r44
-	for tu: Reduce r44
-	for #: Reduce r44
-	for ;: Reduce r44
+	for *: Reduce r44
 	for ): Reduce r44
+	for /: Reduce r44
+	for tu: Reduce r44
+	for -: Reduce r44
+	for +: Reduce r44
 	for du: Reduce r44
+	for %: Reduce r44
+	for :: Reduce r44
 
 State 580 = goto(520, NOP) copy of State 126
 
@@ -3675,7 +3908,7 @@ State 584 = goto(536, BLOCK)
 	WHILEBLOCK -> whilegardium LOGICAL du { BLOCK . }
 
 	Actions:
-	for }: Shift 617
+	for }: Shift s617
 
 State 585 = goto(536, SN) copy of State 257
 
@@ -3751,23 +3984,23 @@ State 606 = goto(537, :)
 	R -> . ( EXPR )
 
 	Actions:
-	for OPTION: Shift 618
-	for EDT: Shift 538
-	for DT: Shift 68
-	for number: Shift 241
-	for char: Shift 67
-	for string: Shift 243
-	for variable: Shift 244
-	for EXPR: Shift 544
-	for TERM: Shift 26
-	for FACTOR: Shift 30
-	for TNV: Shift 156
-	for (: Shift 33
-	for SS: Shift 34
-	for TSV: Shift 35
-	for LOGICAL: Shift 36
-	for ER: Shift 37
-	for R: Shift 41
+	for OPTION: Shift s618
+	for EDT: Shift s538
+	for DT: Shift s68
+	for number: Shift s241
+	for char: Shift s67
+	for string: Shift s243
+	for variable: Shift s244
+	for EXPR: Shift s544
+	for TERM: Shift s26
+	for FACTOR: Shift s30
+	for TNV: Shift s156
+	for (: Shift s33
+	for SS: Shift s34
+	for TSV: Shift s35
+	for LOGICAL: Shift s36
+	for ER: Shift s37
+	for R: Shift s41
 
 State 607 = goto(544, NOP) copy of State 126
 
@@ -3780,13 +4013,16 @@ State 610 = goto(544, %) copy of State 29
 State 611 = goto(566, DDT) 
 	DARRAY -> arraygo [ TNV ] DDT .
 
-State 612 = goto(566, incantum) copy of State 55
+	Actions:
+	for variable: Reduce r84
 
-State 613 = goto(566, dublatum) copy of State 56
+State 612 = goto(566, incantum) copy of State 56
 
-State 614 = goto(566, charmax) copy of State 57
+State 613 = goto(566, dublatum) copy of State 57
 
-State 615 = goto(566, stringo) copy of State 58
+State 614 = goto(566, charmax) copy of State 58
+
+State 615 = goto(566, stringo) copy of State 59
 
 State 616 = goto(574, {) 
 	FORBLOCK -> forculus FFROM tu FTO du { . BLOCK }
@@ -3818,42 +4054,37 @@ State 616 = goto(574, {)
 	WHILEBLOCK -> . whilegardium LOGICAL du { BLOCK }
 
 	Actions:
-	for BLOCK: Shift 635
-	for SN: Shift 257
-	for N: Shift 4
-	for IN: Shift 5
-	for scriptum: Shift 63
-	for OUT: Shift 6
-	for revelio: Shift 64
-	for DECL: Shift 7
-	for declaro: Shift 52
-	for UNARY: Shift 8
-	for ascendo: Shift 61
-	for descendo: Shift 62
-	for ASSIGN: Shift 9
-	for LHS: Shift 48
-	for variable: Shift 82
-	for IFBLOCK: Shift 10
-	for IFB: Shift 13
-	for mystime: Shift 14
-	for FORBLOCK: Shift 11
-	for forculus: Shift 18
-	for WHILEBLOCK: Shift 12
-	for whilegardium: Shift 23
+	for BLOCK: Shift s635
+	for SN: Shift s257
+	for N: Shift s4
+	for IN: Shift s5
+	for scriptum: Shift s63
+	for OUT: Shift s6
+	for revelio: Shift s64
+	for DECL: Shift s7
+	for declaro: Shift s52
+	for UNARY: Shift s8
+	for ascendo: Shift s61
+	for descendo: Shift s62
+	for ASSIGN: Shift s9
+	for LHS: Shift s48
+	for variable: Shift s82
+	for IFBLOCK: Shift s10
+	for IFB: Shift s13
+	for mystime: Shift s14
+	for FORBLOCK: Shift s11
+	for forculus: Shift s18
+	for WHILEBLOCK: Shift s12
+	for whilegardium: Shift s23
 
 State 617 = goto(584, }) 
 	WHILEBLOCK -> whilegardium LOGICAL du { BLOCK } .
 
 	Actions:
 	for ;: Reduce r29
-	for #: Reduce r29
 
 State 618 = goto(606, OPTION) 
 	TERNARY -> tribus LOGICAL ? OPTION : OPTION .
-
-	Actions:
-	for ;: Reduce r31
-	for #: Reduce r31
 
 State 619 = goto(606, EDT) copy of State 538
 
@@ -3891,7 +4122,7 @@ State 635 = goto(616, BLOCK)
 	FORBLOCK -> forculus FFROM tu FTO du { BLOCK . }
 
 	Actions:
-	for }: Shift 657
+	for }: Shift s657
 
 State 636 = goto(616, SN) copy of State 257
 
@@ -3940,4 +4171,4 @@ State 657 = goto(635, })
 
 	Actions:
 	for ;: Reduce r21
-	for #: Reduce r21
+

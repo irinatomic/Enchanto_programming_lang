@@ -74,6 +74,8 @@ ARRAY -> [ AELEM ]
 AELEM -> TNV , AELEM
 AELEM -> TNV
 DECL -> declaro EDDT SV
+SV -> SV variable
+SV -> variable
 EDDT -> DDT
 EDDT -> DARRAY
 DDT -> incantum
@@ -81,8 +83,6 @@ DDT -> dublatum
 DDT -> charmax
 DDT -> stringo
 DARRAY -> arraygo [ TNV ] DDT
-SV -> SV variable
-SV -> variable
 UNARY -> ascendo variable
 UNARY -> descendo variable
 IN -> scriptum variable

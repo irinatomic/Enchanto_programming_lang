@@ -1,3 +1,5 @@
+from typing import List
+
 # FIRST SETS
 def generateFirstSets(G, T, nT):
 
@@ -43,51 +45,52 @@ def generateFirstSets(G, T, nT):
     return first_sets
 
 # FOLLOW SETS
-def generateFollowSets(G, T, nT):
+def generateFollowSets(G, firstSets):
+
+    nT = extractNonTerminalsInOrder(G)
+
     follow_sets = {symbol: set() for symbol in nT}
-    epsilon = '#'       # Representing end of input (added as a terminal)
+    epsilon = '#'
+    follow_sets[nT[0]].add(epsilon)             # Add # to the start symbol
+    
+    for nt in nT:
+        rules = findRulesWithNonTeminal(G, nt)
+        for rule in rules:
+            lhs = rule[1]
+            rhs = rule[2].split(' ')
+            ntIndex = rhs.index(nt)
 
-    changed = True      # track changes in the FOLLOW sets
-    while changed:
-        changed = False
+            # A -> c CURR
+            # follow(CURR) += follow(A)
+            if nt == rhs[-1]:
+                follow_sets[nt] = follow_sets[nt].union(follow_sets[lhs])
 
-        for rule in G:
-            lhs, rhs = rule[1], rule[2].split(' ')
-            for i, symbol in enumerate(rhs):
-                if symbol in nT:
-                    next_symbol = None
+            nextSymbol = rhs[ntIndex + 1] if ntIndex + 1 < len(rhs) else None
 
-                     # Traverse the symbols to the right of the current non-terminal
-                    for j in range(i + 1, len(rhs)):
-                        next_symbol = rhs[j]
+            # if the next symbol is a non-terminal
+            # A -> c CURR NEXT
+            # follow(curr) += first(next)
+            if nextSymbol is not None and nextSymbol in nT:
+                follow_sets[nt] = follow_sets[nt].union(firstSets[nextSymbol])
 
-                        # If it's a non-terminal, update its FOLLOW set based on the current non-terminal
-                        if next_symbol in nT:
-                            if epsilon not in follow_sets[next_symbol] and next_symbol != lhs:
-                                follow_sets[next_symbol].add(epsilon)
-                                changed = True
-
-                             # Break loop when encountering a non-terminal symbol
-                            break
-
-                        # If it's a terminal, add it to the FOLLOW set and break
-                        elif next_symbol in T:
-                            if next_symbol not in follow_sets[symbol]:
-                                follow_sets[symbol].add(next_symbol)
-                                changed = True
-                            break
-                    
-                    # If the loop completes without breaking, update the FOLLOW set with the current non-terminal's FOLLOW set
-                    else:
-                        if lhs != symbol:
-                            for term in follow_sets[lhs]:
-                                if term not in follow_sets[symbol]:
-                                    follow_sets[symbol].add(term)
-                                    changed = True
-
-        # Adding the # symbol to the FOLLOW set of the start symbol
-        if '#' not in follow_sets[nT[0]]:
-            follow_sets[nT[0]].add('#')
-            changed = True
+            # if the next symbol is a terminal
+            if nextSymbol is not None and nextSymbol not in nT:
+                follow_sets[nt].add(nextSymbol)
 
     return follow_sets
+
+def extractNonTerminalsInOrder(G):
+    nT = []
+    for rule in G:
+        lhs = rule[1]
+        if lhs not in nT:
+            nT.append(lhs)
+    return nT
+
+def findRulesWithNonTeminal(G: List[tuple], nt : str):
+    rules = []
+    for rule in G:
+        rhs = rule[2].split(' ')    # if on the right side of the rule
+        if nt in rhs:            
+            rules.append(rule)
+    return rules    

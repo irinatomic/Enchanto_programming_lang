@@ -43,7 +43,7 @@ def check_syntax(words: List[str], states: List[State]) -> bool:
 
         # Reduce
         if action.name == 'Reduce':
-            ruleRhs = action.rule.rhs
+            ruleRhs = action.rhs
             print(ruleRhs)
             return
         # # If the action is reduce, pop the magazine for the length of the right hand side of the rule
