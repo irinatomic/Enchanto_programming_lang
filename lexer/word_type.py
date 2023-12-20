@@ -8,7 +8,7 @@ class WordType:
     STRINGO = 'stringo'
     ARRAYGO = 'arraygo'
     # basic functions
-    ENCHANTO = 'main'     
+    ENCHANTO = 'enchanto'     
     DECLARO = 'declaro' 
     SCRIPTUM = 'scriptum'           
     REVELIO = 'revelio'   

@@ -29,9 +29,9 @@ def import_grammar(fileData):
     T.append('$')
     return G, T, nT
 
-def process_grammar():
+def process_grammar(grammar_path):
 
-    fileData = open('grammar/enchanto/grammar.txt', 'r').readlines()
+    fileData = open(grammar_path, 'r').readlines()
 
     # Grammar - list of rules (tuple: index, lhs, rhs)
     G, T, nT = import_grammar(fileData)
