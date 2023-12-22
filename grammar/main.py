@@ -47,24 +47,24 @@ def process_grammar(grammar_path):
     determineActions(states, G, follow_sets)
 
     # export table to excel
-    exportLRTAble(T, nT, states)
+    # exportLRTAble(T, nT, states)
 
     # output.txt
-    with open('output.txt', 'w') as f:
-        f.write('GRAMMAR\n')
-        for rule in G:
-            f.write(str(rule) + '\n')
+    # with open('output.txt', 'w') as f:
+    #     f.write('GRAMMAR\n')
+    #     for rule in G:
+    #         f.write(str(rule) + '\n')
 
-        f.write('\nFIRST SETS\n')
-        for key, value in first_sets.items():
-            f.write(str(key) + ': ' + str(value) + '\n')
+    #     f.write('\nFIRST SETS\n')
+    #     for key, value in first_sets.items():
+    #         f.write(str(key) + ': ' + str(value) + '\n')
 
-        f.write('\nFOLLOW SETS\n')
-        for key, value in follow_sets.items():
-            f.write(str(key) + ': ' + str(value) + '\n')
+    #     f.write('\nFOLLOW SETS\n')
+    #     for key, value in follow_sets.items():
+    #         f.write(str(key) + ': ' + str(value) + '\n')
         
-        f.write('\nSTATES:\n')   
-        for s in states:
-            f.write(str(s) + '\n') 
+    #     f.write('\nSTATES:\n')   
+    #     for s in states:
+    #         f.write(str(s) + '\n') 
 
     return states

@@ -26,7 +26,7 @@ def check_syntax(words: List[str], states: List[State]) -> bool:
 
         current_state = magazine[len(magazine) - 1]
         next_word = words[0]
-        action: Action = current_state.actions[next_word]
+        action: Action = current_state.actions.get(next_word)
 
         # Error
         if action is None:
